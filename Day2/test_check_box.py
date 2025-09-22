@@ -32,3 +32,5 @@ def test_check_box_commands(driver):
     commands_input = driver.find_element(By.ID, "tree-node-commands")
     assert commands_input.is_selected()
     # time.sleep(2)
+
+    

@@ -1,14 +1,19 @@
-# conftest.py
 import pytest
 from selenium import webdriver
 
-@pytest.fixture
-def driver():
-    # Setup: initialize the WebDriver
-    driver = webdriver.Chrome()
-    # driver = webdriver.Firefox()
-    driver.maximize_window()
-    yield driver
+def pytest_addoption(parser):
+    parser.addoption("--browser", action="store", default="chrome", help="browser to execute tests (chrome or firefox)")
 
-    # Teardown: close the WebDriver
-    driver.quit()
+@pytest.fixture
+def driver(request):
+    browser = request.config.getoption("--browser").lower()
+    if browser == "chrome":
+        driver_instance = webdriver.Chrome()
+    elif browser == "firefox":
+        driver_instance = webdriver.Firefox()
+    else:
+        raise ValueError(f"Browser '{browser}' is not supported.")
+    
+    driver_instance.maximize_window()
+    yield driver_instance
+    driver_instance.quit()

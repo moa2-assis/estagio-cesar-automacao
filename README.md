@@ -1,6 +1,7 @@
 # My Test Automation Project
 # `pip freeze > requirements.txt` to save current package list
-
+# `allure serve allure-results`to open allure report
+ 
 ## Setup
 1. Clone the repository.
 2. Create a virtual environment: `python -m venv <-env_name->`

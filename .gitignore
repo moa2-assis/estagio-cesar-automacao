@@ -1,3 +1,10 @@
+# folders
 myproject/
 pytest_cache/
+allure-results/
+
+# sole files
 .DS_STORE
+
+# extensions
+*.pyc

@@ -6,6 +6,9 @@ from pathlib import Path
 import time
 import os, pytest_html
 from datetime import datetime
+import sys
+import subprocess
+import webbrowser
 
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="chrome", help="browser to execute tests (chrome or firefox)")
@@ -73,3 +76,19 @@ def pytest_runtest_makereport(item, call):
            f'onclick="window.open(this.src)" align="right"/></div>'
             extra.append(pytest_html.extras.html(html))
     report.extra = extra
+
+def pytest_sessionfinish(session, exitstatus):
+    root = Path.cwd()
+    script = root / "dashboard.py"
+    html   = root / "dashboard.html"
+
+    try:
+        subprocess.run([sys.executable, str(script)], check=True)
+    except Exception as e:
+        print(f"[dashboard] erro ao executar {script.name}: {e}")
+        return
+
+    try:
+        webbrowser.open(html.resolve().as_uri())
+    except Exception as e:
+        print(f"[dashboard] gerado em: {html.resolve()} (abra manualmente). Motivo: {e}")

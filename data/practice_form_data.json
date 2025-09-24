@@ -1,0 +1,44 @@
+[
+  {
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "john.doe@example.com",
+    "gender": "Male",
+    "mobile": "1234567890",
+    "dob": "15 May 1990",
+    "subjects": ["Maths", "Physics"],
+    "hobbies": ["Sports", "Music"],
+    "picture": "",
+    "address": "123 Main Street",
+    "state": "NCR",
+    "city": "Delhi"
+  },
+  {
+    "first_name": "Jane",
+    "last_name": "Smith",
+    "email": "jane.smith@example.com",
+    "gender": "Female",
+    "mobile": "0987654321",
+    "dob": "20 February 1995",
+    "subjects": ["Chemistry", "Biology"],
+    "hobbies": ["Reading"],
+    "picture": "",
+    "address": "456 Oak Avenue",
+    "state": "NCR",
+    "city": "Gurgaon"
+  },
+  {
+    "first_name": "Mateuzo",
+    "last_name": "Assis",
+    "email": "mateuzo@example.com",
+    "gender": "Male",
+    "mobile": "081992929292",
+    "dob": "25 March 1950",
+    "subjects": ["Maths", "Social Studies", "Chemistry", "Biology"],
+    "hobbies": ["Reading", "Music"],
+    "picture": "",
+    "address": "0023 Dale Avenue",
+    "state": "NCR",
+    "city": "Gurgaon"
+  }
+]

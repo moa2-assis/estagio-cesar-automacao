@@ -1,4 +1,5 @@
 # My Test Automation Project
+# `pip freeze > requirements.txt` to save current package list
 
 ## Setup
 1. Clone the repository.

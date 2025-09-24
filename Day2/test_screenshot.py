@@ -14,6 +14,7 @@ def test_button_clicks_with_screenshots(driver):
     actions.double_click(double_click_btn).perform()
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    driver.save_screenshot(f"screenshots/1_after_double_click_{timestamp}.png")
+    browserName = driver.capabilities.get("browserName", "unknown").lower()
+    driver.save_screenshot(f"screenshots/1_after_double_click_{browserName}_{timestamp}.png")
     double_click_message = driver.find_element(By.ID, "doubleClickMessage")
     assert "You have done a double click" in double_click_message.text

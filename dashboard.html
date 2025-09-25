@@ -1,12 +1,23 @@
 
     <html>
     <head>
+        <meta charset="utf-8">
         <title>Test Execution Dashboard</title>
         <style>
-            body { font-family: sans-serif; }
+            body { font-family: sans-serif; margin: 20px; }
             table { border-collapse: collapse; width: 100%; }
-            th, td { border: 1px solid #dddddd; text-align: left; padding: 8px; }
+            th, td { border: 1px solid #ddd; text-align: left; padding: 8px; vertical-align: top; }
             th { background-color: #f2f2f2; }
+            .status-passed  { color: #0a0; font-weight: 600; }
+            .status-failed  { color: #c00; font-weight: 600; }
+            .status-broken  { color: #c60; font-weight: 600; }
+            .status-skipped { color: #666; font-weight: 600; }
+            .error-row { background: #fff5f5; }
+            .error-msg { white-space: pre-wrap; margin: 6px 0; }
+            details summary { cursor: pointer; user-select: none; color: #333; }
+            .attachments { margin-top: 6px; }
+            .attachments img { max-width: 240px; max-height: 160px; margin-right: 8px; border: 1px solid #ccc; }
+            .attachments a { margin-right: 10px; }
         </style>
     </head>
     <body>
@@ -21,363 +32,2719 @@
             </tr>
     
             <tr>
-                <td>test_fill_practice_form[data2]</td>
-                <td>passed</td>
-                <td>7.84</td>
-                <td>2025-09-24 11:02:39</td>
-                <td>2025-09-24 11:02:46</td>
-            </tr>
-        
-            <tr>
-                <td>test_locate_by_id</td>
-                <td>passed</td>
-                <td>7.02</td>
-                <td>2025-09-24 11:01:24</td>
-                <td>2025-09-24 11:01:31</td>
-            </tr>
-        
-            <tr>
                 <td>test_hover_tool_tip_text_field</td>
-                <td>passed</td>
-                <td>6.02</td>
-                <td>2025-09-24 11:16:01</td>
-                <td>2025-09-24 11:16:07</td>
-            </tr>
-        
-            <tr>
-                <td>test_fill_practice_form[data1]</td>
-                <td>passed</td>
-                <td>7.25</td>
-                <td>2025-09-24 10:47:38</td>
-                <td>2025-09-24 10:47:45</td>
-            </tr>
-        
-            <tr>
-                <td>test_fill_practice_form[data2]</td>
-                <td>passed</td>
-                <td>7.10</td>
-                <td>2025-09-24 10:50:47</td>
-                <td>2025-09-24 10:50:54</td>
-            </tr>
-        
-            <tr>
-                <td>test_locate_by_css_selector</td>
-                <td>passed</td>
-                <td>6.94</td>
-                <td>2025-09-24 11:24:38</td>
-                <td>2025-09-24 11:24:45</td>
-            </tr>
-        
-            <tr>
-                <td>test_locate_by_css_selector</td>
-                <td>passed</td>
-                <td>6.96</td>
-                <td>2025-09-24 11:01:33</td>
-                <td>2025-09-24 11:01:40</td>
-            </tr>
-        
-            <tr>
-                <td>test_locate_by_xpath</td>
-                <td>passed</td>
-                <td>7.19</td>
-                <td>2025-09-24 11:24:48</td>
-                <td>2025-09-24 11:24:55</td>
+                <td class="status-passed">passed</td>
+                <td>5.28</td>
+                <td>2025-09-25 10:06:37</td>
+                <td>2025-09-25 10:06:43</td>
             </tr>
         
             <tr>
                 <td>test_hover_tool_tip_button</td>
-                <td>passed</td>
+                <td class="status-passed">passed</td>
                 <td>5.83</td>
-                <td>2025-09-24 11:25:56</td>
-                <td>2025-09-24 11:26:02</td>
+                <td>2025-09-25 10:06:29</td>
+                <td>2025-09-25 10:06:35</td>
             </tr>
         
             <tr>
-                <td>test_navigate_to_elements_page</td>
-                <td>passed</td>
+                <td>test_hover_tool_tip_text_field</td>
+                <td class="status-passed">passed</td>
+                <td>6.75</td>
+                <td>2025-09-25 10:06:20</td>
+                <td>2025-09-25 10:06:27</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_button</td>
+                <td class="status-passed">passed</td>
+                <td>6.24</td>
+                <td>2025-09-25 10:06:11</td>
+                <td>2025-09-25 10:06:18</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_form_with_pom</td>
+                <td class="status-passed">passed</td>
+                <td>8.26</td>
+                <td>2025-09-25 10:06:01</td>
+                <td>2025-09-25 10:06:09</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_practice_form[data2]</td>
+                <td class="status-passed">passed</td>
+                <td>7.81</td>
+                <td>2025-09-25 10:05:51</td>
+                <td>2025-09-25 10:05:59</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_practice_form[data1]</td>
+                <td class="status-passed">passed</td>
+                <td>7.96</td>
+                <td>2025-09-25 10:05:40</td>
+                <td>2025-09-25 10:05:48</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_practice_form[data0]</td>
+                <td class="status-passed">passed</td>
+                <td>7.96</td>
+                <td>2025-09-25 10:05:30</td>
+                <td>2025-09-25 10:05:38</td>
+            </tr>
+        
+            <tr>
+                <td>test_locate_by_xpath</td>
+                <td class="status-passed">passed</td>
+                <td>6.79</td>
+                <td>2025-09-25 10:05:20</td>
+                <td>2025-09-25 10:05:27</td>
+            </tr>
+        
+            <tr>
+                <td>test_locate_by_css_selector</td>
+                <td class="status-passed">passed</td>
+                <td>7.17</td>
+                <td>2025-09-25 10:05:11</td>
+                <td>2025-09-25 10:05:18</td>
+            </tr>
+        
+            <tr>
+                <td>test_locate_by_id</td>
+                <td class="status-passed">passed</td>
                 <td>7.03</td>
-                <td>2025-09-24 11:13:52</td>
-                <td>2025-09-24 11:13:59</td>
-            </tr>
-        
-            <tr>
-                <td>test_fill_practice_form[data1]</td>
-                <td>passed</td>
-                <td>7.11</td>
-                <td>2025-09-24 11:02:29</td>
-                <td>2025-09-24 11:02:36</td>
-            </tr>
-        
-            <tr>
-                <td>test_fill_form_with_pom</td>
-                <td>passed</td>
-                <td>9.06</td>
-                <td>2025-09-24 11:02:49</td>
-                <td>2025-09-24 11:02:58</td>
-            </tr>
-        
-            <tr>
-                <td>test_fill_practice_form[data0]</td>
-                <td>passed</td>
-                <td>8.13</td>
-                <td>2025-09-24 11:14:29</td>
-                <td>2025-09-24 11:14:37</td>
-            </tr>
-        
-            <tr>
-                <td>test_hover_tool_tip_button</td>
-                <td>passed</td>
-                <td>6.14</td>
-                <td>2025-09-24 11:16:09</td>
-                <td>2025-09-24 11:16:15</td>
-            </tr>
-        
-            <tr>
-                <td>test_fill_practice_form[data1]</td>
-                <td>passed</td>
-                <td>7.66</td>
-                <td>2025-09-24 11:14:40</td>
-                <td>2025-09-24 11:14:48</td>
-            </tr>
-        
-            <tr>
-                <td>test_hover_tool_tip_text_field</td>
-                <td>passed</td>
-                <td>7.09</td>
-                <td>2025-09-24 11:16:18</td>
-                <td>2025-09-24 11:16:25</td>
-            </tr>
-        
-            <tr>
-                <td>test_fill_form_with_pom</td>
-                <td>passed</td>
-                <td>9.73</td>
-                <td>2025-09-24 11:25:27</td>
-                <td>2025-09-24 11:25:37</td>
-            </tr>
-        
-            <tr>
-                <td>test_hover_tool_tip_text_field</td>
-                <td>passed</td>
-                <td>5.58</td>
-                <td>2025-09-24 11:25:48</td>
-                <td>2025-09-24 11:25:54</td>
-            </tr>
-        
-            <tr>
-                <td>test_fill_practice_form[data1]</td>
-                <td>passed</td>
-                <td>7.23</td>
-                <td>2025-09-24 11:25:08</td>
-                <td>2025-09-24 11:25:15</td>
+                <td>2025-09-25 10:05:01</td>
+                <td>2025-09-25 10:05:08</td>
             </tr>
         
             <tr>
                 <td>test_navigate_to_elements_page</td>
-                <td>passed</td>
-                <td>6.65</td>
-                <td>2025-09-24 11:01:15</td>
-                <td>2025-09-24 11:01:21</td>
+                <td class="status-passed">passed</td>
+                <td>10.37</td>
+                <td>2025-09-25 10:04:49</td>
+                <td>2025-09-25 10:04:59</td>
+            </tr>
+        
+            <tr>
+                <td>test_notes_checkbox_output</td>
+                <td class="status-passed">passed</td>
+                <td>6.35</td>
+                <td>2025-09-25 10:04:40</td>
+                <td>2025-09-25 10:04:46</td>
+            </tr>
+        
+            <tr>
+                <td>test_commands_checkbox_output</td>
+                <td class="status-passed">passed</td>
+                <td>7.67</td>
+                <td>2025-09-25 10:04:30</td>
+                <td>2025-09-25 10:04:37</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_text_field</td>
+                <td class="status-broken">broken</td>
+                <td>0.80</td>
+                <td>2025-09-25 09:49:31</td>
+                <td>2025-09-25 09:49:32</td>
+            </tr>
+        
+            <tr class="error-row">
+                <td colspan="5">
+                    <div class="error-msg"><strong>Erro:</strong> selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;[id=&quot;toolTipTextField&quot;]&quot;}</div>
+                    <div class="attachments"><a href="allure-results/3a2f72e9-38b3-4912-b3ae-eeb5a6e8c6f8-attachment.txt" target="_blank">stdout</a></div>
+                    <details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;11238cb704feef1fa8049a163121ec9c&quot;)&gt;
+
+    @pytest.mark.smoke
+    def test_hover_tool_tip_text_field(driver):
+        tool_tips_page = TooltipsPage2(driver)
+        tool_tips_page.navigate()
+&gt;       tool_tips_page.tool_tip_text_hover()
+
+tests/test_tooltips_page2.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+pages/tool_tips_page2.py:28: in tool_tip_text_hover
+    text_field = self.driver.find_element(*self.tool_tip_text_field)
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:926: in find_element
+    return self.execute(Command.FIND_ELEMENT, {&quot;using&quot;: by, &quot;value&quot;: value})[&quot;value&quot;]
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:458: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x107ca3cd0&gt;
+response = {&#x27;status&#x27;: 404, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;no such element&quot;,&quot;message&quot;:&quot;no such element: Unable to locate element: {\...ff808c07e59 _pthread_start + 115\\n20  libsystem_pthread.dylib             0x00007ff808c03857 thread_start + 15\\n&quot;}}&#x27;}
+
+    def check_response(self, response: dict[str, Any]) -&gt; None:
+        &quot;&quot;&quot;Checks that a JSON response from the WebDriver does not have an
+        error.
+    
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+    
+        :Raises: If the response contains an error message.
+        &quot;&quot;&quot;
+        status = response.get(&quot;status&quot;, None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get(&quot;message&quot;, &quot;&quot;)
+        screen: str = response.get(&quot;screen&quot;, &quot;&quot;)
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get(&quot;value&quot;, None)
+            if value_json and isinstance(value_json, str):
+                try:
+                    value = json.loads(value_json)
+                    if isinstance(value, dict):
+                        if len(value) == 1:
+                            value = value[&quot;value&quot;]
+                        status = value.get(&quot;error&quot;, None)
+                        if not status:
+                            status = value.get(&quot;status&quot;, ErrorCode.UNKNOWN_ERROR)
+                            message = value.get(&quot;value&quot;) or value.get(&quot;message&quot;)
+                            if not isinstance(message, str):
+                                value = message
+                                message = message.get(&quot;message&quot;)
+                        else:
+                            message = value.get(&quot;message&quot;, None)
+                except ValueError:
+                    pass
+    
+        exception_class: type[WebDriverException]
+        e = ErrorCode()
+        error_codes = [item for item in dir(e) if not item.startswith(&quot;__&quot;)]
+        for error_code in error_codes:
+            error_info = getattr(ErrorCode, error_code)
+            if isinstance(error_info, list) and status in error_info:
+                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)
+                break
+        else:
+            exception_class = WebDriverException
+    
+        if not value:
+            value = response[&quot;value&quot;]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == &quot;&quot; and &quot;message&quot; in value:
+            message = value[&quot;message&quot;]
+    
+        screen = None  # type: ignore[assignment]
+        if &quot;screen&quot; in value:
+            screen = value[&quot;screen&quot;]
+    
+        stacktrace = None
+        st_value = value.get(&quot;stackTrace&quot;) or value.get(&quot;stacktrace&quot;)
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split(&quot;\n&quot;)
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get(&quot;lineNumber&quot;, &quot;&quot;)
+                        file = frame.get(&quot;fileName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if line:
+                            file = f&quot;{file}:{line}&quot;
+                        meth = frame.get(&quot;methodName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if &quot;className&quot; in frame:
+                            meth = f&quot;{frame[&#x27;className&#x27;]}.{meth}&quot;
+                        msg = &quot;    at %s (%s)&quot;
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if &quot;data&quot; in value:
+                alert_text = value[&quot;data&quot;].get(&quot;text&quot;)
+            elif &quot;alert&quot; in value:
+                alert_text = value[&quot;alert&quot;].get(&quot;text&quot;)
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+&gt;       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;[id=&quot;toolTipTextField&quot;]&quot;}
+E         (Session info: chrome=140.0.7339.187); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+E       Stacktrace:
+E       0   chromedriver                        0x0000000108dbc028 chromedriver + 6361128
+E       1   chromedriver                        0x0000000108db372a chromedriver + 6326058
+E       2   chromedriver                        0x0000000108813c20 chromedriver + 429088
+E       3   chromedriver                        0x0000000108865d1b chromedriver + 765211
+E       4   chromedriver                        0x0000000108865fe1 chromedriver + 765921
+E       5   chromedriver                        0x00000001088b5f44 chromedriver + 1093444
+E       6   chromedriver                        0x000000010888be2d chromedriver + 921133
+E       7   chromedriver                        0x00000001088b326e chromedriver + 1081966
+E       8   chromedriver                        0x000000010888bbd3 chromedriver + 920531
+E       9   chromedriver                        0x00000001088578ff chromedriver + 706815
+E       10  chromedriver                        0x0000000108858dc1 chromedriver + 712129
+E       11  chromedriver                        0x0000000108d79fc0 chromedriver + 6090688
+E       12  chromedriver                        0x0000000108d7de55 chromedriver + 6106709
+E       13  chromedriver                        0x0000000108d55287 chromedriver + 5939847
+E       14  chromedriver                        0x0000000108d7e8cf chromedriver + 6109391
+E       15  chromedriver                        0x0000000108d445f4 chromedriver + 5871092
+E       16  chromedriver                        0x0000000108da0a78 chromedriver + 6249080
+E       17  chromedriver                        0x0000000108da0c3c chromedriver + 6249532
+E       18  chromedriver                        0x0000000108db3301 chromedriver + 6324993
+E       19  libsystem_pthread.dylib             0x00007ff808c07e59 _pthread_start + 115
+E       20  libsystem_pthread.dylib             0x00007ff808c03857 thread_start + 15
+
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:232: NoSuchElementException</pre></details>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>test_hover_tool_tip_button</td>
+                <td class="status-broken">broken</td>
+                <td>12.61</td>
+                <td>2025-09-25 09:49:16</td>
+                <td>2025-09-25 09:49:29</td>
+            </tr>
+        
+            <tr class="error-row">
+                <td colspan="5">
+                    <div class="error-msg"><strong>Erro:</strong> selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;[id=&quot;buttonToolTip&quot;]&quot;}</div>
+                    <div class="attachments"><a href="allure-results/526b9298-889b-46a4-8e4c-3aafe3ac4baf-attachment.txt" target="_blank">stdout</a></div>
+                    <details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;71f4f84131a15430d4135cce2c825928&quot;)&gt;
+
+    @pytest.mark.smoke
+    def test_hover_tool_tip_button(driver):
+        tool_tips_page = TooltipsPage2(driver)
+        tool_tips_page.navigate()
+        tool_tips_page.tool_tip_button_hover()
+    
+&gt;       assert tool_tips_page.tool_tip_button_hover_tooltip_text() == &quot;You hovered over the Button&quot;
+
+tests/test_tooltips_page2.py:11: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+pages/tool_tips_page2.py:23: in tool_tip_button_hover_tooltip_text
+    button_hover_tooltip = self.driver.find_element(By.ID, &quot;buttonToolTip&quot;)
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:926: in find_element
+    return self.execute(Command.FIND_ELEMENT, {&quot;using&quot;: by, &quot;value&quot;: value})[&quot;value&quot;]
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:458: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x107d646a0&gt;
+response = {&#x27;status&#x27;: 404, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;no such element&quot;,&quot;message&quot;:&quot;no such element: Unable to locate element: {\...ff808c07e59 _pthread_start + 115\\n20  libsystem_pthread.dylib             0x00007ff808c03857 thread_start + 15\\n&quot;}}&#x27;}
+
+    def check_response(self, response: dict[str, Any]) -&gt; None:
+        &quot;&quot;&quot;Checks that a JSON response from the WebDriver does not have an
+        error.
+    
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+    
+        :Raises: If the response contains an error message.
+        &quot;&quot;&quot;
+        status = response.get(&quot;status&quot;, None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get(&quot;message&quot;, &quot;&quot;)
+        screen: str = response.get(&quot;screen&quot;, &quot;&quot;)
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get(&quot;value&quot;, None)
+            if value_json and isinstance(value_json, str):
+                try:
+                    value = json.loads(value_json)
+                    if isinstance(value, dict):
+                        if len(value) == 1:
+                            value = value[&quot;value&quot;]
+                        status = value.get(&quot;error&quot;, None)
+                        if not status:
+                            status = value.get(&quot;status&quot;, ErrorCode.UNKNOWN_ERROR)
+                            message = value.get(&quot;value&quot;) or value.get(&quot;message&quot;)
+                            if not isinstance(message, str):
+                                value = message
+                                message = message.get(&quot;message&quot;)
+                        else:
+                            message = value.get(&quot;message&quot;, None)
+                except ValueError:
+                    pass
+    
+        exception_class: type[WebDriverException]
+        e = ErrorCode()
+        error_codes = [item for item in dir(e) if not item.startswith(&quot;__&quot;)]
+        for error_code in error_codes:
+            error_info = getattr(ErrorCode, error_code)
+            if isinstance(error_info, list) and status in error_info:
+                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)
+                break
+        else:
+            exception_class = WebDriverException
+    
+        if not value:
+            value = response[&quot;value&quot;]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == &quot;&quot; and &quot;message&quot; in value:
+            message = value[&quot;message&quot;]
+    
+        screen = None  # type: ignore[assignment]
+        if &quot;screen&quot; in value:
+            screen = value[&quot;screen&quot;]
+    
+        stacktrace = None
+        st_value = value.get(&quot;stackTrace&quot;) or value.get(&quot;stacktrace&quot;)
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split(&quot;\n&quot;)
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get(&quot;lineNumber&quot;, &quot;&quot;)
+                        file = frame.get(&quot;fileName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if line:
+                            file = f&quot;{file}:{line}&quot;
+                        meth = frame.get(&quot;methodName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if &quot;className&quot; in frame:
+                            meth = f&quot;{frame[&#x27;className&#x27;]}.{meth}&quot;
+                        msg = &quot;    at %s (%s)&quot;
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if &quot;data&quot; in value:
+                alert_text = value[&quot;data&quot;].get(&quot;text&quot;)
+            elif &quot;alert&quot; in value:
+                alert_text = value[&quot;alert&quot;].get(&quot;text&quot;)
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+&gt;       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;[id=&quot;buttonToolTip&quot;]&quot;}
+E         (Session info: chrome=140.0.7339.187); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+E       Stacktrace:
+E       0   chromedriver                        0x0000000108938028 chromedriver + 6361128
+E       1   chromedriver                        0x000000010892f72a chromedriver + 6326058
+E       2   chromedriver                        0x000000010838fc20 chromedriver + 429088
+E       3   chromedriver                        0x00000001083e1d1b chromedriver + 765211
+E       4   chromedriver                        0x00000001083e1fe1 chromedriver + 765921
+E       5   chromedriver                        0x0000000108431f44 chromedriver + 1093444
+E       6   chromedriver                        0x0000000108407e2d chromedriver + 921133
+E       7   chromedriver                        0x000000010842f26e chromedriver + 1081966
+E       8   chromedriver                        0x0000000108407bd3 chromedriver + 920531
+E       9   chromedriver                        0x00000001083d38ff chromedriver + 706815
+E       10  chromedriver                        0x00000001083d4dc1 chromedriver + 712129
+E       11  chromedriver                        0x00000001088f5fc0 chromedriver + 6090688
+E       12  chromedriver                        0x00000001088f9e55 chromedriver + 6106709
+E       13  chromedriver                        0x00000001088d1287 chromedriver + 5939847
+E       14  chromedriver                        0x00000001088fa8cf chromedriver + 6109391
+E       15  chromedriver                        0x00000001088c05f4 chromedriver + 5871092
+E       16  chromedriver                        0x000000010891ca78 chromedriver + 6249080
+E       17  chromedriver                        0x000000010891cc3c chromedriver + 6249532
+E       18  chromedriver                        0x000000010892f301 chromedriver + 6324993
+E       19  libsystem_pthread.dylib             0x00007ff808c07e59 _pthread_start + 115
+E       20  libsystem_pthread.dylib             0x00007ff808c03857 thread_start + 15
+
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:232: NoSuchElementException</pre></details>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>test_hover_tool_tip_text_field</td>
+                <td class="status-broken">broken</td>
+                <td>22.99</td>
+                <td>2025-09-25 09:48:51</td>
+                <td>2025-09-25 09:49:14</td>
+            </tr>
+        
+            <tr class="error-row">
+                <td colspan="5">
+                    <div class="error-msg"><strong>Erro:</strong> selenium.common.exceptions.TimeoutException: Message: </div>
+                    <div class="attachments"><a href="allure-results/af2f9c40-8951-4901-aead-6380bbf2f9bb-attachment.txt" target="_blank">stdout</a></div>
+                    <details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;40960cf4a3f9a80982f07ef6076d5432&quot;)&gt;
+
+    @pytest.mark.smoke
+    def test_hover_tool_tip_text_field(driver):
+        tool_tips_page = TooltipsPage(driver)
+        tool_tips_page.navigate(test_data[&quot;tool_tips_url&quot;])
+        tool_tips_page.tooltip_text_field_hover()
+    
+&gt;       assert tool_tips_page.tooltip_text_field_hover_text() == test_data[&quot;tool_tip_field_text&quot;]
+
+tests/test_tooltips_page.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+pages/tool_tips_page.py:44: in tooltip_text_field_hover_text
+    text_field_hover_tooltip = self.wait.until(EC.visibility_of_element_located(self.text_field_hover_tooltip_w))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;selenium.webdriver.support.wait.WebDriverWait (session=&quot;40960cf4a3f9a80982f07ef6076d5432&quot;)&gt;
+method = &lt;function visibility_of_element_located.&lt;locals&gt;._predicate at 0x107e36670&gt;, message = &#x27;&#x27;
+
+    def until(self, method: Callable[[D], Union[Literal[False], T]], message: str = &quot;&quot;) -&gt; T:
+        &quot;&quot;&quot;Wait until the method returns a value that is not False.
+    
+        Calls the method provided with the driver as an argument until the
+        return value does not evaluate to ``False``.
+    
+        Parameters:
+        -----------
+        method: callable(WebDriver)
+            - A callable object that takes a WebDriver instance as an argument.
+    
+        message: str
+            - Optional message for :exc:`TimeoutException`
+    
+        Return:
+        -------
+        object: T
+            - The result of the last call to `method`
+    
+        Raises:
+        -------
+        TimeoutException
+            - If &#x27;method&#x27; does not return a truthy value within the WebDriverWait
+            object&#x27;s timeout
+    
+        Example:
+        --------
+        &gt;&gt;&gt; from selenium.webdriver.common.by import By
+        &gt;&gt;&gt; from selenium.webdriver.support.ui import WebDriverWait
+        &gt;&gt;&gt; from selenium.webdriver.support import expected_conditions as EC
+    
+        # Wait until an element is visible on the page
+        &gt;&gt;&gt; wait = WebDriverWait(driver, 10)
+        &gt;&gt;&gt; element = wait.until(EC.visibility_of_element_located((By.ID, &quot;exampleId&quot;)))
+        &gt;&gt;&gt; print(element.text)
+        &quot;&quot;&quot;
+        screen = None
+        stacktrace = None
+    
+        end_time = time.monotonic() + self._timeout
+        while True:
+            try:
+                value = method(self._driver)
+                if value:
+                    return value
+            except self._ignored_exceptions as exc:
+                screen = getattr(exc, &quot;screen&quot;, None)
+                stacktrace = getattr(exc, &quot;stacktrace&quot;, None)
+            if time.monotonic() &gt; end_time:
+                break
+            time.sleep(self._poll)
+&gt;       raise TimeoutException(message, screen, stacktrace)
+E       selenium.common.exceptions.TimeoutException: Message: 
+E       Stacktrace:
+E       0   chromedriver                        0x000000010e048028 chromedriver + 6361128
+E       1   chromedriver                        0x000000010e03f72a chromedriver + 6326058
+E       2   chromedriver                        0x000000010da9fc20 chromedriver + 429088
+E       3   chromedriver                        0x000000010daf1d1b chromedriver + 765211
+E       4   chromedriver                        0x000000010daf1fe1 chromedriver + 765921
+E       5   chromedriver                        0x000000010db41f44 chromedriver + 1093444
+E       6   chromedriver                        0x000000010db17e2d chromedriver + 921133
+E       7   chromedriver                        0x000000010db3f26e chromedriver + 1081966
+E       8   chromedriver                        0x000000010db17bd3 chromedriver + 920531
+E       9   chromedriver                        0x000000010dae38ff chromedriver + 706815
+E       10  chromedriver                        0x000000010dae4dc1 chromedriver + 712129
+E       11  chromedriver                        0x000000010e005fc0 chromedriver + 6090688
+E       12  chromedriver                        0x000000010e009e55 chromedriver + 6106709
+E       13  chromedriver                        0x000000010dfe1287 chromedriver + 5939847
+E       14  chromedriver                        0x000000010e00a8cf chromedriver + 6109391
+E       15  chromedriver                        0x000000010dfd05f4 chromedriver + 5871092
+E       16  chromedriver                        0x000000010e02ca78 chromedriver + 6249080
+E       17  chromedriver                        0x000000010e02cc3c chromedriver + 6249532
+E       18  chromedriver                        0x000000010e03f301 chromedriver + 6324993
+E       19  libsystem_pthread.dylib             0x00007ff808c07e59 _pthread_start + 115
+E       20  libsystem_pthread.dylib             0x00007ff808c03857 thread_start + 15
+
+myproject/lib/python3.9/site-packages/selenium/webdriver/support/wait.py:138: TimeoutException</pre></details>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>test_hover_tool_tip_button</td>
+                <td class="status-broken">broken</td>
+                <td>30.12</td>
+                <td>2025-09-25 09:48:19</td>
+                <td>2025-09-25 09:48:49</td>
+            </tr>
+        
+            <tr class="error-row">
+                <td colspan="5">
+                    <div class="error-msg"><strong>Erro:</strong> selenium.common.exceptions.TimeoutException: Message: </div>
+                    <div class="attachments"><a href="allure-results/35bb74d5-f157-4df4-b1a5-1e0b33ffe083-attachment.txt" target="_blank">stdout</a></div>
+                    <details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;5ccfbe6a5cdb542585d38b3fb16f2936&quot;)&gt;
+
+    @pytest.mark.smoke
+    def test_hover_tool_tip_button(driver):
+        tool_tips_page = TooltipsPage(driver)
+        tool_tips_page.navigate(test_data[&quot;tool_tips_url&quot;])
+        tool_tips_page.tooltip_button_hover()
+    
+&gt;       assert tool_tips_page.tooltip_button_hover_text() == test_data[&quot;tool_tip_button_text&quot;]
+
+tests/test_tooltips_page.py:13: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+pages/tool_tips_page.py:35: in tooltip_button_hover_text
+    button_hover_tooltip = self.wait.until(EC.visibility_of_element_located(self.button_hover_tooltip_w))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;selenium.webdriver.support.wait.WebDriverWait (session=&quot;5ccfbe6a5cdb542585d38b3fb16f2936&quot;)&gt;
+method = &lt;function visibility_of_element_located.&lt;locals&gt;._predicate at 0x107e4b700&gt;, message = &#x27;&#x27;
+
+    def until(self, method: Callable[[D], Union[Literal[False], T]], message: str = &quot;&quot;) -&gt; T:
+        &quot;&quot;&quot;Wait until the method returns a value that is not False.
+    
+        Calls the method provided with the driver as an argument until the
+        return value does not evaluate to ``False``.
+    
+        Parameters:
+        -----------
+        method: callable(WebDriver)
+            - A callable object that takes a WebDriver instance as an argument.
+    
+        message: str
+            - Optional message for :exc:`TimeoutException`
+    
+        Return:
+        -------
+        object: T
+            - The result of the last call to `method`
+    
+        Raises:
+        -------
+        TimeoutException
+            - If &#x27;method&#x27; does not return a truthy value within the WebDriverWait
+            object&#x27;s timeout
+    
+        Example:
+        --------
+        &gt;&gt;&gt; from selenium.webdriver.common.by import By
+        &gt;&gt;&gt; from selenium.webdriver.support.ui import WebDriverWait
+        &gt;&gt;&gt; from selenium.webdriver.support import expected_conditions as EC
+    
+        # Wait until an element is visible on the page
+        &gt;&gt;&gt; wait = WebDriverWait(driver, 10)
+        &gt;&gt;&gt; element = wait.until(EC.visibility_of_element_located((By.ID, &quot;exampleId&quot;)))
+        &gt;&gt;&gt; print(element.text)
+        &quot;&quot;&quot;
+        screen = None
+        stacktrace = None
+    
+        end_time = time.monotonic() + self._timeout
+        while True:
+            try:
+                value = method(self._driver)
+                if value:
+                    return value
+            except self._ignored_exceptions as exc:
+                screen = getattr(exc, &quot;screen&quot;, None)
+                stacktrace = getattr(exc, &quot;stacktrace&quot;, None)
+            if time.monotonic() &gt; end_time:
+                break
+            time.sleep(self._poll)
+&gt;       raise TimeoutException(message, screen, stacktrace)
+E       selenium.common.exceptions.TimeoutException: Message: 
+E       Stacktrace:
+E       0   chromedriver                        0x00000001044b2028 chromedriver + 6361128
+E       1   chromedriver                        0x00000001044a972a chromedriver + 6326058
+E       2   chromedriver                        0x0000000103f09c20 chromedriver + 429088
+E       3   chromedriver                        0x0000000103f5bd1b chromedriver + 765211
+E       4   chromedriver                        0x0000000103f5bfe1 chromedriver + 765921
+E       5   chromedriver                        0x0000000103fabf44 chromedriver + 1093444
+E       6   chromedriver                        0x0000000103f81e2d chromedriver + 921133
+E       7   chromedriver                        0x0000000103fa926e chromedriver + 1081966
+E       8   chromedriver                        0x0000000103f81bd3 chromedriver + 920531
+E       9   chromedriver                        0x0000000103f4d8ff chromedriver + 706815
+E       10  chromedriver                        0x0000000103f4edc1 chromedriver + 712129
+E       11  chromedriver                        0x000000010446ffc0 chromedriver + 6090688
+E       12  chromedriver                        0x0000000104473e55 chromedriver + 6106709
+E       13  chromedriver                        0x000000010444b287 chromedriver + 5939847
+E       14  chromedriver                        0x00000001044748cf chromedriver + 6109391
+E       15  chromedriver                        0x000000010443a5f4 chromedriver + 5871092
+E       16  chromedriver                        0x0000000104496a78 chromedriver + 6249080
+E       17  chromedriver                        0x0000000104496c3c chromedriver + 6249532
+E       18  chromedriver                        0x00000001044a9301 chromedriver + 6324993
+E       19  libsystem_pthread.dylib             0x00007ff808c07e59 _pthread_start + 115
+E       20  libsystem_pthread.dylib             0x00007ff808c03857 thread_start + 15
+
+myproject/lib/python3.9/site-packages/selenium/webdriver/support/wait.py:138: TimeoutException</pre></details>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>test_fill_form_with_pom</td>
+                <td class="status-passed">passed</td>
+                <td>10.31</td>
+                <td>2025-09-25 09:48:06</td>
+                <td>2025-09-25 09:48:17</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_practice_form[data2]</td>
+                <td class="status-broken">broken</td>
+                <td>10.20</td>
+                <td>2025-09-25 09:47:54</td>
+                <td>2025-09-25 09:48:04</td>
+            </tr>
+        
+            <tr class="error-row">
+                <td colspan="5">
+                    <div class="error-msg"><strong>Erro:</strong> selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element &lt;div class=&quot; css-2b097c-container&quot; id=&quot;state&quot;&gt;...&lt;/div&gt; is not clickable at point (764, 335). Other element would receive the click: &lt;td&gt;...&lt;/td&gt;</div>
+                    <div class="attachments"><a href="allure-results/499379b2-cae0-4d4e-809c-64eaf2e9f856-attachment.txt" target="_blank">stdout</a></div>
+                    <details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;999c1debfb76f1d086de0b189c042856&quot;)&gt;
+data = {&#x27;address&#x27;: &#x27;0023 Dale Avenue&#x27;, &#x27;city&#x27;: &#x27;Gurgaon&#x27;, &#x27;dob&#x27;: &#x27;25 March 1950&#x27;, &#x27;email&#x27;: &#x27;mateuzo@example.com&#x27;, ...}
+
+    @pytest.mark.parametrize(&quot;data&quot;, load_json_data(&quot;data/practice_form_data.json&quot;))
+    def test_fill_practice_form(driver, data):
+        form_page = PracticeFormPage(driver)
+        form_page.navigate()
+&gt;       form_page.fill_form(data)
+
+tests/test_practice_form.py:9: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+pages/practice_form_page.py:57: in fill_form
+    self.driver.find_element(*self.state_dropdown).click()
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:120: in click
+    self._execute(Command.CLICK_ELEMENT)
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:573: in _execute
+    return self._parent.execute(command, params)
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:458: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x107d63520&gt;
+response = {&#x27;status&#x27;: 400, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;element click intercepted&quot;,&quot;message&quot;:&quot;element click intercepted: Element ...ff808c07e59 _pthread_start + 115\\n24  libsystem_pthread.dylib             0x00007ff808c03857 thread_start + 15\\n&quot;}}&#x27;}
+
+    def check_response(self, response: dict[str, Any]) -&gt; None:
+        &quot;&quot;&quot;Checks that a JSON response from the WebDriver does not have an
+        error.
+    
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+    
+        :Raises: If the response contains an error message.
+        &quot;&quot;&quot;
+        status = response.get(&quot;status&quot;, None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get(&quot;message&quot;, &quot;&quot;)
+        screen: str = response.get(&quot;screen&quot;, &quot;&quot;)
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get(&quot;value&quot;, None)
+            if value_json and isinstance(value_json, str):
+                try:
+                    value = json.loads(value_json)
+                    if isinstance(value, dict):
+                        if len(value) == 1:
+                            value = value[&quot;value&quot;]
+                        status = value.get(&quot;error&quot;, None)
+                        if not status:
+                            status = value.get(&quot;status&quot;, ErrorCode.UNKNOWN_ERROR)
+                            message = value.get(&quot;value&quot;) or value.get(&quot;message&quot;)
+                            if not isinstance(message, str):
+                                value = message
+                                message = message.get(&quot;message&quot;)
+                        else:
+                            message = value.get(&quot;message&quot;, None)
+                except ValueError:
+                    pass
+    
+        exception_class: type[WebDriverException]
+        e = ErrorCode()
+        error_codes = [item for item in dir(e) if not item.startswith(&quot;__&quot;)]
+        for error_code in error_codes:
+            error_info = getattr(ErrorCode, error_code)
+            if isinstance(error_info, list) and status in error_info:
+                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)
+                break
+        else:
+            exception_class = WebDriverException
+    
+        if not value:
+            value = response[&quot;value&quot;]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == &quot;&quot; and &quot;message&quot; in value:
+            message = value[&quot;message&quot;]
+    
+        screen = None  # type: ignore[assignment]
+        if &quot;screen&quot; in value:
+            screen = value[&quot;screen&quot;]
+    
+        stacktrace = None
+        st_value = value.get(&quot;stackTrace&quot;) or value.get(&quot;stacktrace&quot;)
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split(&quot;\n&quot;)
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get(&quot;lineNumber&quot;, &quot;&quot;)
+                        file = frame.get(&quot;fileName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if line:
+                            file = f&quot;{file}:{line}&quot;
+                        meth = frame.get(&quot;methodName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if &quot;className&quot; in frame:
+                            meth = f&quot;{frame[&#x27;className&#x27;]}.{meth}&quot;
+                        msg = &quot;    at %s (%s)&quot;
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if &quot;data&quot; in value:
+                alert_text = value[&quot;data&quot;].get(&quot;text&quot;)
+            elif &quot;alert&quot; in value:
+                alert_text = value[&quot;alert&quot;].get(&quot;text&quot;)
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+&gt;       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element &lt;div class=&quot; css-2b097c-container&quot; id=&quot;state&quot;&gt;...&lt;/div&gt; is not clickable at point (764, 335). Other element would receive the click: &lt;td&gt;...&lt;/td&gt;
+E         (Session info: chrome=140.0.7339.187); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
+E       Stacktrace:
+E       0   chromedriver                        0x000000010e561028 chromedriver + 6361128
+E       1   chromedriver                        0x000000010e55872a chromedriver + 6326058
+E       2   chromedriver                        0x000000010dfb8c20 chromedriver + 429088
+E       3   chromedriver                        0x000000010e011c90 chromedriver + 793744
+E       4   chromedriver                        0x000000010e00faeb chromedriver + 785131
+E       5   chromedriver                        0x000000010e00d182 chromedriver + 774530
+E       6   chromedriver                        0x000000010e00c2b8 chromedriver + 770744
+E       7   chromedriver                        0x000000010dffef4a chromedriver + 716618
+E       8   chromedriver                        0x000000010e030e02 chromedriver + 921090
+E       9   chromedriver                        0x000000010dffe8c8 chromedriver + 714952
+E       10  chromedriver                        0x000000010e030fbe chromedriver + 921534
+E       11  chromedriver                        0x000000010e05826e chromedriver + 1081966
+E       12  chromedriver                        0x000000010e030bd3 chromedriver + 920531
+E       13  chromedriver                        0x000000010dffc8ff chromedriver + 706815
+E       14  chromedriver                        0x000000010dffddc1 chromedriver + 712129
+E       15  chromedriver                        0x000000010e51efc0 chromedriver + 6090688
+E       16  chromedriver                        0x000000010e522e55 chromedriver + 6106709
+E       17  chromedriver                        0x000000010e4fa287 chromedriver + 5939847
+E       18  chromedriver                        0x000000010e5238cf chromedriver + 6109391
+E       19  chromedriver                        0x000000010e4e95f4 chromedriver + 5871092
+E       20  chromedriver                        0x000000010e545a78 chromedriver + 6249080
+E       21  chromedriver                        0x000000010e545c3c chromedriver + 6249532
+E       22  chromedriver                        0x000000010e558301 chromedriver + 6324993
+E       23  libsystem_pthread.dylib             0x00007ff808c07e59 _pthread_start + 115
+E       24  libsystem_pthread.dylib             0x00007ff808c03857 thread_start + 15
+
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:232: ElementClickInterceptedException</pre></details>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>test_fill_practice_form[data1]</td>
+                <td class="status-broken">broken</td>
+                <td>9.68</td>
+                <td>2025-09-25 09:47:42</td>
+                <td>2025-09-25 09:47:52</td>
+            </tr>
+        
+            <tr class="error-row">
+                <td colspan="5">
+                    <div class="error-msg"><strong>Erro:</strong> selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element &lt;div class=&quot; css-2b097c-container&quot; id=&quot;state&quot;&gt;...&lt;/div&gt; is not clickable at point (764, 335). Other element would receive the click: &lt;td&gt;...&lt;/td&gt;</div>
+                    <div class="attachments"><a href="allure-results/97cb2e60-9dad-4a07-bd3d-e64cd251b470-attachment.txt" target="_blank">stdout</a></div>
+                    <details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;5b6d732c39537a1f6e0cb154f21d57ad&quot;)&gt;
+data = {&#x27;address&#x27;: &#x27;456 Oak Avenue&#x27;, &#x27;city&#x27;: &#x27;Gurgaon&#x27;, &#x27;dob&#x27;: &#x27;20 February 1995&#x27;, &#x27;email&#x27;: &#x27;jane.smith@example.com&#x27;, ...}
+
+    @pytest.mark.parametrize(&quot;data&quot;, load_json_data(&quot;data/practice_form_data.json&quot;))
+    def test_fill_practice_form(driver, data):
+        form_page = PracticeFormPage(driver)
+        form_page.navigate()
+&gt;       form_page.fill_form(data)
+
+tests/test_practice_form.py:9: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+pages/practice_form_page.py:57: in fill_form
+    self.driver.find_element(*self.state_dropdown).click()
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:120: in click
+    self._execute(Command.CLICK_ELEMENT)
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:573: in _execute
+    return self._parent.execute(command, params)
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:458: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x107d91a60&gt;
+response = {&#x27;status&#x27;: 400, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;element click intercepted&quot;,&quot;message&quot;:&quot;element click intercepted: Element ...ff808c07e59 _pthread_start + 115\\n24  libsystem_pthread.dylib             0x00007ff808c03857 thread_start + 15\\n&quot;}}&#x27;}
+
+    def check_response(self, response: dict[str, Any]) -&gt; None:
+        &quot;&quot;&quot;Checks that a JSON response from the WebDriver does not have an
+        error.
+    
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+    
+        :Raises: If the response contains an error message.
+        &quot;&quot;&quot;
+        status = response.get(&quot;status&quot;, None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get(&quot;message&quot;, &quot;&quot;)
+        screen: str = response.get(&quot;screen&quot;, &quot;&quot;)
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get(&quot;value&quot;, None)
+            if value_json and isinstance(value_json, str):
+                try:
+                    value = json.loads(value_json)
+                    if isinstance(value, dict):
+                        if len(value) == 1:
+                            value = value[&quot;value&quot;]
+                        status = value.get(&quot;error&quot;, None)
+                        if not status:
+                            status = value.get(&quot;status&quot;, ErrorCode.UNKNOWN_ERROR)
+                            message = value.get(&quot;value&quot;) or value.get(&quot;message&quot;)
+                            if not isinstance(message, str):
+                                value = message
+                                message = message.get(&quot;message&quot;)
+                        else:
+                            message = value.get(&quot;message&quot;, None)
+                except ValueError:
+                    pass
+    
+        exception_class: type[WebDriverException]
+        e = ErrorCode()
+        error_codes = [item for item in dir(e) if not item.startswith(&quot;__&quot;)]
+        for error_code in error_codes:
+            error_info = getattr(ErrorCode, error_code)
+            if isinstance(error_info, list) and status in error_info:
+                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)
+                break
+        else:
+            exception_class = WebDriverException
+    
+        if not value:
+            value = response[&quot;value&quot;]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == &quot;&quot; and &quot;message&quot; in value:
+            message = value[&quot;message&quot;]
+    
+        screen = None  # type: ignore[assignment]
+        if &quot;screen&quot; in value:
+            screen = value[&quot;screen&quot;]
+    
+        stacktrace = None
+        st_value = value.get(&quot;stackTrace&quot;) or value.get(&quot;stacktrace&quot;)
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split(&quot;\n&quot;)
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get(&quot;lineNumber&quot;, &quot;&quot;)
+                        file = frame.get(&quot;fileName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if line:
+                            file = f&quot;{file}:{line}&quot;
+                        meth = frame.get(&quot;methodName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if &quot;className&quot; in frame:
+                            meth = f&quot;{frame[&#x27;className&#x27;]}.{meth}&quot;
+                        msg = &quot;    at %s (%s)&quot;
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if &quot;data&quot; in value:
+                alert_text = value[&quot;data&quot;].get(&quot;text&quot;)
+            elif &quot;alert&quot; in value:
+                alert_text = value[&quot;alert&quot;].get(&quot;text&quot;)
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+&gt;       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element &lt;div class=&quot; css-2b097c-container&quot; id=&quot;state&quot;&gt;...&lt;/div&gt; is not clickable at point (764, 335). Other element would receive the click: &lt;td&gt;...&lt;/td&gt;
+E         (Session info: chrome=140.0.7339.187); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
+E       Stacktrace:
+E       0   chromedriver                        0x0000000109afc028 chromedriver + 6361128
+E       1   chromedriver                        0x0000000109af372a chromedriver + 6326058
+E       2   chromedriver                        0x0000000109553c20 chromedriver + 429088
+E       3   chromedriver                        0x00000001095acc90 chromedriver + 793744
+E       4   chromedriver                        0x00000001095aaaeb chromedriver + 785131
+E       5   chromedriver                        0x00000001095a8182 chromedriver + 774530
+E       6   chromedriver                        0x00000001095a72b8 chromedriver + 770744
+E       7   chromedriver                        0x0000000109599f4a chromedriver + 716618
+E       8   chromedriver                        0x00000001095cbe02 chromedriver + 921090
+E       9   chromedriver                        0x00000001095998c8 chromedriver + 714952
+E       10  chromedriver                        0x00000001095cbfbe chromedriver + 921534
+E       11  chromedriver                        0x00000001095f326e chromedriver + 1081966
+E       12  chromedriver                        0x00000001095cbbd3 chromedriver + 920531
+E       13  chromedriver                        0x00000001095978ff chromedriver + 706815
+E       14  chromedriver                        0x0000000109598dc1 chromedriver + 712129
+E       15  chromedriver                        0x0000000109ab9fc0 chromedriver + 6090688
+E       16  chromedriver                        0x0000000109abde55 chromedriver + 6106709
+E       17  chromedriver                        0x0000000109a95287 chromedriver + 5939847
+E       18  chromedriver                        0x0000000109abe8cf chromedriver + 6109391
+E       19  chromedriver                        0x0000000109a845f4 chromedriver + 5871092
+E       20  chromedriver                        0x0000000109ae0a78 chromedriver + 6249080
+E       21  chromedriver                        0x0000000109ae0c3c chromedriver + 6249532
+E       22  chromedriver                        0x0000000109af3301 chromedriver + 6324993
+E       23  libsystem_pthread.dylib             0x00007ff808c07e59 _pthread_start + 115
+E       24  libsystem_pthread.dylib             0x00007ff808c03857 thread_start + 15
+
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:232: ElementClickInterceptedException</pre></details>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>test_fill_practice_form[data0]</td>
+                <td class="status-broken">broken</td>
+                <td>10.07</td>
+                <td>2025-09-25 09:47:30</td>
+                <td>2025-09-25 09:47:40</td>
+            </tr>
+        
+            <tr class="error-row">
+                <td colspan="5">
+                    <div class="error-msg"><strong>Erro:</strong> selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element &lt;div class=&quot; css-2b097c-container&quot; id=&quot;state&quot;&gt;...&lt;/div&gt; is not clickable at point (764, 425). Other element would receive the click: &lt;td&gt;&lt;/td&gt;</div>
+                    <div class="attachments"><a href="allure-results/3b4ffa5e-6b13-4c2e-8b0e-f1ba88f0c1f4-attachment.txt" target="_blank">stdout</a></div>
+                    <details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;75de5a9ee2b63c0f594b0109257d4acc&quot;)&gt;
+data = {&#x27;address&#x27;: &#x27;123 Main Street&#x27;, &#x27;city&#x27;: &#x27;Delhi&#x27;, &#x27;dob&#x27;: &#x27;15 May 1990&#x27;, &#x27;email&#x27;: &#x27;john.doe@example.com&#x27;, ...}
+
+    @pytest.mark.parametrize(&quot;data&quot;, load_json_data(&quot;data/practice_form_data.json&quot;))
+    def test_fill_practice_form(driver, data):
+        form_page = PracticeFormPage(driver)
+        form_page.navigate()
+&gt;       form_page.fill_form(data)
+
+tests/test_practice_form.py:9: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+pages/practice_form_page.py:57: in fill_form
+    self.driver.find_element(*self.state_dropdown).click()
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:120: in click
+    self._execute(Command.CLICK_ELEMENT)
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:573: in _execute
+    return self._parent.execute(command, params)
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:458: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x107d631f0&gt;
+response = {&#x27;status&#x27;: 400, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;element click intercepted&quot;,&quot;message&quot;:&quot;element click intercepted: Element ...ff808c07e59 _pthread_start + 115\\n24  libsystem_pthread.dylib             0x00007ff808c03857 thread_start + 15\\n&quot;}}&#x27;}
+
+    def check_response(self, response: dict[str, Any]) -&gt; None:
+        &quot;&quot;&quot;Checks that a JSON response from the WebDriver does not have an
+        error.
+    
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+    
+        :Raises: If the response contains an error message.
+        &quot;&quot;&quot;
+        status = response.get(&quot;status&quot;, None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get(&quot;message&quot;, &quot;&quot;)
+        screen: str = response.get(&quot;screen&quot;, &quot;&quot;)
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get(&quot;value&quot;, None)
+            if value_json and isinstance(value_json, str):
+                try:
+                    value = json.loads(value_json)
+                    if isinstance(value, dict):
+                        if len(value) == 1:
+                            value = value[&quot;value&quot;]
+                        status = value.get(&quot;error&quot;, None)
+                        if not status:
+                            status = value.get(&quot;status&quot;, ErrorCode.UNKNOWN_ERROR)
+                            message = value.get(&quot;value&quot;) or value.get(&quot;message&quot;)
+                            if not isinstance(message, str):
+                                value = message
+                                message = message.get(&quot;message&quot;)
+                        else:
+                            message = value.get(&quot;message&quot;, None)
+                except ValueError:
+                    pass
+    
+        exception_class: type[WebDriverException]
+        e = ErrorCode()
+        error_codes = [item for item in dir(e) if not item.startswith(&quot;__&quot;)]
+        for error_code in error_codes:
+            error_info = getattr(ErrorCode, error_code)
+            if isinstance(error_info, list) and status in error_info:
+                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)
+                break
+        else:
+            exception_class = WebDriverException
+    
+        if not value:
+            value = response[&quot;value&quot;]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == &quot;&quot; and &quot;message&quot; in value:
+            message = value[&quot;message&quot;]
+    
+        screen = None  # type: ignore[assignment]
+        if &quot;screen&quot; in value:
+            screen = value[&quot;screen&quot;]
+    
+        stacktrace = None
+        st_value = value.get(&quot;stackTrace&quot;) or value.get(&quot;stacktrace&quot;)
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split(&quot;\n&quot;)
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get(&quot;lineNumber&quot;, &quot;&quot;)
+                        file = frame.get(&quot;fileName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if line:
+                            file = f&quot;{file}:{line}&quot;
+                        meth = frame.get(&quot;methodName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if &quot;className&quot; in frame:
+                            meth = f&quot;{frame[&#x27;className&#x27;]}.{meth}&quot;
+                        msg = &quot;    at %s (%s)&quot;
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if &quot;data&quot; in value:
+                alert_text = value[&quot;data&quot;].get(&quot;text&quot;)
+            elif &quot;alert&quot; in value:
+                alert_text = value[&quot;alert&quot;].get(&quot;text&quot;)
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+&gt;       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element &lt;div class=&quot; css-2b097c-container&quot; id=&quot;state&quot;&gt;...&lt;/div&gt; is not clickable at point (764, 425). Other element would receive the click: &lt;td&gt;&lt;/td&gt;
+E         (Session info: chrome=140.0.7339.187); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
+E       Stacktrace:
+E       0   chromedriver                        0x0000000108a0d028 chromedriver + 6361128
+E       1   chromedriver                        0x0000000108a0472a chromedriver + 6326058
+E       2   chromedriver                        0x0000000108464c20 chromedriver + 429088
+E       3   chromedriver                        0x00000001084bdc90 chromedriver + 793744
+E       4   chromedriver                        0x00000001084bbaeb chromedriver + 785131
+E       5   chromedriver                        0x00000001084b9182 chromedriver + 774530
+E       6   chromedriver                        0x00000001084b82b8 chromedriver + 770744
+E       7   chromedriver                        0x00000001084aaf4a chromedriver + 716618
+E       8   chromedriver                        0x00000001084dce02 chromedriver + 921090
+E       9   chromedriver                        0x00000001084aa8c8 chromedriver + 714952
+E       10  chromedriver                        0x00000001084dcfbe chromedriver + 921534
+E       11  chromedriver                        0x000000010850426e chromedriver + 1081966
+E       12  chromedriver                        0x00000001084dcbd3 chromedriver + 920531
+E       13  chromedriver                        0x00000001084a88ff chromedriver + 706815
+E       14  chromedriver                        0x00000001084a9dc1 chromedriver + 712129
+E       15  chromedriver                        0x00000001089cafc0 chromedriver + 6090688
+E       16  chromedriver                        0x00000001089cee55 chromedriver + 6106709
+E       17  chromedriver                        0x00000001089a6287 chromedriver + 5939847
+E       18  chromedriver                        0x00000001089cf8cf chromedriver + 6109391
+E       19  chromedriver                        0x00000001089955f4 chromedriver + 5871092
+E       20  chromedriver                        0x00000001089f1a78 chromedriver + 6249080
+E       21  chromedriver                        0x00000001089f1c3c chromedriver + 6249532
+E       22  chromedriver                        0x0000000108a04301 chromedriver + 6324993
+E       23  libsystem_pthread.dylib             0x00007ff808c07e59 _pthread_start + 115
+E       24  libsystem_pthread.dylib             0x00007ff808c03857 thread_start + 15
+
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:232: ElementClickInterceptedException</pre></details>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>test_locate_by_xpath</td>
+                <td class="status-passed">passed</td>
+                <td>8.48</td>
+                <td>2025-09-25 09:47:19</td>
+                <td>2025-09-25 09:47:28</td>
+            </tr>
+        
+            <tr>
+                <td>test_locate_by_css_selector</td>
+                <td class="status-passed">passed</td>
+                <td>42.64</td>
+                <td>2025-09-25 09:46:34</td>
+                <td>2025-09-25 09:47:17</td>
+            </tr>
+        
+            <tr>
+                <td>test_locate_by_id</td>
+                <td class="status-passed">passed</td>
+                <td>9.13</td>
+                <td>2025-09-25 09:46:23</td>
+                <td>2025-09-25 09:46:32</td>
+            </tr>
+        
+            <tr>
+                <td>test_navigate_to_elements_page</td>
+                <td class="status-passed">passed</td>
+                <td>8.75</td>
+                <td>2025-09-25 09:46:09</td>
+                <td>2025-09-25 09:46:18</td>
+            </tr>
+        
+            <tr>
+                <td>test_notes_checkbox_output</td>
+                <td class="status-passed">passed</td>
+                <td>8.75</td>
+                <td>2025-09-25 09:45:58</td>
+                <td>2025-09-25 09:46:07</td>
+            </tr>
+        
+            <tr>
+                <td>test_commands_checkbox_output</td>
+                <td class="status-passed">passed</td>
+                <td>8.95</td>
+                <td>2025-09-25 09:45:47</td>
+                <td>2025-09-25 09:45:56</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_text_field</td>
+                <td class="status-failed">failed</td>
+                <td>5.91</td>
+                <td>2025-09-25 09:38:31</td>
+                <td>2025-09-25 09:38:37</td>
+            </tr>
+        
+            <tr class="error-row">
+                <td colspan="5">
+                    <div class="error-msg"><strong>Erro:</strong> AssertionError: assert &#x27;&#x27; == &#x27;You hovered ...he text field&#x27;</div>
+                    <div class="attachments"><a href="allure-results/246079bb-5493-4b2b-93f5-cb0449cf90e7-attachment.txt" target="_blank">stdout</a></div>
+                    <details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;934ee42a7c09ab29ea7b0eee1329daac&quot;)&gt;
+
+    @pytest.mark.smoke
+    def test_hover_tool_tip_text_field(driver):
+        tool_tips_page = TooltipsPage2(driver)
+        tool_tips_page.navigate()
+        tool_tips_page.tool_tip_text_hover()
+    
+&gt;       assert tool_tips_page.tool_tip_text_field_hover_text() == &quot;You hovered over the text field&quot;
+E       AssertionError: assert &#x27;&#x27; == &#x27;You hovered ...he text field&#x27;
+E         
+E         [0m[91m- You hovered over the text field[39;49;00m[90m[39;49;00m
+
+tests/test_tooltips_page2.py:19: AssertionError</pre></details>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>test_hover_tool_tip_button</td>
+                <td class="status-passed">passed</td>
+                <td>5.13</td>
+                <td>2025-09-25 09:38:24</td>
+                <td>2025-09-25 09:38:29</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_text_field</td>
+                <td class="status-passed">passed</td>
+                <td>5.71</td>
+                <td>2025-09-25 09:38:16</td>
+                <td>2025-09-25 09:38:22</td>
             </tr>
         
             <tr>
                 <td>test_hover_tool_tip_button</td>
-                <td>passed</td>
-                <td>6.33</td>
-                <td>2025-09-24 11:25:39</td>
-                <td>2025-09-24 11:25:46</td>
+                <td class="status-passed">passed</td>
+                <td>6.44</td>
+                <td>2025-09-25 09:38:07</td>
+                <td>2025-09-25 09:38:14</td>
             </tr>
         
             <tr>
-                <td>test_fill_practice_form[data0]</td>
-                <td>passed</td>
-                <td>36.80</td>
-                <td>2025-09-24 10:46:59</td>
-                <td>2025-09-24 10:47:36</td>
-            </tr>
-        
-            <tr>
-                <td>test_hover_tool_tip_button</td>
-                <td>passed</td>
-                <td>20.34</td>
-                <td>2025-09-24 11:03:17</td>
-                <td>2025-09-24 11:03:37</td>
-            </tr>
-        
-            <tr>
-                <td>test_fill_practice_form[data0]</td>
-                <td>passed</td>
+                <td>test_fill_form_with_pom</td>
+                <td class="status-passed">passed</td>
                 <td>7.87</td>
-                <td>2025-09-24 11:24:57</td>
-                <td>2025-09-24 11:25:05</td>
+                <td>2025-09-25 09:37:57</td>
+                <td>2025-09-25 09:38:05</td>
             </tr>
         
             <tr>
-                <td>test_navigate_to_elements_page</td>
-                <td>passed</td>
-                <td>6.81</td>
-                <td>2025-09-24 11:24:20</td>
-                <td>2025-09-24 11:24:26</td>
+                <td>test_fill_practice_form[data2]</td>
+                <td class="status-passed">passed</td>
+                <td>7.54</td>
+                <td>2025-09-25 09:37:47</td>
+                <td>2025-09-25 09:37:54</td>
             </tr>
         
             <tr>
                 <td>test_fill_practice_form[data1]</td>
-                <td>passed</td>
-                <td>6.52</td>
-                <td>2025-09-24 10:50:38</td>
-                <td>2025-09-24 10:50:45</td>
-            </tr>
-        
-            <tr>
-                <td>test_hover_tool_tip_text_field</td>
-                <td>passed</td>
-                <td>6.11</td>
-                <td>2025-09-24 11:03:40</td>
-                <td>2025-09-24 11:03:46</td>
-            </tr>
-        
-            <tr>
-                <td>test_fill_practice_form[data2]</td>
-                <td>passed</td>
-                <td>6.50</td>
-                <td>2025-09-24 10:47:47</td>
-                <td>2025-09-24 10:47:54</td>
+                <td class="status-passed">passed</td>
+                <td>7.03</td>
+                <td>2025-09-25 09:37:38</td>
+                <td>2025-09-25 09:37:45</td>
             </tr>
         
             <tr>
                 <td>test_fill_practice_form[data0]</td>
-                <td>passed</td>
-                <td>7.25</td>
-                <td>2025-09-24 10:50:29</td>
-                <td>2025-09-24 10:50:36</td>
+                <td class="status-passed">passed</td>
+                <td>7.59</td>
+                <td>2025-09-25 09:37:28</td>
+                <td>2025-09-25 09:37:35</td>
             </tr>
         
             <tr>
                 <td>test_locate_by_xpath</td>
-                <td>passed</td>
-                <td>33.53</td>
-                <td>2025-09-24 11:01:43</td>
-                <td>2025-09-24 11:02:16</td>
+                <td class="status-passed">passed</td>
+                <td>6.69</td>
+                <td>2025-09-25 09:37:18</td>
+                <td>2025-09-25 09:37:25</td>
             </tr>
         
             <tr>
-                <td>test_fill_practice_form[data2]</td>
-                <td>passed</td>
-                <td>8.30</td>
-                <td>2025-09-24 11:14:50</td>
-                <td>2025-09-24 11:14:58</td>
+                <td>test_locate_by_css_selector</td>
+                <td class="status-passed">passed</td>
+                <td>6.86</td>
+                <td>2025-09-25 09:37:09</td>
+                <td>2025-09-25 09:37:16</td>
             </tr>
         
             <tr>
                 <td>test_locate_by_id</td>
-                <td>passed</td>
-                <td>7.25</td>
-                <td>2025-09-24 11:14:01</td>
-                <td>2025-09-24 11:14:09</td>
+                <td class="status-passed">passed</td>
+                <td>79.97</td>
+                <td>2025-09-25 09:35:46</td>
+                <td>2025-09-25 09:37:06</td>
+            </tr>
+        
+            <tr>
+                <td>test_navigate_to_elements_page</td>
+                <td class="status-passed">passed</td>
+                <td>6.61</td>
+                <td>2025-09-25 09:35:37</td>
+                <td>2025-09-25 09:35:44</td>
+            </tr>
+        
+            <tr>
+                <td>test_notes_checkbox_output</td>
+                <td class="status-broken">broken</td>
+                <td>5.18</td>
+                <td>2025-09-25 09:35:30</td>
+                <td>2025-09-25 09:35:35</td>
+            </tr>
+        
+            <tr class="error-row">
+                <td colspan="5">
+                    <div class="error-msg"><strong>Erro:</strong> selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable</div>
+                    <div class="attachments"><a href="allure-results/fe66d535-dd25-4ee6-9c63-074c82105f0f-attachment.txt" target="_blank">stdout</a></div>
+                    <details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;3bb06d525a629bd914f32703fc4b2506&quot;)&gt;
+
+    def test_notes_checkbox_output(driver):
+        check_box_page = CheckBoxPage(driver)
+        check_box_page.navigate()
+    
+        check_box_page.expand_all_click()
+&gt;       check_box_page.notes_checkbox_click()
+
+tests/test_checkbox_page.py:19: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+pages/check_box_page.py:21: in notes_checkbox_click
+    self.notes_checkbox.click()
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:120: in click
+    self._execute(Command.CLICK_ELEMENT)
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:573: in _execute
+    return self._parent.execute(command, params)
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:458: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x105aec820&gt;
+response = {&#x27;status&#x27;: 400, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;element not interactable&quot;,&quot;message&quot;:&quot;element not interactable\\n  (Sessio...ff808c07e59 _pthread_start + 115\\n21  libsystem_pthread.dylib             0x00007ff808c03857 thread_start + 15\\n&quot;}}&#x27;}
+
+    def check_response(self, response: dict[str, Any]) -&gt; None:
+        &quot;&quot;&quot;Checks that a JSON response from the WebDriver does not have an
+        error.
+    
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+    
+        :Raises: If the response contains an error message.
+        &quot;&quot;&quot;
+        status = response.get(&quot;status&quot;, None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get(&quot;message&quot;, &quot;&quot;)
+        screen: str = response.get(&quot;screen&quot;, &quot;&quot;)
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get(&quot;value&quot;, None)
+            if value_json and isinstance(value_json, str):
+                try:
+                    value = json.loads(value_json)
+                    if isinstance(value, dict):
+                        if len(value) == 1:
+                            value = value[&quot;value&quot;]
+                        status = value.get(&quot;error&quot;, None)
+                        if not status:
+                            status = value.get(&quot;status&quot;, ErrorCode.UNKNOWN_ERROR)
+                            message = value.get(&quot;value&quot;) or value.get(&quot;message&quot;)
+                            if not isinstance(message, str):
+                                value = message
+                                message = message.get(&quot;message&quot;)
+                        else:
+                            message = value.get(&quot;message&quot;, None)
+                except ValueError:
+                    pass
+    
+        exception_class: type[WebDriverException]
+        e = ErrorCode()
+        error_codes = [item for item in dir(e) if not item.startswith(&quot;__&quot;)]
+        for error_code in error_codes:
+            error_info = getattr(ErrorCode, error_code)
+            if isinstance(error_info, list) and status in error_info:
+                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)
+                break
+        else:
+            exception_class = WebDriverException
+    
+        if not value:
+            value = response[&quot;value&quot;]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == &quot;&quot; and &quot;message&quot; in value:
+            message = value[&quot;message&quot;]
+    
+        screen = None  # type: ignore[assignment]
+        if &quot;screen&quot; in value:
+            screen = value[&quot;screen&quot;]
+    
+        stacktrace = None
+        st_value = value.get(&quot;stackTrace&quot;) or value.get(&quot;stacktrace&quot;)
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split(&quot;\n&quot;)
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get(&quot;lineNumber&quot;, &quot;&quot;)
+                        file = frame.get(&quot;fileName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if line:
+                            file = f&quot;{file}:{line}&quot;
+                        meth = frame.get(&quot;methodName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if &quot;className&quot; in frame:
+                            meth = f&quot;{frame[&#x27;className&#x27;]}.{meth}&quot;
+                        msg = &quot;    at %s (%s)&quot;
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if &quot;data&quot; in value:
+                alert_text = value[&quot;data&quot;].get(&quot;text&quot;)
+            elif &quot;alert&quot; in value:
+                alert_text = value[&quot;alert&quot;].get(&quot;text&quot;)
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+&gt;       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+E         (Session info: chrome=140.0.7339.187); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementnotinteractableexception
+E       Stacktrace:
+E       0   chromedriver                        0x000000010982a028 chromedriver + 6361128
+E       1   chromedriver                        0x000000010982172a chromedriver + 6326058
+E       2   chromedriver                        0x0000000109281a63 chromedriver + 428643
+E       3   chromedriver                        0x00000001092d4f0b chromedriver + 769803
+E       4   chromedriver                        0x00000001092c7f4a chromedriver + 716618
+E       5   chromedriver                        0x00000001092f9e02 chromedriver + 921090
+E       6   chromedriver                        0x00000001092c78c8 chromedriver + 714952
+E       7   chromedriver                        0x00000001092f9fbe chromedriver + 921534
+E       8   chromedriver                        0x000000010932126e chromedriver + 1081966
+E       9   chromedriver                        0x00000001092f9bd3 chromedriver + 920531
+E       10  chromedriver                        0x00000001092c58ff chromedriver + 706815
+E       11  chromedriver                        0x00000001092c6dc1 chromedriver + 712129
+E       12  chromedriver                        0x00000001097e7fc0 chromedriver + 6090688
+E       13  chromedriver                        0x00000001097ebe55 chromedriver + 6106709
+E       14  chromedriver                        0x00000001097c3287 chromedriver + 5939847
+E       15  chromedriver                        0x00000001097ec8cf chromedriver + 6109391
+E       16  chromedriver                        0x00000001097b25f4 chromedriver + 5871092
+E       17  chromedriver                        0x000000010980ea78 chromedriver + 6249080
+E       18  chromedriver                        0x000000010980ec3c chromedriver + 6249532
+E       19  chromedriver                        0x0000000109821301 chromedriver + 6324993
+E       20  libsystem_pthread.dylib             0x00007ff808c07e59 _pthread_start + 115
+E       21  libsystem_pthread.dylib             0x00007ff808c03857 thread_start + 15
+
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:232: ElementNotInteractableException</pre></details>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>test_commands_checkbox_output</td>
+                <td class="status-passed">passed</td>
+                <td>6.53</td>
+                <td>2025-09-25 09:35:20</td>
+                <td>2025-09-25 09:35:27</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_text_field</td>
+                <td class="status-passed">passed</td>
+                <td>21.18</td>
+                <td>2025-09-25 09:23:29</td>
+                <td>2025-09-25 09:23:50</td>
             </tr>
         
             <tr>
                 <td>test_hover_tool_tip_button</td>
-                <td>passed</td>
-                <td>45.14</td>
-                <td>2025-09-24 11:15:13</td>
-                <td>2025-09-24 11:15:58</td>
+                <td class="status-passed">passed</td>
+                <td>6.09</td>
+                <td>2025-09-25 09:23:21</td>
+                <td>2025-09-25 09:23:27</td>
             </tr>
         
             <tr>
-                <td>test_commands_checkbox_output</td>
-                <td>passed</td>
-                <td>8.55</td>
-                <td>2025-09-24 11:13:41</td>
-                <td>2025-09-24 11:13:49</td>
+                <td>test_hover_tool_tip_text_field</td>
+                <td class="status-passed">passed</td>
+                <td>6.61</td>
+                <td>2025-09-25 09:23:12</td>
+                <td>2025-09-25 09:23:18</td>
             </tr>
         
             <tr>
-                <td>test_locate_by_id</td>
-                <td>passed</td>
-                <td>7.09</td>
-                <td>2025-09-24 11:24:29</td>
-                <td>2025-09-24 11:24:36</td>
+                <td>test_hover_tool_tip_button</td>
+                <td class="status-passed">passed</td>
+                <td>6.23</td>
+                <td>2025-09-25 09:23:03</td>
+                <td>2025-09-25 09:23:09</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_form_with_pom</td>
+                <td class="status-passed">passed</td>
+                <td>8.22</td>
+                <td>2025-09-25 09:22:53</td>
+                <td>2025-09-25 09:23:01</td>
             </tr>
         
             <tr>
                 <td>test_fill_practice_form[data2]</td>
-                <td>passed</td>
-                <td>7.89</td>
-                <td>2025-09-24 11:25:17</td>
-                <td>2025-09-24 11:25:25</td>
+                <td class="status-passed">passed</td>
+                <td>7.73</td>
+                <td>2025-09-25 09:22:42</td>
+                <td>2025-09-25 09:22:50</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_practice_form[data1]</td>
+                <td class="status-passed">passed</td>
+                <td>7.95</td>
+                <td>2025-09-25 09:22:32</td>
+                <td>2025-09-25 09:22:40</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_practice_form[data0]</td>
+                <td class="status-passed">passed</td>
+                <td>7.49</td>
+                <td>2025-09-25 09:22:22</td>
+                <td>2025-09-25 09:22:30</td>
             </tr>
         
             <tr>
                 <td>test_locate_by_xpath</td>
-                <td>passed</td>
-                <td>6.61</td>
-                <td>2025-09-24 11:14:20</td>
-                <td>2025-09-24 11:14:27</td>
+                <td class="status-passed">passed</td>
+                <td>6.57</td>
+                <td>2025-09-25 09:22:13</td>
+                <td>2025-09-25 09:22:20</td>
+            </tr>
+        
+            <tr>
+                <td>test_locate_by_css_selector</td>
+                <td class="status-passed">passed</td>
+                <td>6.41</td>
+                <td>2025-09-25 09:22:04</td>
+                <td>2025-09-25 09:22:11</td>
+            </tr>
+        
+            <tr>
+                <td>test_locate_by_id</td>
+                <td class="status-passed">passed</td>
+                <td>7.52</td>
+                <td>2025-09-25 09:21:54</td>
+                <td>2025-09-25 09:22:02</td>
+            </tr>
+        
+            <tr>
+                <td>test_navigate_to_elements_page</td>
+                <td class="status-passed">passed</td>
+                <td>6.52</td>
+                <td>2025-09-25 09:21:45</td>
+                <td>2025-09-25 09:21:52</td>
             </tr>
         
             <tr>
                 <td>test_commands_checkbox_output</td>
-                <td>passed</td>
-                <td>9.74</td>
-                <td>2025-09-24 11:01:02</td>
-                <td>2025-09-24 11:01:12</td>
+                <td class="status-passed">passed</td>
+                <td>8.62</td>
+                <td>2025-09-25 09:21:34</td>
+                <td>2025-09-25 09:21:43</td>
             </tr>
         
             <tr>
                 <td>test_hover_tool_tip_text_field</td>
-                <td>passed</td>
-                <td>5.74</td>
-                <td>2025-09-24 11:03:09</td>
-                <td>2025-09-24 11:03:15</td>
+                <td class="status-passed">passed</td>
+                <td>5.52</td>
+                <td>2025-09-25 09:19:55</td>
+                <td>2025-09-25 09:20:01</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_button</td>
+                <td class="status-passed">passed</td>
+                <td>6.78</td>
+                <td>2025-09-25 09:19:46</td>
+                <td>2025-09-25 09:19:53</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_form_with_pom</td>
+                <td class="status-passed">passed</td>
+                <td>45.73</td>
+                <td>2025-09-25 09:16:42</td>
+                <td>2025-09-25 09:17:27</td>
             </tr>
         
             <tr>
                 <td>test_hover_tool_tip_text_field</td>
-                <td>passed</td>
+                <td class="status-passed">passed</td>
+                <td>5.67</td>
+                <td>2025-09-25 09:14:25</td>
+                <td>2025-09-25 09:14:30</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_button</td>
+                <td class="status-passed">passed</td>
+                <td>5.95</td>
+                <td>2025-09-25 09:14:16</td>
+                <td>2025-09-25 09:14:22</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_text_field</td>
+                <td class="status-broken">broken</td>
+                <td>15.69</td>
+                <td>2025-09-25 09:13:58</td>
+                <td>2025-09-25 09:14:13</td>
+            </tr>
+        
+            <tr class="error-row">
+                <td colspan="5">
+                    <div class="error-msg"><strong>Erro:</strong> selenium.common.exceptions.TimeoutException: Message: </div>
+                    <div class="attachments"><a href="allure-results/4ee40658-03c5-4ade-ab40-2a2cc78d5b3b-attachment.txt" target="_blank">stdout</a></div>
+                    <details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;1ad149c17d261adc805eb4d6e314d460&quot;)&gt;
+
+    @pytest.mark.smoke
+    def test_hover_tool_tip_text_field(driver):
+        tool_tips_page = TooltipsPage(driver)
+        tool_tips_page.navigate(test_data[&quot;tool_tips_url&quot;])
+        # tool_tips_page.tooltip_text_field_hover()
+    
+&gt;       assert tool_tips_page.tooltip_text_field_hover_text() == test_data[&quot;tool_tip_field_text&quot;]
+
+tests/test_tooltips_page.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+pages/tool_tips_page.py:44: in tooltip_text_field_hover_text
+    text_field_hover_tooltip = self.wait.until(EC.visibility_of_element_located(self.text_field_hover_tooltip_w))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;selenium.webdriver.support.wait.WebDriverWait (session=&quot;1ad149c17d261adc805eb4d6e314d460&quot;)&gt;
+method = &lt;function visibility_of_element_located.&lt;locals&gt;._predicate at 0x101f82700&gt;, message = &#x27;&#x27;
+
+    def until(self, method: Callable[[D], Union[Literal[False], T]], message: str = &quot;&quot;) -&gt; T:
+        &quot;&quot;&quot;Wait until the method returns a value that is not False.
+    
+        Calls the method provided with the driver as an argument until the
+        return value does not evaluate to ``False``.
+    
+        Parameters:
+        -----------
+        method: callable(WebDriver)
+            - A callable object that takes a WebDriver instance as an argument.
+    
+        message: str
+            - Optional message for :exc:`TimeoutException`
+    
+        Return:
+        -------
+        object: T
+            - The result of the last call to `method`
+    
+        Raises:
+        -------
+        TimeoutException
+            - If &#x27;method&#x27; does not return a truthy value within the WebDriverWait
+            object&#x27;s timeout
+    
+        Example:
+        --------
+        &gt;&gt;&gt; from selenium.webdriver.common.by import By
+        &gt;&gt;&gt; from selenium.webdriver.support.ui import WebDriverWait
+        &gt;&gt;&gt; from selenium.webdriver.support import expected_conditions as EC
+    
+        # Wait until an element is visible on the page
+        &gt;&gt;&gt; wait = WebDriverWait(driver, 10)
+        &gt;&gt;&gt; element = wait.until(EC.visibility_of_element_located((By.ID, &quot;exampleId&quot;)))
+        &gt;&gt;&gt; print(element.text)
+        &quot;&quot;&quot;
+        screen = None
+        stacktrace = None
+    
+        end_time = time.monotonic() + self._timeout
+        while True:
+            try:
+                value = method(self._driver)
+                if value:
+                    return value
+            except self._ignored_exceptions as exc:
+                screen = getattr(exc, &quot;screen&quot;, None)
+                stacktrace = getattr(exc, &quot;stacktrace&quot;, None)
+            if time.monotonic() &gt; end_time:
+                break
+            time.sleep(self._poll)
+&gt;       raise TimeoutException(message, screen, stacktrace)
+E       selenium.common.exceptions.TimeoutException: Message: 
+E       Stacktrace:
+E       0   chromedriver                        0x000000010476c028 chromedriver + 6361128
+E       1   chromedriver                        0x000000010476372a chromedriver + 6326058
+E       2   chromedriver                        0x00000001041c3c20 chromedriver + 429088
+E       3   chromedriver                        0x0000000104215d1b chromedriver + 765211
+E       4   chromedriver                        0x0000000104215fe1 chromedriver + 765921
+E       5   chromedriver                        0x0000000104265f44 chromedriver + 1093444
+E       6   chromedriver                        0x000000010423be2d chromedriver + 921133
+E       7   chromedriver                        0x000000010426326e chromedriver + 1081966
+E       8   chromedriver                        0x000000010423bbd3 chromedriver + 920531
+E       9   chromedriver                        0x00000001042078ff chromedriver + 706815
+E       10  chromedriver                        0x0000000104208dc1 chromedriver + 712129
+E       11  chromedriver                        0x0000000104729fc0 chromedriver + 6090688
+E       12  chromedriver                        0x000000010472de55 chromedriver + 6106709
+E       13  chromedriver                        0x0000000104705287 chromedriver + 5939847
+E       14  chromedriver                        0x000000010472e8cf chromedriver + 6109391
+E       15  chromedriver                        0x00000001046f45f4 chromedriver + 5871092
+E       16  chromedriver                        0x0000000104750a78 chromedriver + 6249080
+E       17  chromedriver                        0x0000000104750c3c chromedriver + 6249532
+E       18  chromedriver                        0x0000000104763301 chromedriver + 6324993
+E       19  libsystem_pthread.dylib             0x00007ff808c07e59 _pthread_start + 115
+E       20  libsystem_pthread.dylib             0x00007ff808c03857 thread_start + 15
+
+myproject/lib/python3.9/site-packages/selenium/webdriver/support/wait.py:138: TimeoutException</pre></details>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>test_hover_tool_tip_button</td>
+                <td class="status-passed">passed</td>
+                <td>6.28</td>
+                <td>2025-09-25 09:13:49</td>
+                <td>2025-09-25 09:13:55</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_form_with_pom</td>
+                <td class="status-passed">passed</td>
+                <td>7.93</td>
+                <td>2025-09-25 09:13:39</td>
+                <td>2025-09-25 09:13:47</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_practice_form[data2]</td>
+                <td class="status-passed">passed</td>
+                <td>8.48</td>
+                <td>2025-09-25 09:13:27</td>
+                <td>2025-09-25 09:13:36</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_practice_form[data1]</td>
+                <td class="status-passed">passed</td>
+                <td>6.96</td>
+                <td>2025-09-25 09:13:18</td>
+                <td>2025-09-25 09:13:25</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_practice_form[data0]</td>
+                <td class="status-passed">passed</td>
+                <td>8.40</td>
+                <td>2025-09-25 09:13:07</td>
+                <td>2025-09-25 09:13:16</td>
+            </tr>
+        
+            <tr>
+                <td>test_locate_by_xpath</td>
+                <td class="status-passed">passed</td>
+                <td>6.89</td>
+                <td>2025-09-25 09:12:58</td>
+                <td>2025-09-25 09:13:05</td>
+            </tr>
+        
+            <tr>
+                <td>test_locate_by_css_selector</td>
+                <td class="status-passed">passed</td>
+                <td>6.30</td>
+                <td>2025-09-25 09:12:49</td>
+                <td>2025-09-25 09:12:55</td>
+            </tr>
+        
+            <tr>
+                <td>test_locate_by_id</td>
+                <td class="status-passed">passed</td>
+                <td>34.99</td>
+                <td>2025-09-25 09:12:11</td>
+                <td>2025-09-25 09:12:46</td>
+            </tr>
+        
+            <tr>
+                <td>test_navigate_to_elements_page</td>
+                <td class="status-passed">passed</td>
+                <td>1.77</td>
+                <td>2025-09-25 09:12:07</td>
+                <td>2025-09-25 09:12:09</td>
+            </tr>
+        
+            <tr>
+                <td>test_commands_checkbox_output</td>
+                <td class="status-passed">passed</td>
+                <td>8.74</td>
+                <td>2025-09-25 09:11:56</td>
+                <td>2025-09-25 09:12:05</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_text_field</td>
+                <td class="status-broken">broken</td>
+                <td>15.80</td>
+                <td>2025-09-25 09:09:09</td>
+                <td>2025-09-25 09:09:25</td>
+            </tr>
+        
+            <tr class="error-row">
+                <td colspan="5">
+                    <div class="error-msg"><strong>Erro:</strong> selenium.common.exceptions.TimeoutException: Message: </div>
+                    <div class="attachments"><a href="allure-results/956613e7-0e4e-48a6-baf0-a2cc896a8a1a-attachment.txt" target="_blank">stdout</a></div>
+                    <details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;1998a57d1bb24bf217f005319b377e0d&quot;)&gt;
+
+    @pytest.mark.smoke
+    def test_hover_tool_tip_text_field(driver):
+        tool_tips_page = TooltipsPage(driver)
+        tool_tips_page.navigate(test_data[&quot;tool_tips_url&quot;])
+        # tool_tips_page.tooltip_text_field_hover()
+    
+&gt;       assert tool_tips_page.tooltip_text_field_hover_text() == test_data[&quot;tool_tip_field_text&quot;]
+
+tests/test_tooltips_page.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+pages/tool_tips_page.py:44: in tooltip_text_field_hover_text
+    text_field_hover_tooltip = self.wait.until(EC.visibility_of_element_located(self.text_field_hover_tooltip_w))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;selenium.webdriver.support.wait.WebDriverWait (session=&quot;1998a57d1bb24bf217f005319b377e0d&quot;)&gt;
+method = &lt;function visibility_of_element_located.&lt;locals&gt;._predicate at 0x110850430&gt;, message = &#x27;&#x27;
+
+    def until(self, method: Callable[[D], Union[Literal[False], T]], message: str = &quot;&quot;) -&gt; T:
+        &quot;&quot;&quot;Wait until the method returns a value that is not False.
+    
+        Calls the method provided with the driver as an argument until the
+        return value does not evaluate to ``False``.
+    
+        Parameters:
+        -----------
+        method: callable(WebDriver)
+            - A callable object that takes a WebDriver instance as an argument.
+    
+        message: str
+            - Optional message for :exc:`TimeoutException`
+    
+        Return:
+        -------
+        object: T
+            - The result of the last call to `method`
+    
+        Raises:
+        -------
+        TimeoutException
+            - If &#x27;method&#x27; does not return a truthy value within the WebDriverWait
+            object&#x27;s timeout
+    
+        Example:
+        --------
+        &gt;&gt;&gt; from selenium.webdriver.common.by import By
+        &gt;&gt;&gt; from selenium.webdriver.support.ui import WebDriverWait
+        &gt;&gt;&gt; from selenium.webdriver.support import expected_conditions as EC
+    
+        # Wait until an element is visible on the page
+        &gt;&gt;&gt; wait = WebDriverWait(driver, 10)
+        &gt;&gt;&gt; element = wait.until(EC.visibility_of_element_located((By.ID, &quot;exampleId&quot;)))
+        &gt;&gt;&gt; print(element.text)
+        &quot;&quot;&quot;
+        screen = None
+        stacktrace = None
+    
+        end_time = time.monotonic() + self._timeout
+        while True:
+            try:
+                value = method(self._driver)
+                if value:
+                    return value
+            except self._ignored_exceptions as exc:
+                screen = getattr(exc, &quot;screen&quot;, None)
+                stacktrace = getattr(exc, &quot;stacktrace&quot;, None)
+            if time.monotonic() &gt; end_time:
+                break
+            time.sleep(self._poll)
+&gt;       raise TimeoutException(message, screen, stacktrace)
+E       selenium.common.exceptions.TimeoutException: Message: 
+E       Stacktrace:
+E       0   chromedriver                        0x000000010fe2a028 chromedriver + 6361128
+E       1   chromedriver                        0x000000010fe2172a chromedriver + 6326058
+E       2   chromedriver                        0x000000010f881c20 chromedriver + 429088
+E       3   chromedriver                        0x000000010f8d3d1b chromedriver + 765211
+E       4   chromedriver                        0x000000010f8d3fe1 chromedriver + 765921
+E       5   chromedriver                        0x000000010f923f44 chromedriver + 1093444
+E       6   chromedriver                        0x000000010f8f9e2d chromedriver + 921133
+E       7   chromedriver                        0x000000010f92126e chromedriver + 1081966
+E       8   chromedriver                        0x000000010f8f9bd3 chromedriver + 920531
+E       9   chromedriver                        0x000000010f8c58ff chromedriver + 706815
+E       10  chromedriver                        0x000000010f8c6dc1 chromedriver + 712129
+E       11  chromedriver                        0x000000010fde7fc0 chromedriver + 6090688
+E       12  chromedriver                        0x000000010fdebe55 chromedriver + 6106709
+E       13  chromedriver                        0x000000010fdc3287 chromedriver + 5939847
+E       14  chromedriver                        0x000000010fdec8cf chromedriver + 6109391
+E       15  chromedriver                        0x000000010fdb25f4 chromedriver + 5871092
+E       16  chromedriver                        0x000000010fe0ea78 chromedriver + 6249080
+E       17  chromedriver                        0x000000010fe0ec3c chromedriver + 6249532
+E       18  chromedriver                        0x000000010fe21301 chromedriver + 6324993
+E       19  libsystem_pthread.dylib             0x00007ff808c07e59 _pthread_start + 115
+E       20  libsystem_pthread.dylib             0x00007ff808c03857 thread_start + 15
+
+myproject/lib/python3.9/site-packages/selenium/webdriver/support/wait.py:138: TimeoutException</pre></details>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>test_hover_tool_tip_button</td>
+                <td class="status-passed">passed</td>
+                <td>5.66</td>
+                <td>2025-09-25 09:09:01</td>
+                <td>2025-09-25 09:09:07</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_text_field</td>
+                <td class="status-broken">broken</td>
+                <td>18.06</td>
+                <td>2025-09-25 09:07:51</td>
+                <td>2025-09-25 09:08:09</td>
+            </tr>
+        
+            <tr class="error-row">
+                <td colspan="5">
+                    <div class="error-msg"><strong>Erro:</strong> selenium.common.exceptions.TimeoutException: Message: </div>
+                    <div class="attachments"><a href="allure-results/d136c8d9-42cb-4bb6-b306-9094ee43dc97-attachment.txt" target="_blank">stdout</a></div>
+                    <details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;bb421edc2b668217c73e226cad6d52a0&quot;)&gt;
+
+    @pytest.mark.smoke
+    def test_hover_tool_tip_text_field(driver):
+        tool_tips_page = TooltipsPage(driver)
+        tool_tips_page.navigate(test_data[&quot;tool_tips_url&quot;])
+        # tool_tips_page.tooltip_text_field_hover()
+    
+&gt;       assert tool_tips_page.tooltip_text_field_hover_text() == test_data[&quot;tool_tip_field_text&quot;]
+
+tests/test_tooltips_page.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+pages/tool_tips_page.py:44: in tooltip_text_field_hover_text
+    text_field_hover_tooltip = self.wait.until(EC.visibility_of_element_located(self.text_field_hover_tooltip_w))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;selenium.webdriver.support.wait.WebDriverWait (session=&quot;bb421edc2b668217c73e226cad6d52a0&quot;)&gt;
+method = &lt;function visibility_of_element_located.&lt;locals&gt;._predicate at 0x1088bd430&gt;, message = &#x27;&#x27;
+
+    def until(self, method: Callable[[D], Union[Literal[False], T]], message: str = &quot;&quot;) -&gt; T:
+        &quot;&quot;&quot;Wait until the method returns a value that is not False.
+    
+        Calls the method provided with the driver as an argument until the
+        return value does not evaluate to ``False``.
+    
+        Parameters:
+        -----------
+        method: callable(WebDriver)
+            - A callable object that takes a WebDriver instance as an argument.
+    
+        message: str
+            - Optional message for :exc:`TimeoutException`
+    
+        Return:
+        -------
+        object: T
+            - The result of the last call to `method`
+    
+        Raises:
+        -------
+        TimeoutException
+            - If &#x27;method&#x27; does not return a truthy value within the WebDriverWait
+            object&#x27;s timeout
+    
+        Example:
+        --------
+        &gt;&gt;&gt; from selenium.webdriver.common.by import By
+        &gt;&gt;&gt; from selenium.webdriver.support.ui import WebDriverWait
+        &gt;&gt;&gt; from selenium.webdriver.support import expected_conditions as EC
+    
+        # Wait until an element is visible on the page
+        &gt;&gt;&gt; wait = WebDriverWait(driver, 10)
+        &gt;&gt;&gt; element = wait.until(EC.visibility_of_element_located((By.ID, &quot;exampleId&quot;)))
+        &gt;&gt;&gt; print(element.text)
+        &quot;&quot;&quot;
+        screen = None
+        stacktrace = None
+    
+        end_time = time.monotonic() + self._timeout
+        while True:
+            try:
+                value = method(self._driver)
+                if value:
+                    return value
+            except self._ignored_exceptions as exc:
+                screen = getattr(exc, &quot;screen&quot;, None)
+                stacktrace = getattr(exc, &quot;stacktrace&quot;, None)
+            if time.monotonic() &gt; end_time:
+                break
+            time.sleep(self._poll)
+&gt;       raise TimeoutException(message, screen, stacktrace)
+E       selenium.common.exceptions.TimeoutException: Message: 
+E       Stacktrace:
+E       0   chromedriver                        0x000000010851a028 chromedriver + 6361128
+E       1   chromedriver                        0x000000010851172a chromedriver + 6326058
+E       2   chromedriver                        0x0000000107f71c20 chromedriver + 429088
+E       3   chromedriver                        0x0000000107fc3d1b chromedriver + 765211
+E       4   chromedriver                        0x0000000107fc3fe1 chromedriver + 765921
+E       5   chromedriver                        0x0000000108013f44 chromedriver + 1093444
+E       6   chromedriver                        0x0000000107fe9e2d chromedriver + 921133
+E       7   chromedriver                        0x000000010801126e chromedriver + 1081966
+E       8   chromedriver                        0x0000000107fe9bd3 chromedriver + 920531
+E       9   chromedriver                        0x0000000107fb58ff chromedriver + 706815
+E       10  chromedriver                        0x0000000107fb6dc1 chromedriver + 712129
+E       11  chromedriver                        0x00000001084d7fc0 chromedriver + 6090688
+E       12  chromedriver                        0x00000001084dbe55 chromedriver + 6106709
+E       13  chromedriver                        0x00000001084b3287 chromedriver + 5939847
+E       14  chromedriver                        0x00000001084dc8cf chromedriver + 6109391
+E       15  chromedriver                        0x00000001084a25f4 chromedriver + 5871092
+E       16  chromedriver                        0x00000001084fea78 chromedriver + 6249080
+E       17  chromedriver                        0x00000001084fec3c chromedriver + 6249532
+E       18  chromedriver                        0x0000000108511301 chromedriver + 6324993
+E       19  libsystem_pthread.dylib             0x00007ff808c07e59 _pthread_start + 115
+E       20  libsystem_pthread.dylib             0x00007ff808c03857 thread_start + 15
+
+myproject/lib/python3.9/site-packages/selenium/webdriver/support/wait.py:138: TimeoutException</pre></details>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>test_hover_tool_tip_button</td>
+                <td class="status-passed">passed</td>
+                <td>5.75</td>
+                <td>2025-09-25 09:07:42</td>
+                <td>2025-09-25 09:07:48</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_text_field</td>
+                <td class="status-broken">broken</td>
+                <td>0.00</td>
+                <td>2025-09-25 09:07:04</td>
+                <td>2025-09-25 09:07:04</td>
+            </tr>
+        
+            <tr class="error-row">
+                <td colspan="5">
+                    <div class="error-msg"><strong>Erro:</strong> KeyError: &#x27;tool_tips_ur&#x27;</div>
+                    <div class="attachments"><a href="allure-results/b38c85f9-aa75-4ae7-9d32-2029a503460b-attachment.txt" target="_blank">stdout</a></div>
+                    <details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;832321954d77b0660c025c7df74eb185&quot;)&gt;
+
+    @pytest.mark.smoke
+    def test_hover_tool_tip_text_field(driver):
+        tool_tips_page = TooltipsPage(driver)
+&gt;       tool_tips_page.navigate(test_data[&quot;tool_tips_ur&quot;])
+E       KeyError: &#x27;tool_tips_ur&#x27;
+
+tests/test_tooltips_page.py:18: KeyError</pre></details>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>test_hover_tool_tip_button</td>
+                <td class="status-passed">passed</td>
+                <td>5.76</td>
+                <td>2025-09-25 09:06:55</td>
+                <td>2025-09-25 09:07:01</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_text_field</td>
+                <td class="status-broken">broken</td>
+                <td>0.00</td>
+                <td>2025-09-25 08:59:40</td>
+                <td>2025-09-25 08:59:40</td>
+            </tr>
+        
+            <tr class="error-row">
+                <td colspan="5">
+                    <div class="error-msg"><strong>Erro:</strong> KeyError: &#x27;tool_tips_ur&#x27;</div>
+                    <div class="attachments"><a href="allure-results/030eb012-2c2d-4651-9eb6-66feddf15a66-attachment.txt" target="_blank">stdout</a></div>
+                    <details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;80466baef94432310acccf7ebdade327&quot;)&gt;
+
+    @pytest.mark.smoke
+    def test_hover_tool_tip_text_field(driver):
+        tool_tips_page = TooltipsPage(driver)
+&gt;       tool_tips_page.navigate(test_data[&quot;tool_tips_ur&quot;])
+E       KeyError: &#x27;tool_tips_ur&#x27;
+
+tests/test_tooltips_page.py:18: KeyError</pre></details>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>test_hover_tool_tip_button</td>
+                <td class="status-passed">passed</td>
+                <td>6.42</td>
+                <td>2025-09-25 08:59:31</td>
+                <td>2025-09-25 08:59:38</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_text_field</td>
+                <td class="status-broken">broken</td>
+                <td>15.67</td>
+                <td>2025-09-25 08:41:57</td>
+                <td>2025-09-25 08:42:13</td>
+            </tr>
+        
+            <tr class="error-row">
+                <td colspan="5">
+                    <div class="error-msg"><strong>Erro:</strong> selenium.common.exceptions.TimeoutException: Message: </div>
+                    <div class="attachments"><a href="allure-results/762ee27e-8b07-4325-832c-429c540b3b17-attachment.txt" target="_blank">stdout</a></div>
+                    <details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;186d1ee7a0f2e5a5f3aef52f417f86d6&quot;)&gt;
+
+    @pytest.mark.smoke
+    def test_hover_tool_tip_text_field(driver):
+        tool_tips_page = TooltipsPage(driver)
+        tool_tips_page.navigate(test_data[&quot;tool_tips_url&quot;])
+        # tool_tips_page.tooltip_text_field_hover()
+    
+&gt;       assert tool_tips_page.tooltip_text_field_hover_text() == test_data[&quot;tool_tip_field_text&quot;]
+
+tests/test_tooltips_page.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+pages/tool_tips_page.py:37: in tooltip_text_field_hover_text
+    text_field_hover_tooltip = self.wait.until(EC.visibility_of_element_located(self.text_field_hover_tooltip_w))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;selenium.webdriver.support.wait.WebDriverWait (session=&quot;186d1ee7a0f2e5a5f3aef52f417f86d6&quot;)&gt;
+method = &lt;function visibility_of_element_located.&lt;locals&gt;._predicate at 0x110ee60d0&gt;, message = &#x27;&#x27;
+
+    def until(self, method: Callable[[D], Union[Literal[False], T]], message: str = &quot;&quot;) -&gt; T:
+        &quot;&quot;&quot;Wait until the method returns a value that is not False.
+    
+        Calls the method provided with the driver as an argument until the
+        return value does not evaluate to ``False``.
+    
+        Parameters:
+        -----------
+        method: callable(WebDriver)
+            - A callable object that takes a WebDriver instance as an argument.
+    
+        message: str
+            - Optional message for :exc:`TimeoutException`
+    
+        Return:
+        -------
+        object: T
+            - The result of the last call to `method`
+    
+        Raises:
+        -------
+        TimeoutException
+            - If &#x27;method&#x27; does not return a truthy value within the WebDriverWait
+            object&#x27;s timeout
+    
+        Example:
+        --------
+        &gt;&gt;&gt; from selenium.webdriver.common.by import By
+        &gt;&gt;&gt; from selenium.webdriver.support.ui import WebDriverWait
+        &gt;&gt;&gt; from selenium.webdriver.support import expected_conditions as EC
+    
+        # Wait until an element is visible on the page
+        &gt;&gt;&gt; wait = WebDriverWait(driver, 10)
+        &gt;&gt;&gt; element = wait.until(EC.visibility_of_element_located((By.ID, &quot;exampleId&quot;)))
+        &gt;&gt;&gt; print(element.text)
+        &quot;&quot;&quot;
+        screen = None
+        stacktrace = None
+    
+        end_time = time.monotonic() + self._timeout
+        while True:
+            try:
+                value = method(self._driver)
+                if value:
+                    return value
+            except self._ignored_exceptions as exc:
+                screen = getattr(exc, &quot;screen&quot;, None)
+                stacktrace = getattr(exc, &quot;stacktrace&quot;, None)
+            if time.monotonic() &gt; end_time:
+                break
+            time.sleep(self._poll)
+&gt;       raise TimeoutException(message, screen, stacktrace)
+E       selenium.common.exceptions.TimeoutException: Message: 
+E       Stacktrace:
+E       0   chromedriver                        0x00000001091bd028 chromedriver + 6361128
+E       1   chromedriver                        0x00000001091b472a chromedriver + 6326058
+E       2   chromedriver                        0x0000000108c14c20 chromedriver + 429088
+E       3   chromedriver                        0x0000000108c66d1b chromedriver + 765211
+E       4   chromedriver                        0x0000000108c66fe1 chromedriver + 765921
+E       5   chromedriver                        0x0000000108cb6f44 chromedriver + 1093444
+E       6   chromedriver                        0x0000000108c8ce2d chromedriver + 921133
+E       7   chromedriver                        0x0000000108cb426e chromedriver + 1081966
+E       8   chromedriver                        0x0000000108c8cbd3 chromedriver + 920531
+E       9   chromedriver                        0x0000000108c588ff chromedriver + 706815
+E       10  chromedriver                        0x0000000108c59dc1 chromedriver + 712129
+E       11  chromedriver                        0x000000010917afc0 chromedriver + 6090688
+E       12  chromedriver                        0x000000010917ee55 chromedriver + 6106709
+E       13  chromedriver                        0x0000000109156287 chromedriver + 5939847
+E       14  chromedriver                        0x000000010917f8cf chromedriver + 6109391
+E       15  chromedriver                        0x00000001091455f4 chromedriver + 5871092
+E       16  chromedriver                        0x00000001091a1a78 chromedriver + 6249080
+E       17  chromedriver                        0x00000001091a1c3c chromedriver + 6249532
+E       18  chromedriver                        0x00000001091b4301 chromedriver + 6324993
+E       19  libsystem_pthread.dylib             0x00007ff808c07e59 _pthread_start + 115
+E       20  libsystem_pthread.dylib             0x00007ff808c03857 thread_start + 15
+
+myproject/lib/python3.9/site-packages/selenium/webdriver/support/wait.py:138: TimeoutException</pre></details>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>test_hover_tool_tip_button</td>
+                <td class="status-passed">passed</td>
+                <td>5.29</td>
+                <td>2025-09-25 08:41:50</td>
+                <td>2025-09-25 08:41:55</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_text_field</td>
+                <td class="status-passed">passed</td>
+                <td>5.47</td>
+                <td>2025-09-25 08:41:17</td>
+                <td>2025-09-25 08:41:23</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_button</td>
+                <td class="status-passed">passed</td>
+                <td>5.93</td>
+                <td>2025-09-25 08:41:09</td>
+                <td>2025-09-25 08:41:15</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_text_field</td>
+                <td class="status-passed">passed</td>
+                <td>5.61</td>
+                <td>2025-09-25 08:36:51</td>
+                <td>2025-09-25 08:36:56</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_button</td>
+                <td class="status-passed">passed</td>
+                <td>6.46</td>
+                <td>2025-09-25 08:36:42</td>
+                <td>2025-09-25 08:36:49</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_text_field</td>
+                <td class="status-passed">passed</td>
+                <td>5.99</td>
+                <td>2025-09-25 08:32:39</td>
+                <td>2025-09-25 08:32:45</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_button</td>
+                <td class="status-passed">passed</td>
+                <td>8.34</td>
+                <td>2025-09-25 08:32:29</td>
+                <td>2025-09-25 08:32:37</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_text_field</td>
+                <td class="status-passed">passed</td>
+                <td>6.65</td>
+                <td>2025-09-25 08:29:10</td>
+                <td>2025-09-25 08:29:17</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_button</td>
+                <td class="status-passed">passed</td>
+                <td>8.34</td>
+                <td>2025-09-25 08:29:00</td>
+                <td>2025-09-25 08:29:08</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_practice_form[data2]</td>
+                <td class="status-passed">passed</td>
+                <td>7.67</td>
+                <td>2025-09-25 08:21:47</td>
+                <td>2025-09-25 08:21:54</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_practice_form[data1]</td>
+                <td class="status-passed">passed</td>
+                <td>7.11</td>
+                <td>2025-09-25 08:21:37</td>
+                <td>2025-09-25 08:21:44</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_practice_form[data0]</td>
+                <td class="status-passed">passed</td>
+                <td>7.44</td>
+                <td>2025-09-25 08:21:28</td>
+                <td>2025-09-25 08:21:35</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_text_field</td>
+                <td class="status-broken">broken</td>
+                <td>0.00</td>
+                <td>2025-09-25 08:20:45</td>
+                <td>2025-09-25 08:20:45</td>
+            </tr>
+        
+            <tr class="error-row">
+                <td colspan="5">
+                    <div class="error-msg"><strong>Erro:</strong> _pytest.fixtures.FixtureLookupError: (&#x27;test_data&#x27;, &lt;FixtureRequest for &lt;Function test_hover_tool_tip_text_field&gt;&gt;)</div>
+                    <div class="attachments"><a href="allure-results/53fded17-d441-4926-9847-68d0ae99a648-attachment.txt" target="_blank">stdout</a></div>
+                    <details><summary>Stack trace</summary><pre class='error-msg'>file /Users/moa/projeto-automacao/tests/test_tooltips_page.py, line 15
+  @pytest.mark.smoke
+  def test_hover_tool_tip_text_field(driver, test_data):
+E       fixture &#x27;test_data&#x27; not found
+&gt;       available fixtures: cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, driver, extra, extras, include_metadata_in_junit_xml, metadata, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+&gt;       use &#x27;pytest --fixtures [testpath]&#x27; for help on them.
+
+/Users/moa/projeto-automacao/tests/test_tooltips_page.py:15</pre></details>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>test_hover_tool_tip_button</td>
+                <td class="status-broken">broken</td>
+                <td>0.00</td>
+                <td>2025-09-25 08:20:43</td>
+                <td>2025-09-25 08:20:43</td>
+            </tr>
+        
+            <tr class="error-row">
+                <td colspan="5">
+                    <div class="error-msg"><strong>Erro:</strong> _pytest.fixtures.FixtureLookupError: (&#x27;test_data&#x27;, &lt;FixtureRequest for &lt;Function test_hover_tool_tip_button&gt;&gt;)</div>
+                    <div class="attachments"><a href="allure-results/f9692286-526d-4a49-9550-24baf10e3ff3-attachment.txt" target="_blank">stdout</a></div>
+                    <details><summary>Stack trace</summary><pre class='error-msg'>file /Users/moa/projeto-automacao/tests/test_tooltips_page.py, line 7
+  @pytest.mark.smoke
+  def test_hover_tool_tip_button(driver, test_data):
+E       fixture &#x27;test_data&#x27; not found
+&gt;       available fixtures: cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, driver, extra, extras, include_metadata_in_junit_xml, metadata, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+&gt;       use &#x27;pytest --fixtures [testpath]&#x27; for help on them.
+
+/Users/moa/projeto-automacao/tests/test_tooltips_page.py:7</pre></details>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>test_locate_by_id</td>
+                <td class="status-passed">passed</td>
+                <td>5.51</td>
+                <td>2025-09-25 08:20:02</td>
+                <td>2025-09-25 08:20:07</td>
+            </tr>
+        
+            <tr>
+                <td>test_navigate_to_elements_page</td>
+                <td class="status-passed">passed</td>
+                <td>7.95</td>
+                <td>2025-09-25 08:19:52</td>
+                <td>2025-09-25 08:20:00</td>
+            </tr>
+        
+            <tr>
+                <td>test_commands_checkbox_output</td>
+                <td class="status-passed">passed</td>
+                <td>10.72</td>
+                <td>2025-09-25 08:19:39</td>
+                <td>2025-09-25 08:19:50</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_text_field</td>
+                <td class="status-passed">passed</td>
                 <td>5.78</td>
                 <td>2025-09-24 11:26:04</td>
                 <td>2025-09-24 11:26:10</td>
             </tr>
         
             <tr>
+                <td>test_hover_tool_tip_button</td>
+                <td class="status-passed">passed</td>
+                <td>5.83</td>
+                <td>2025-09-24 11:25:56</td>
+                <td>2025-09-24 11:26:02</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_text_field</td>
+                <td class="status-passed">passed</td>
+                <td>5.58</td>
+                <td>2025-09-24 11:25:48</td>
+                <td>2025-09-24 11:25:54</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_button</td>
+                <td class="status-passed">passed</td>
+                <td>6.33</td>
+                <td>2025-09-24 11:25:39</td>
+                <td>2025-09-24 11:25:46</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_form_with_pom</td>
+                <td class="status-passed">passed</td>
+                <td>9.73</td>
+                <td>2025-09-24 11:25:27</td>
+                <td>2025-09-24 11:25:37</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_practice_form[data2]</td>
+                <td class="status-passed">passed</td>
+                <td>7.89</td>
+                <td>2025-09-24 11:25:17</td>
+                <td>2025-09-24 11:25:25</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_practice_form[data1]</td>
+                <td class="status-passed">passed</td>
+                <td>7.23</td>
+                <td>2025-09-24 11:25:08</td>
+                <td>2025-09-24 11:25:15</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_practice_form[data0]</td>
+                <td class="status-passed">passed</td>
+                <td>7.87</td>
+                <td>2025-09-24 11:24:57</td>
+                <td>2025-09-24 11:25:05</td>
+            </tr>
+        
+            <tr>
+                <td>test_locate_by_xpath</td>
+                <td class="status-passed">passed</td>
+                <td>7.19</td>
+                <td>2025-09-24 11:24:48</td>
+                <td>2025-09-24 11:24:55</td>
+            </tr>
+        
+            <tr>
+                <td>test_locate_by_css_selector</td>
+                <td class="status-passed">passed</td>
+                <td>6.94</td>
+                <td>2025-09-24 11:24:38</td>
+                <td>2025-09-24 11:24:45</td>
+            </tr>
+        
+            <tr>
+                <td>test_locate_by_id</td>
+                <td class="status-passed">passed</td>
+                <td>7.09</td>
+                <td>2025-09-24 11:24:29</td>
+                <td>2025-09-24 11:24:36</td>
+            </tr>
+        
+            <tr>
+                <td>test_navigate_to_elements_page</td>
+                <td class="status-passed">passed</td>
+                <td>6.81</td>
+                <td>2025-09-24 11:24:20</td>
+                <td>2025-09-24 11:24:26</td>
+            </tr>
+        
+            <tr>
                 <td>test_commands_checkbox_output</td>
-                <td>passed</td>
+                <td class="status-passed">passed</td>
                 <td>37.07</td>
                 <td>2025-09-24 11:23:40</td>
                 <td>2025-09-24 11:24:17</td>
             </tr>
         
             <tr>
-                <td>test_locate_by_css_selector</td>
-                <td>passed</td>
-                <td>6.38</td>
-                <td>2025-09-24 11:14:11</td>
-                <td>2025-09-24 11:14:17</td>
+                <td>test_hover_tool_tip_text_field</td>
+                <td class="status-passed">passed</td>
+                <td>7.09</td>
+                <td>2025-09-24 11:16:18</td>
+                <td>2025-09-24 11:16:25</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_button</td>
+                <td class="status-passed">passed</td>
+                <td>6.14</td>
+                <td>2025-09-24 11:16:09</td>
+                <td>2025-09-24 11:16:15</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_text_field</td>
+                <td class="status-passed">passed</td>
+                <td>6.02</td>
+                <td>2025-09-24 11:16:01</td>
+                <td>2025-09-24 11:16:07</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_button</td>
+                <td class="status-passed">passed</td>
+                <td>45.14</td>
+                <td>2025-09-24 11:15:13</td>
+                <td>2025-09-24 11:15:58</td>
             </tr>
         
             <tr>
                 <td>test_fill_form_with_pom</td>
-                <td>passed</td>
+                <td class="status-passed">passed</td>
                 <td>9.25</td>
                 <td>2025-09-24 11:15:01</td>
                 <td>2025-09-24 11:15:10</td>
             </tr>
         
             <tr>
+                <td>test_fill_practice_form[data2]</td>
+                <td class="status-passed">passed</td>
+                <td>8.30</td>
+                <td>2025-09-24 11:14:50</td>
+                <td>2025-09-24 11:14:58</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_practice_form[data1]</td>
+                <td class="status-passed">passed</td>
+                <td>7.66</td>
+                <td>2025-09-24 11:14:40</td>
+                <td>2025-09-24 11:14:48</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_practice_form[data0]</td>
+                <td class="status-passed">passed</td>
+                <td>8.13</td>
+                <td>2025-09-24 11:14:29</td>
+                <td>2025-09-24 11:14:37</td>
+            </tr>
+        
+            <tr>
+                <td>test_locate_by_xpath</td>
+                <td class="status-passed">passed</td>
+                <td>6.61</td>
+                <td>2025-09-24 11:14:20</td>
+                <td>2025-09-24 11:14:27</td>
+            </tr>
+        
+            <tr>
+                <td>test_locate_by_css_selector</td>
+                <td class="status-passed">passed</td>
+                <td>6.38</td>
+                <td>2025-09-24 11:14:11</td>
+                <td>2025-09-24 11:14:17</td>
+            </tr>
+        
+            <tr>
+                <td>test_locate_by_id</td>
+                <td class="status-passed">passed</td>
+                <td>7.25</td>
+                <td>2025-09-24 11:14:01</td>
+                <td>2025-09-24 11:14:09</td>
+            </tr>
+        
+            <tr>
+                <td>test_navigate_to_elements_page</td>
+                <td class="status-passed">passed</td>
+                <td>7.03</td>
+                <td>2025-09-24 11:13:52</td>
+                <td>2025-09-24 11:13:59</td>
+            </tr>
+        
+            <tr>
+                <td>test_commands_checkbox_output</td>
+                <td class="status-passed">passed</td>
+                <td>8.55</td>
+                <td>2025-09-24 11:13:41</td>
+                <td>2025-09-24 11:13:49</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_text_field</td>
+                <td class="status-passed">passed</td>
+                <td>6.11</td>
+                <td>2025-09-24 11:03:40</td>
+                <td>2025-09-24 11:03:46</td>
+            </tr>
+        
+            <tr>
                 <td>test_hover_tool_tip_button</td>
-                <td>passed</td>
+                <td class="status-passed">passed</td>
+                <td>20.34</td>
+                <td>2025-09-24 11:03:17</td>
+                <td>2025-09-24 11:03:37</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_text_field</td>
+                <td class="status-passed">passed</td>
+                <td>5.74</td>
+                <td>2025-09-24 11:03:09</td>
+                <td>2025-09-24 11:03:15</td>
+            </tr>
+        
+            <tr>
+                <td>test_hover_tool_tip_button</td>
+                <td class="status-passed">passed</td>
                 <td>6.15</td>
                 <td>2025-09-24 11:03:00</td>
                 <td>2025-09-24 11:03:07</td>
             </tr>
         
             <tr>
+                <td>test_fill_form_with_pom</td>
+                <td class="status-passed">passed</td>
+                <td>9.06</td>
+                <td>2025-09-24 11:02:49</td>
+                <td>2025-09-24 11:02:58</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_practice_form[data2]</td>
+                <td class="status-passed">passed</td>
+                <td>7.84</td>
+                <td>2025-09-24 11:02:39</td>
+                <td>2025-09-24 11:02:46</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_practice_form[data1]</td>
+                <td class="status-passed">passed</td>
+                <td>7.11</td>
+                <td>2025-09-24 11:02:29</td>
+                <td>2025-09-24 11:02:36</td>
+            </tr>
+        
+            <tr>
                 <td>test_fill_practice_form[data0]</td>
-                <td>passed</td>
+                <td class="status-passed">passed</td>
                 <td>7.65</td>
                 <td>2025-09-24 11:02:19</td>
                 <td>2025-09-24 11:02:27</td>
+            </tr>
+        
+            <tr>
+                <td>test_locate_by_xpath</td>
+                <td class="status-passed">passed</td>
+                <td>33.53</td>
+                <td>2025-09-24 11:01:43</td>
+                <td>2025-09-24 11:02:16</td>
+            </tr>
+        
+            <tr>
+                <td>test_locate_by_css_selector</td>
+                <td class="status-passed">passed</td>
+                <td>6.96</td>
+                <td>2025-09-24 11:01:33</td>
+                <td>2025-09-24 11:01:40</td>
+            </tr>
+        
+            <tr>
+                <td>test_locate_by_id</td>
+                <td class="status-passed">passed</td>
+                <td>7.02</td>
+                <td>2025-09-24 11:01:24</td>
+                <td>2025-09-24 11:01:31</td>
+            </tr>
+        
+            <tr>
+                <td>test_navigate_to_elements_page</td>
+                <td class="status-passed">passed</td>
+                <td>6.65</td>
+                <td>2025-09-24 11:01:15</td>
+                <td>2025-09-24 11:01:21</td>
+            </tr>
+        
+            <tr>
+                <td>test_commands_checkbox_output</td>
+                <td class="status-passed">passed</td>
+                <td>9.74</td>
+                <td>2025-09-24 11:01:02</td>
+                <td>2025-09-24 11:01:12</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_practice_form[data2]</td>
+                <td class="status-passed">passed</td>
+                <td>7.10</td>
+                <td>2025-09-24 10:50:47</td>
+                <td>2025-09-24 10:50:54</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_practice_form[data1]</td>
+                <td class="status-passed">passed</td>
+                <td>6.52</td>
+                <td>2025-09-24 10:50:38</td>
+                <td>2025-09-24 10:50:45</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_practice_form[data0]</td>
+                <td class="status-passed">passed</td>
+                <td>7.25</td>
+                <td>2025-09-24 10:50:29</td>
+                <td>2025-09-24 10:50:36</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_practice_form[data2]</td>
+                <td class="status-passed">passed</td>
+                <td>6.50</td>
+                <td>2025-09-24 10:47:47</td>
+                <td>2025-09-24 10:47:54</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_practice_form[data1]</td>
+                <td class="status-passed">passed</td>
+                <td>7.25</td>
+                <td>2025-09-24 10:47:38</td>
+                <td>2025-09-24 10:47:45</td>
+            </tr>
+        
+            <tr>
+                <td>test_fill_practice_form[data0]</td>
+                <td class="status-passed">passed</td>
+                <td>36.80</td>
+                <td>2025-09-24 10:46:59</td>
+                <td>2025-09-24 10:47:36</td>
             </tr>
         
         </table>

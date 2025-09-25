@@ -1,12 +1,8 @@
 import pytest
-import json
 from pages.practice_form_page import PracticeFormPage
+from utils.data_loader import load_json_data
 
-def load_test_data(path):
-    with open(path, 'r') as f:
-        return json.load(f)
-
-@pytest.mark.parametrize("data", load_test_data("data/practice_form_data.json"))
+@pytest.mark.parametrize("data", load_json_data("data/practice_form_data.json"))
 def test_fill_practice_form(driver, data):
     form_page = PracticeFormPage(driver)
     form_page.navigate()

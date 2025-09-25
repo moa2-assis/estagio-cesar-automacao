@@ -3,6 +3,14 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.keys import Keys
 
 class PracticeFormPage:
+    """Page Object Model para a página de Practice Form.
+    Retorna:
+    - Navigate: navega para a URL do formulário.
+    - Fill form: preenche formulário com dados fornecidos.
+    - Submit form: submete o formulário.
+    - Check modal visible: verifica se o modal de confirmação está visível.
+    """
+
     def __init__(self, driver):
         self.driver = driver
         self.url = "https://demoqa.com/automation-practice-form"

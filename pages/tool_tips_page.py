@@ -4,6 +4,13 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 class TooltipsPage:
+    """Page Object Model do Tooltips Page.
+    Retorna:
+    - Navigate: navega para a URL do Tooltips Page.
+    - Tooltip Button Hover: passa o mouse sobre o botão de modo à mostrar o tooltip.
+    - Tooltip Button Hover Text: retorna o texto do tooltip do botão.
+    - Tooltip Text Field Hover: passa o mouse sobre o campo de texto de modo à mostrar o tooltip.
+    - Tooltip Text Field Hover Text: retorna o texto do tooltip do campo de texto."""
     def __init__(self, driver):
         self.driver = driver
         self.url = "https://demoqa.com/tool-tips"

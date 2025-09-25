@@ -445,3 +445,293 @@
 
 [START] Test 'tests/test_tooltips_page2.py::test_hover_tool_tip_text_field' - 11:26:02
 [END] Test 'tests/test_tooltips_page2.py::test_hover_tool_tip_text_field' finished in 8.09 seconds.
+
+[START] Test 'tests/test_checkbox_page.py::test_commands_checkbox_output' - 08:19:35
+[END] Test 'tests/test_checkbox_page.py::test_commands_checkbox_output' finished in 15.14 seconds.
+
+[START] Test 'tests/test_elements_page.py::test_navigate_to_elements_page' - 08:19:50
+[END] Test 'tests/test_elements_page.py::test_navigate_to_elements_page' finished in 9.97 seconds.
+
+[START] Test 'tests/test_elements_page.py::test_locate_by_id' - 08:20:00
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' - 08:20:43
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' finished in 1.95 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' - 08:20:45
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' finished in 1.89 seconds.
+
+[START] Test 'tests/test_practice_form.py::test_fill_practice_form[data0]' - 08:21:26
+[END] Test 'tests/test_practice_form.py::test_fill_practice_form[data0]' finished in 9.53 seconds.
+
+[START] Test 'tests/test_practice_form.py::test_fill_practice_form[data1]' - 08:21:36
+[END] Test 'tests/test_practice_form.py::test_fill_practice_form[data1]' finished in 9.11 seconds.
+
+[START] Test 'tests/test_practice_form.py::test_fill_practice_form[data2]' - 08:21:45
+[END] Test 'tests/test_practice_form.py::test_fill_practice_form[data2]' finished in 9.91 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' - 08:28:57
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' finished in 11.35 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' - 08:29:09
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' finished in 8.70 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' - 08:32:26
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' finished in 11.45 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' - 08:32:37
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' finished in 8.03 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' - 08:36:40
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' finished in 8.48 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' - 08:36:49
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' finished in 7.69 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' - 08:41:08
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' finished in 7.98 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' - 08:41:16
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' finished in 7.48 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' - 08:41:48
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' finished in 7.32 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' - 08:41:55
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' finished in 18.18 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' - 08:59:28
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' finished in 9.72 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' - 08:59:38
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' finished in 2.62 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' - 09:06:53
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' finished in 8.31 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' - 09:07:01
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' finished in 2.37 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' - 09:07:40
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' finished in 8.08 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' - 09:07:48
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' finished in 20.63 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' - 09:08:58
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' finished in 8.60 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' - 09:09:07
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' finished in 18.42 seconds.
+
+[START] Test 'tests/test_checkbox_page.py::test_commands_checkbox_output' - 09:11:53
+[END] Test 'tests/test_checkbox_page.py::test_commands_checkbox_output' finished in 11.56 seconds.
+
+[START] Test 'tests/test_elements_page.py::test_navigate_to_elements_page' - 09:12:05
+[END] Test 'tests/test_elements_page.py::test_navigate_to_elements_page' finished in 4.17 seconds.
+
+[START] Test 'tests/test_elements_page.py::test_locate_by_id' - 09:12:09
+[END] Test 'tests/test_elements_page.py::test_locate_by_id' finished in 37.63 seconds.
+
+[START] Test 'tests/test_elements_page.py::test_locate_by_css_selector' - 09:12:47
+[END] Test 'tests/test_elements_page.py::test_locate_by_css_selector' finished in 8.85 seconds.
+
+[START] Test 'tests/test_elements_page.py::test_locate_by_xpath' - 09:12:56
+[END] Test 'tests/test_elements_page.py::test_locate_by_xpath' finished in 9.35 seconds.
+
+[START] Test 'tests/test_practice_form.py::test_fill_practice_form[data0]' - 09:13:05
+[END] Test 'tests/test_practice_form.py::test_fill_practice_form[data0]' finished in 10.90 seconds.
+
+[START] Test 'tests/test_practice_form.py::test_fill_practice_form[data1]' - 09:13:16
+[END] Test 'tests/test_practice_form.py::test_fill_practice_form[data1]' finished in 9.42 seconds.
+
+[START] Test 'tests/test_practice_form.py::test_fill_practice_form[data2]' - 09:13:25
+[END] Test 'tests/test_practice_form.py::test_fill_practice_form[data2]' finished in 10.92 seconds.
+
+[START] Test 'tests/test_text_box.py::test_fill_form_with_pom' - 09:13:36
+[END] Test 'tests/test_text_box.py::test_fill_form_with_pom' finished in 10.62 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' - 09:13:47
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' finished in 8.79 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' - 09:13:56
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' finished in 18.31 seconds.
+
+[START] Test 'tests/test_tooltips_page2.py::test_hover_tool_tip_button' - 09:14:14
+[END] Test 'tests/test_tooltips_page2.py::test_hover_tool_tip_button' finished in 8.38 seconds.
+
+[START] Test 'tests/test_tooltips_page2.py::test_hover_tool_tip_text_field' - 09:14:22
+[END] Test 'tests/test_tooltips_page2.py::test_hover_tool_tip_text_field' finished in 8.19 seconds.
+
+[START] Test 'tests/test_text_box.py::test_fill_form_with_pom' - 09:16:38
+[END] Test 'tests/test_text_box.py::test_fill_form_with_pom' finished in 49.59 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' - 09:19:43
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' finished in 10.11 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' - 09:19:53
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' finished in 7.94 seconds.
+
+[START] Test 'tests/test_checkbox_page.py::test_commands_checkbox_output' - 09:21:32
+[END] Test 'tests/test_checkbox_page.py::test_commands_checkbox_output' finished in 11.13 seconds.
+
+[START] Test 'tests/test_elements_page.py::test_navigate_to_elements_page' - 09:21:43
+[END] Test 'tests/test_elements_page.py::test_navigate_to_elements_page' finished in 8.99 seconds.
+
+[START] Test 'tests/test_elements_page.py::test_locate_by_id' - 09:21:52
+[END] Test 'tests/test_elements_page.py::test_locate_by_id' finished in 9.96 seconds.
+
+[START] Test 'tests/test_elements_page.py::test_locate_by_css_selector' - 09:22:02
+[END] Test 'tests/test_elements_page.py::test_locate_by_css_selector' finished in 8.81 seconds.
+
+[START] Test 'tests/test_elements_page.py::test_locate_by_xpath' - 09:22:11
+[END] Test 'tests/test_elements_page.py::test_locate_by_xpath' finished in 9.03 seconds.
+
+[START] Test 'tests/test_practice_form.py::test_fill_practice_form[data0]' - 09:22:20
+[END] Test 'tests/test_practice_form.py::test_fill_practice_form[data0]' finished in 9.94 seconds.
+
+[START] Test 'tests/test_practice_form.py::test_fill_practice_form[data1]' - 09:22:30
+[END] Test 'tests/test_practice_form.py::test_fill_practice_form[data1]' finished in 10.44 seconds.
+
+[START] Test 'tests/test_practice_form.py::test_fill_practice_form[data2]' - 09:22:40
+[END] Test 'tests/test_practice_form.py::test_fill_practice_form[data2]' finished in 10.15 seconds.
+
+[START] Test 'tests/test_text_box.py::test_fill_form_with_pom' - 09:22:50
+[END] Test 'tests/test_text_box.py::test_fill_form_with_pom' finished in 10.76 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' - 09:23:01
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' finished in 8.43 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' - 09:23:10
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' finished in 8.90 seconds.
+
+[START] Test 'tests/test_tooltips_page2.py::test_hover_tool_tip_button' - 09:23:19
+[END] Test 'tests/test_tooltips_page2.py::test_hover_tool_tip_button' finished in 8.52 seconds.
+
+[START] Test 'tests/test_tooltips_page2.py::test_hover_tool_tip_text_field' - 09:23:27
+[END] Test 'tests/test_tooltips_page2.py::test_hover_tool_tip_text_field' finished in 23.49 seconds.
+
+[START] Test 'tests/test_checkbox_page.py::test_commands_checkbox_output' - 09:35:17
+[END] Test 'tests/test_checkbox_page.py::test_commands_checkbox_output' finished in 10.15 seconds.
+
+[START] Test 'tests/test_checkbox_page.py::test_notes_checkbox_output' - 09:35:27
+[END] Test 'tests/test_checkbox_page.py::test_notes_checkbox_output' finished in 7.96 seconds.
+
+[START] Test 'tests/test_elements_page.py::test_navigate_to_elements_page' - 09:35:35
+[END] Test 'tests/test_elements_page.py::test_navigate_to_elements_page' finished in 9.09 seconds.
+
+[START] Test 'tests/test_elements_page.py::test_locate_by_id' - 09:35:44
+[END] Test 'tests/test_elements_page.py::test_locate_by_id' finished in 82.72 seconds.
+
+[START] Test 'tests/test_elements_page.py::test_locate_by_css_selector' - 09:37:07
+[END] Test 'tests/test_elements_page.py::test_locate_by_css_selector' finished in 9.40 seconds.
+
+[START] Test 'tests/test_elements_page.py::test_locate_by_xpath' - 09:37:16
+[END] Test 'tests/test_elements_page.py::test_locate_by_xpath' finished in 9.06 seconds.
+
+[START] Test 'tests/test_practice_form.py::test_fill_practice_form[data0]' - 09:37:25
+[END] Test 'tests/test_practice_form.py::test_fill_practice_form[data0]' finished in 9.96 seconds.
+
+[START] Test 'tests/test_practice_form.py::test_fill_practice_form[data1]' - 09:37:35
+[END] Test 'tests/test_practice_form.py::test_fill_practice_form[data1]' finished in 9.42 seconds.
+
+[START] Test 'tests/test_practice_form.py::test_fill_practice_form[data2]' - 09:37:45
+[END] Test 'tests/test_practice_form.py::test_fill_practice_form[data2]' finished in 9.85 seconds.
+
+[START] Test 'tests/test_text_box.py::test_fill_form_with_pom' - 09:37:55
+[END] Test 'tests/test_text_box.py::test_fill_form_with_pom' finished in 10.26 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' - 09:38:05
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' finished in 8.84 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' - 09:38:14
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' finished in 8.05 seconds.
+
+[START] Test 'tests/test_tooltips_page2.py::test_hover_tool_tip_button' - 09:38:22
+[END] Test 'tests/test_tooltips_page2.py::test_hover_tool_tip_button' finished in 7.45 seconds.
+
+[START] Test 'tests/test_tooltips_page2.py::test_hover_tool_tip_text_field' - 09:38:29
+[END] Test 'tests/test_tooltips_page2.py::test_hover_tool_tip_text_field' finished in 8.23 seconds.
+
+[START] Test 'tests/test_checkbox_page.py::test_commands_checkbox_output' - 09:45:44
+[END] Test 'tests/test_checkbox_page.py::test_commands_checkbox_output' finished in 11.43 seconds.
+
+[START] Test 'tests/test_checkbox_page.py::test_notes_checkbox_output' - 09:45:56
+[END] Test 'tests/test_checkbox_page.py::test_notes_checkbox_output' finished in 11.14 seconds.
+
+[START] Test 'tests/test_elements_page.py::test_navigate_to_elements_page' - 09:46:07
+[END] Test 'tests/test_elements_page.py::test_navigate_to_elements_page' finished in 11.11 seconds.
+
+[START] Test 'tests/test_elements_page.py::test_locate_by_id' - 09:46:18
+[END] Test 'tests/test_elements_page.py::test_locate_by_id' finished in 14.03 seconds.
+
+[START] Test 'tests/test_elements_page.py::test_locate_by_css_selector' - 09:46:32
+[END] Test 'tests/test_elements_page.py::test_locate_by_css_selector' finished in 45.00 seconds.
+
+[START] Test 'tests/test_elements_page.py::test_locate_by_xpath' - 09:47:17
+[END] Test 'tests/test_elements_page.py::test_locate_by_xpath' finished in 10.82 seconds.
+
+[START] Test 'tests/test_practice_form.py::test_fill_practice_form[data0]' - 09:47:28
+[END] Test 'tests/test_practice_form.py::test_fill_practice_form[data0]' finished in 12.29 seconds.
+
+[START] Test 'tests/test_practice_form.py::test_fill_practice_form[data1]' - 09:47:40
+[END] Test 'tests/test_practice_form.py::test_fill_practice_form[data1]' finished in 11.89 seconds.
+
+[START] Test 'tests/test_practice_form.py::test_fill_practice_form[data2]' - 09:47:52
+[END] Test 'tests/test_practice_form.py::test_fill_practice_form[data2]' finished in 12.37 seconds.
+
+[START] Test 'tests/test_text_box.py::test_fill_form_with_pom' - 09:48:05
+[END] Test 'tests/test_text_box.py::test_fill_form_with_pom' finished in 12.45 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' - 09:48:17
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' finished in 32.22 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' - 09:48:49
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' finished in 25.26 seconds.
+
+[START] Test 'tests/test_tooltips_page2.py::test_hover_tool_tip_button' - 09:49:14
+[END] Test 'tests/test_tooltips_page2.py::test_hover_tool_tip_button' finished in 14.93 seconds.
+
+[START] Test 'tests/test_tooltips_page2.py::test_hover_tool_tip_text_field' - 09:49:29
+[END] Test 'tests/test_tooltips_page2.py::test_hover_tool_tip_text_field' finished in 2.84 seconds.
+
+[START] Test 'tests/test_checkbox_page.py::test_commands_checkbox_output' - 10:04:26
+[END] Test 'tests/test_checkbox_page.py::test_commands_checkbox_output' finished in 11.96 seconds.
+
+[START] Test 'tests/test_checkbox_page.py::test_notes_checkbox_output' - 10:04:38
+[END] Test 'tests/test_checkbox_page.py::test_notes_checkbox_output' finished in 8.79 seconds.
+
+[START] Test 'tests/test_elements_page.py::test_navigate_to_elements_page' - 10:04:46
+[END] Test 'tests/test_elements_page.py::test_navigate_to_elements_page' finished in 12.81 seconds.
+
+[START] Test 'tests/test_elements_page.py::test_locate_by_id' - 10:04:59
+[END] Test 'tests/test_elements_page.py::test_locate_by_id' finished in 9.38 seconds.
+
+[START] Test 'tests/test_elements_page.py::test_locate_by_css_selector' - 10:05:09
+[END] Test 'tests/test_elements_page.py::test_locate_by_css_selector' finished in 9.60 seconds.
+
+[START] Test 'tests/test_elements_page.py::test_locate_by_xpath' - 10:05:18
+[END] Test 'tests/test_elements_page.py::test_locate_by_xpath' finished in 9.28 seconds.
+
+[START] Test 'tests/test_practice_form.py::test_fill_practice_form[data0]' - 10:05:28
+[END] Test 'tests/test_practice_form.py::test_fill_practice_form[data0]' finished in 10.53 seconds.
+
+[START] Test 'tests/test_practice_form.py::test_fill_practice_form[data1]' - 10:05:38
+[END] Test 'tests/test_practice_form.py::test_fill_practice_form[data1]' finished in 10.45 seconds.
+
+[START] Test 'tests/test_practice_form.py::test_fill_practice_form[data2]' - 10:05:49
+[END] Test 'tests/test_practice_form.py::test_fill_practice_form[data2]' finished in 10.19 seconds.
+
+[START] Test 'tests/test_text_box.py::test_fill_form_with_pom' - 10:05:59
+[END] Test 'tests/test_text_box.py::test_fill_form_with_pom' finished in 10.59 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' - 10:06:09
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_button' finished in 8.65 seconds.
+
+[START] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' - 10:06:18
+[END] Test 'tests/test_tooltips_page.py::test_hover_tool_tip_text_field' finished in 9.06 seconds.
+
+[START] Test 'tests/test_tooltips_page2.py::test_hover_tool_tip_button' - 10:06:27
+[END] Test 'tests/test_tooltips_page2.py::test_hover_tool_tip_button' finished in 8.13 seconds.
+
+[START] Test 'tests/test_tooltips_page2.py::test_hover_tool_tip_text_field' - 10:06:35
+[END] Test 'tests/test_tooltips_page2.py::test_hover_tool_tip_text_field' finished in 7.59 seconds.

@@ -1,0 +1,3 @@
+browser,test_case_name,status,duration_s
+Chrome,test_go_to_alerts_page[chrome],Passed,76.1543
+Firefox,test_go_to_alerts_page[firefox],Passed,62.3868

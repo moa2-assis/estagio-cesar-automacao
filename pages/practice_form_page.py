@@ -21,6 +21,7 @@ class PracticeFormPage:
         self.mobile_input = (By.ID, "userNumber")
         self.dob_input = (By.ID, "dateOfBirthInput")
         self.subjects_input = (By.ID, "subjectsInput")
+        self.subjects_text = (By.ID, "react-select-2-option-0")
         self.hobbies_checkbox = (By.XPATH, "//label[text()='{}']")
         self.picture_upload = (By.ID, "uploadPicture")
         self.address_textarea = (By.ID, "currentAddress")
@@ -47,9 +48,12 @@ class PracticeFormPage:
 
         # Subjects
         subjects_field = self.driver.find_element(*self.subjects_input)
+        self.driver.execute_script("arguments[0].scrollIntoView(true);", subjects_field)
         for subject in data["subjects"]:
+            self.driver.execute_script("arguments[0].scrollIntoView(true);", subjects_field)
             subjects_field.send_keys(subject)
-            subjects_field.send_keys(Keys.ENTER)
+            self.driver.execute_script("arguments[0].scrollIntoView(true);", subjects_field)
+            subjects_field.send_keys(Keys.TAB)
 
         # State and City
         state_element = self.driver.find_element(*self.state_dropdown)
@@ -66,12 +70,6 @@ class PracticeFormPage:
         
         # Address
         self.driver.find_element(*self.address_textarea).send_keys(data["address"])
-        
-        # State and City
-        # state_element = self.driver.find_element(*self.state_dropdown)
-        # self.driver.execute_script("arguments[0].scrollIntoView(true);", state_element)
-        # self.driver.find_element(*self.state_dropdown).click()
-        # self.driver.find_element(By.XPATH, f"//*[text()='{data['state']}']").click()
         
         city_element = self.driver.find_element(*self.city_dropdown)
         self.driver.execute_script("arguments[0].scrollIntoView(true);", city_element)

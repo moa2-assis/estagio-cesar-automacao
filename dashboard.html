@@ -15,6 +15,2440 @@ details summary{cursor:pointer;user-select:none;color:#333}
 <h1>Test Execution Dashboard</h1>
 <table>
 <tr><th>Test Case</th><th>Status</th><th>Duration (s)</th><th>Start Time</th><th>Stop Time</th><th>Failed in</th></tr>
+<tr><td>test_go_to_alerts_page[firefox]</td><td class='status-broken'>broken</td><td>7.48</td><td>2025-09-30 09:50:48</td><td>2025-09-30 09:50:56</td><td><span class='loc'>test_slider_page.py:18</span></td></tr>
+<tr class='error-row'><td colspan='6'><div class='error-msg'><strong>Erro:</strong> selenium.common.exceptions.MoveTargetOutOfBoundsException: Message: Move target (731, -46) is out of bounds of viewport dimensions (1680, 865)</div><div style='margin-top:6px'><strong>Arquivo/linha:</strong> test_slider_page.py:18</div><pre style='margin:8px 0; padding:8px; background:#f7f7f7; border:1px solid #eee; overflow:auto'>   15 │     slider_page.open_slider_page()
+   16 │ 
+   17 │     # 5
+<span style='background:#fff2cc;border-left:4px solid #e0a800;padding-left:6px;'>   18 │     slider_page.set_slider_value_while(value_test)</span>
+   19 │ 
+   20 │     assert slider_page.get_slider_value() == value_test</pre><div class="attachments"><a href="allure-results/a2fb3722-5bbd-4cb2-b98e-326f1b064dec-attachment.txt" target="_blank">stdout</a></div><details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.firefox.webdriver.WebDriver (session=&quot;4e1650eb-7ceb-41aa-aad2-52c645220766&quot;)&gt;
+
+    def test_go_to_alerts_page(driver):
+        slider_page = SliderPage(driver)
+    
+        # 1
+        slider_page.navigate()
+    
+        # 2
+        slider_page.open_widgets_page_from_home()
+    
+        # 3
+        slider_page.open_slider_page()
+    
+        # 5
+&gt;       slider_page.set_slider_value_while(value_test)
+
+tests/test_slider_page.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pages/slider_page.py:46: in set_slider_value_while
+    ActionChains(self.driver).move_to_element_with_offset(slider, 1, 0).click_and_hold().move_by_offset(5, 0).release().perform()
+myproject/lib/python3.9/site-packages/selenium/webdriver/common/action_chains.py:93: in perform
+    self.w3c_actions.perform()
+myproject/lib/python3.9/site-packages/selenium/webdriver/common/actions/action_builder.py:168: in perform
+    self.driver.execute(Command.W3C_ACTIONS, enc)
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:458: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x10fa77bb0&gt;
+response = {&#x27;status&#x27;: 500, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;move target out of bounds&quot;,&quot;message&quot;:&quot;Move target (731, -46) is out of bo...sys.mjs:67:17\\nreceiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:187:42\\n&quot;}}&#x27;}
+
+    def check_response(self, response: dict[str, Any]) -&gt; None:
+        &quot;&quot;&quot;Checks that a JSON response from the WebDriver does not have an
+        error.
+    
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+    
+        :Raises: If the response contains an error message.
+        &quot;&quot;&quot;
+        status = response.get(&quot;status&quot;, None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get(&quot;message&quot;, &quot;&quot;)
+        screen: str = response.get(&quot;screen&quot;, &quot;&quot;)
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get(&quot;value&quot;, None)
+            if value_json and isinstance(value_json, str):
+                try:
+                    value = json.loads(value_json)
+                    if isinstance(value, dict):
+                        if len(value) == 1:
+                            value = value[&quot;value&quot;]
+                        status = value.get(&quot;error&quot;, None)
+                        if not status:
+                            status = value.get(&quot;status&quot;, ErrorCode.UNKNOWN_ERROR)
+                            message = value.get(&quot;value&quot;) or value.get(&quot;message&quot;)
+                            if not isinstance(message, str):
+                                value = message
+                                message = message.get(&quot;message&quot;)
+                        else:
+                            message = value.get(&quot;message&quot;, None)
+                except ValueError:
+                    pass
+    
+        exception_class: type[WebDriverException]
+        e = ErrorCode()
+        error_codes = [item for item in dir(e) if not item.startswith(&quot;__&quot;)]
+        for error_code in error_codes:
+            error_info = getattr(ErrorCode, error_code)
+            if isinstance(error_info, list) and status in error_info:
+                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)
+                break
+        else:
+            exception_class = WebDriverException
+    
+        if not value:
+            value = response[&quot;value&quot;]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == &quot;&quot; and &quot;message&quot; in value:
+            message = value[&quot;message&quot;]
+    
+        screen = None  # type: ignore[assignment]
+        if &quot;screen&quot; in value:
+            screen = value[&quot;screen&quot;]
+    
+        stacktrace = None
+        st_value = value.get(&quot;stackTrace&quot;) or value.get(&quot;stacktrace&quot;)
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split(&quot;\n&quot;)
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get(&quot;lineNumber&quot;, &quot;&quot;)
+                        file = frame.get(&quot;fileName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if line:
+                            file = f&quot;{file}:{line}&quot;
+                        meth = frame.get(&quot;methodName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if &quot;className&quot; in frame:
+                            meth = f&quot;{frame[&#x27;className&#x27;]}.{meth}&quot;
+                        msg = &quot;    at %s (%s)&quot;
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if &quot;data&quot; in value:
+                alert_text = value[&quot;data&quot;].get(&quot;text&quot;)
+            elif &quot;alert&quot; in value:
+                alert_text = value[&quot;alert&quot;].get(&quot;text&quot;)
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+&gt;       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.MoveTargetOutOfBoundsException: Message: Move target (731, -46) is out of bounds of viewport dimensions (1680, 865)
+E       Stacktrace:
+E       RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+E       WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:202:5
+E       MoveTargetOutOfBoundsError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:521:5
+E       assertTargetInViewPort@chrome://remote/content/shared/webdriver/Actions.sys.mjs:3122:11
+E       #assertInViewPort@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:67:17
+E       receiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:187:42
+
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:232: MoveTargetOutOfBoundsException</pre></details></td></tr>
+<tr><td>test_go_to_alerts_page[chrome]</td><td class='status-passed'>passed</td><td>10.33</td><td>2025-09-30 09:50:33</td><td>2025-09-30 09:50:44</td><td>—</td></tr>
+<tr><td>test_go_to_alerts_page[firefox]</td><td class='status-broken'>broken</td><td>7.52</td><td>2025-09-30 09:48:00</td><td>2025-09-30 09:48:08</td><td><span class='loc'>test_slider_page.py:18</span></td></tr>
+<tr class='error-row'><td colspan='6'><div class='error-msg'><strong>Erro:</strong> selenium.common.exceptions.MoveTargetOutOfBoundsException: Message: Move target (731, -53) is out of bounds of viewport dimensions (1680, 865)</div><div style='margin-top:6px'><strong>Arquivo/linha:</strong> test_slider_page.py:18</div><pre style='margin:8px 0; padding:8px; background:#f7f7f7; border:1px solid #eee; overflow:auto'>   15 │     slider_page.open_slider_page()
+   16 │ 
+   17 │     # 5
+<span style='background:#fff2cc;border-left:4px solid #e0a800;padding-left:6px;'>   18 │     slider_page.set_slider_value_while(value_test)</span>
+   19 │ 
+   20 │     assert slider_page.get_slider_value() == value_test</pre><div class="attachments"><a href="allure-results/0a40a057-7f86-4db4-b307-33993ec70802-attachment.txt" target="_blank">stdout</a></div><details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.firefox.webdriver.WebDriver (session=&quot;2a936a85-e036-4316-87ff-356c1abaff08&quot;)&gt;
+
+    def test_go_to_alerts_page(driver):
+        slider_page = SliderPage(driver)
+    
+        # 1
+        slider_page.navigate()
+    
+        # 2
+        slider_page.open_widgets_page_from_home()
+    
+        # 3
+        slider_page.open_slider_page()
+    
+        # 5
+&gt;       slider_page.set_slider_value_while(value_test)
+
+tests/test_slider_page.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pages/slider_page.py:46: in set_slider_value_while
+    ActionChains(self.driver).move_to_element_with_offset(slider, 1, 0).click_and_hold().move_by_offset(5, 0).release().perform()
+myproject/lib/python3.9/site-packages/selenium/webdriver/common/action_chains.py:93: in perform
+    self.w3c_actions.perform()
+myproject/lib/python3.9/site-packages/selenium/webdriver/common/actions/action_builder.py:168: in perform
+    self.driver.execute(Command.W3C_ACTIONS, enc)
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:458: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x1095b9b20&gt;
+response = {&#x27;status&#x27;: 500, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;move target out of bounds&quot;,&quot;message&quot;:&quot;Move target (731, -53) is out of bo...sys.mjs:67:17\\nreceiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:187:42\\n&quot;}}&#x27;}
+
+    def check_response(self, response: dict[str, Any]) -&gt; None:
+        &quot;&quot;&quot;Checks that a JSON response from the WebDriver does not have an
+        error.
+    
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+    
+        :Raises: If the response contains an error message.
+        &quot;&quot;&quot;
+        status = response.get(&quot;status&quot;, None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get(&quot;message&quot;, &quot;&quot;)
+        screen: str = response.get(&quot;screen&quot;, &quot;&quot;)
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get(&quot;value&quot;, None)
+            if value_json and isinstance(value_json, str):
+                try:
+                    value = json.loads(value_json)
+                    if isinstance(value, dict):
+                        if len(value) == 1:
+                            value = value[&quot;value&quot;]
+                        status = value.get(&quot;error&quot;, None)
+                        if not status:
+                            status = value.get(&quot;status&quot;, ErrorCode.UNKNOWN_ERROR)
+                            message = value.get(&quot;value&quot;) or value.get(&quot;message&quot;)
+                            if not isinstance(message, str):
+                                value = message
+                                message = message.get(&quot;message&quot;)
+                        else:
+                            message = value.get(&quot;message&quot;, None)
+                except ValueError:
+                    pass
+    
+        exception_class: type[WebDriverException]
+        e = ErrorCode()
+        error_codes = [item for item in dir(e) if not item.startswith(&quot;__&quot;)]
+        for error_code in error_codes:
+            error_info = getattr(ErrorCode, error_code)
+            if isinstance(error_info, list) and status in error_info:
+                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)
+                break
+        else:
+            exception_class = WebDriverException
+    
+        if not value:
+            value = response[&quot;value&quot;]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == &quot;&quot; and &quot;message&quot; in value:
+            message = value[&quot;message&quot;]
+    
+        screen = None  # type: ignore[assignment]
+        if &quot;screen&quot; in value:
+            screen = value[&quot;screen&quot;]
+    
+        stacktrace = None
+        st_value = value.get(&quot;stackTrace&quot;) or value.get(&quot;stacktrace&quot;)
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split(&quot;\n&quot;)
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get(&quot;lineNumber&quot;, &quot;&quot;)
+                        file = frame.get(&quot;fileName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if line:
+                            file = f&quot;{file}:{line}&quot;
+                        meth = frame.get(&quot;methodName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if &quot;className&quot; in frame:
+                            meth = f&quot;{frame[&#x27;className&#x27;]}.{meth}&quot;
+                        msg = &quot;    at %s (%s)&quot;
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if &quot;data&quot; in value:
+                alert_text = value[&quot;data&quot;].get(&quot;text&quot;)
+            elif &quot;alert&quot; in value:
+                alert_text = value[&quot;alert&quot;].get(&quot;text&quot;)
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+&gt;       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.MoveTargetOutOfBoundsException: Message: Move target (731, -53) is out of bounds of viewport dimensions (1680, 865)
+E       Stacktrace:
+E       RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+E       WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:202:5
+E       MoveTargetOutOfBoundsError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:521:5
+E       assertTargetInViewPort@chrome://remote/content/shared/webdriver/Actions.sys.mjs:3122:11
+E       #assertInViewPort@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:67:17
+E       receiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:187:42
+
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:232: MoveTargetOutOfBoundsException</pre></details></td></tr>
+<tr><td>test_go_to_alerts_page[chrome]</td><td class='status-passed'>passed</td><td>8.55</td><td>2025-09-30 09:47:46</td><td>2025-09-30 09:47:55</td><td>—</td></tr>
+<tr><td>test_go_to_alerts_page[firefox]</td><td class='status-broken'>broken</td><td>7.25</td><td>2025-09-30 09:31:48</td><td>2025-09-30 09:31:55</td><td><span class='loc'>test_slider_page.py:16</span></td></tr>
+<tr class='error-row'><td colspan='6'><div class='error-msg'><strong>Erro:</strong> selenium.common.exceptions.MoveTargetOutOfBoundsException: Message: Move target (731, -11) is out of bounds of viewport dimensions (1680, 865)</div><div style='margin-top:6px'><strong>Arquivo/linha:</strong> test_slider_page.py:16</div><pre style='margin:8px 0; padding:8px; background:#f7f7f7; border:1px solid #eee; overflow:auto'>   13 │ 
+   14 │     # 3
+   15 │     slider_page.open_slider_page()
+<span style='background:#fff2cc;border-left:4px solid #e0a800;padding-left:6px;'>   16 │ </span>
+   17 │     # 5
+   18 │     slider_page.set_slider_value_while(value_test)
+   19 │ </pre><div class="attachments"><a href="allure-results/cf29c304-7836-45f0-973d-5cf5e17746f1-attachment.txt" target="_blank">stdout</a></div><details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.firefox.webdriver.WebDriver (session=&quot;6e246014-5095-4f3b-8f46-691970a17b7a&quot;)&gt;
+
+    def test_go_to_alerts_page(driver):
+        slider_page = SliderPage(driver)
+    
+        # 1
+        slider_page.navigate()
+    
+        # 2
+        slider_page.open_widgets_page_from_home()
+    
+        # 3
+        slider_page.open_slider_page()
+    
+        # 5
+&gt;       slider_page.set_slider_value_while(91)
+
+tests/test_slider_page.py:16: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pages/slider_page.py:46: in set_slider_value_while
+    ActionChains(self.driver).move_to_element_with_offset(slider, 1, 0).click_and_hold().move_by_offset(5, 0).release().perform()
+myproject/lib/python3.9/site-packages/selenium/webdriver/common/action_chains.py:93: in perform
+    self.w3c_actions.perform()
+myproject/lib/python3.9/site-packages/selenium/webdriver/common/actions/action_builder.py:168: in perform
+    self.driver.execute(Command.W3C_ACTIONS, enc)
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:458: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x104a86b50&gt;
+response = {&#x27;status&#x27;: 500, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;move target out of bounds&quot;,&quot;message&quot;:&quot;Move target (731, -11) is out of bo...sys.mjs:67:17\\nreceiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:187:42\\n&quot;}}&#x27;}
+
+    def check_response(self, response: dict[str, Any]) -&gt; None:
+        &quot;&quot;&quot;Checks that a JSON response from the WebDriver does not have an
+        error.
+    
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+    
+        :Raises: If the response contains an error message.
+        &quot;&quot;&quot;
+        status = response.get(&quot;status&quot;, None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get(&quot;message&quot;, &quot;&quot;)
+        screen: str = response.get(&quot;screen&quot;, &quot;&quot;)
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get(&quot;value&quot;, None)
+            if value_json and isinstance(value_json, str):
+                try:
+                    value = json.loads(value_json)
+                    if isinstance(value, dict):
+                        if len(value) == 1:
+                            value = value[&quot;value&quot;]
+                        status = value.get(&quot;error&quot;, None)
+                        if not status:
+                            status = value.get(&quot;status&quot;, ErrorCode.UNKNOWN_ERROR)
+                            message = value.get(&quot;value&quot;) or value.get(&quot;message&quot;)
+                            if not isinstance(message, str):
+                                value = message
+                                message = message.get(&quot;message&quot;)
+                        else:
+                            message = value.get(&quot;message&quot;, None)
+                except ValueError:
+                    pass
+    
+        exception_class: type[WebDriverException]
+        e = ErrorCode()
+        error_codes = [item for item in dir(e) if not item.startswith(&quot;__&quot;)]
+        for error_code in error_codes:
+            error_info = getattr(ErrorCode, error_code)
+            if isinstance(error_info, list) and status in error_info:
+                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)
+                break
+        else:
+            exception_class = WebDriverException
+    
+        if not value:
+            value = response[&quot;value&quot;]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == &quot;&quot; and &quot;message&quot; in value:
+            message = value[&quot;message&quot;]
+    
+        screen = None  # type: ignore[assignment]
+        if &quot;screen&quot; in value:
+            screen = value[&quot;screen&quot;]
+    
+        stacktrace = None
+        st_value = value.get(&quot;stackTrace&quot;) or value.get(&quot;stacktrace&quot;)
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split(&quot;\n&quot;)
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get(&quot;lineNumber&quot;, &quot;&quot;)
+                        file = frame.get(&quot;fileName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if line:
+                            file = f&quot;{file}:{line}&quot;
+                        meth = frame.get(&quot;methodName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if &quot;className&quot; in frame:
+                            meth = f&quot;{frame[&#x27;className&#x27;]}.{meth}&quot;
+                        msg = &quot;    at %s (%s)&quot;
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if &quot;data&quot; in value:
+                alert_text = value[&quot;data&quot;].get(&quot;text&quot;)
+            elif &quot;alert&quot; in value:
+                alert_text = value[&quot;alert&quot;].get(&quot;text&quot;)
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+&gt;       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.MoveTargetOutOfBoundsException: Message: Move target (731, -11) is out of bounds of viewport dimensions (1680, 865)
+E       Stacktrace:
+E       RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+E       WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:202:5
+E       MoveTargetOutOfBoundsError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:521:5
+E       assertTargetInViewPort@chrome://remote/content/shared/webdriver/Actions.sys.mjs:3122:11
+E       #assertInViewPort@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:67:17
+E       receiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:187:42
+
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:232: MoveTargetOutOfBoundsException</pre></details></td></tr>
+<tr><td>test_go_to_alerts_page[chrome]</td><td class='status-passed'>passed</td><td>8.56</td><td>2025-09-30 09:31:34</td><td>2025-09-30 09:31:43</td><td>—</td></tr>
+<tr><td>test_go_to_alerts_page[firefox]</td><td class='status-broken'>broken</td><td>7.83</td><td>2025-09-30 09:27:53</td><td>2025-09-30 09:28:01</td><td><span class='loc'>test_slider_page.py:16</span></td></tr>
+<tr class='error-row'><td colspan='6'><div class='error-msg'><strong>Erro:</strong> selenium.common.exceptions.MoveTargetOutOfBoundsException: Message: Move target (731, -10) is out of bounds of viewport dimensions (1680, 865)</div><div style='margin-top:6px'><strong>Arquivo/linha:</strong> test_slider_page.py:16</div><pre style='margin:8px 0; padding:8px; background:#f7f7f7; border:1px solid #eee; overflow:auto'>   13 │ 
+   14 │     # 3
+   15 │     slider_page.open_slider_page()
+<span style='background:#fff2cc;border-left:4px solid #e0a800;padding-left:6px;'>   16 │ </span>
+   17 │     # 5
+   18 │     slider_page.set_slider_value_while(value_test)
+   19 │ </pre><div class="attachments"><a href="allure-results/912f243f-7daa-42be-a520-2bd9c38d13f3-attachment.txt" target="_blank">stdout</a></div><details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.firefox.webdriver.WebDriver (session=&quot;be6e3c7e-f0d6-48ff-8781-fdc1f5c75b6f&quot;)&gt;
+
+    def test_go_to_alerts_page(driver):
+        slider_page = SliderPage(driver)
+    
+        # 1
+        slider_page.navigate()
+    
+        # 2
+        slider_page.open_widgets_page_from_home()
+    
+        # 3
+        slider_page.open_slider_page()
+    
+        # 4 + 5
+&gt;       slider_page.set_slider_value_while(43) == 43
+
+tests/test_slider_page.py:16: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pages/slider_page.py:46: in set_slider_value_while
+    ActionChains(self.driver).move_to_element_with_offset(slider, 1, 0).click_and_hold().move_by_offset(5, 0).release().perform()
+myproject/lib/python3.9/site-packages/selenium/webdriver/common/action_chains.py:93: in perform
+    self.w3c_actions.perform()
+myproject/lib/python3.9/site-packages/selenium/webdriver/common/actions/action_builder.py:168: in perform
+    self.driver.execute(Command.W3C_ACTIONS, enc)
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:458: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x10a728a90&gt;
+response = {&#x27;status&#x27;: 500, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;move target out of bounds&quot;,&quot;message&quot;:&quot;Move target (731, -10) is out of bo...sys.mjs:67:17\\nreceiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:187:42\\n&quot;}}&#x27;}
+
+    def check_response(self, response: dict[str, Any]) -&gt; None:
+        &quot;&quot;&quot;Checks that a JSON response from the WebDriver does not have an
+        error.
+    
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+    
+        :Raises: If the response contains an error message.
+        &quot;&quot;&quot;
+        status = response.get(&quot;status&quot;, None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get(&quot;message&quot;, &quot;&quot;)
+        screen: str = response.get(&quot;screen&quot;, &quot;&quot;)
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get(&quot;value&quot;, None)
+            if value_json and isinstance(value_json, str):
+                try:
+                    value = json.loads(value_json)
+                    if isinstance(value, dict):
+                        if len(value) == 1:
+                            value = value[&quot;value&quot;]
+                        status = value.get(&quot;error&quot;, None)
+                        if not status:
+                            status = value.get(&quot;status&quot;, ErrorCode.UNKNOWN_ERROR)
+                            message = value.get(&quot;value&quot;) or value.get(&quot;message&quot;)
+                            if not isinstance(message, str):
+                                value = message
+                                message = message.get(&quot;message&quot;)
+                        else:
+                            message = value.get(&quot;message&quot;, None)
+                except ValueError:
+                    pass
+    
+        exception_class: type[WebDriverException]
+        e = ErrorCode()
+        error_codes = [item for item in dir(e) if not item.startswith(&quot;__&quot;)]
+        for error_code in error_codes:
+            error_info = getattr(ErrorCode, error_code)
+            if isinstance(error_info, list) and status in error_info:
+                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)
+                break
+        else:
+            exception_class = WebDriverException
+    
+        if not value:
+            value = response[&quot;value&quot;]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == &quot;&quot; and &quot;message&quot; in value:
+            message = value[&quot;message&quot;]
+    
+        screen = None  # type: ignore[assignment]
+        if &quot;screen&quot; in value:
+            screen = value[&quot;screen&quot;]
+    
+        stacktrace = None
+        st_value = value.get(&quot;stackTrace&quot;) or value.get(&quot;stacktrace&quot;)
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split(&quot;\n&quot;)
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get(&quot;lineNumber&quot;, &quot;&quot;)
+                        file = frame.get(&quot;fileName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if line:
+                            file = f&quot;{file}:{line}&quot;
+                        meth = frame.get(&quot;methodName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if &quot;className&quot; in frame:
+                            meth = f&quot;{frame[&#x27;className&#x27;]}.{meth}&quot;
+                        msg = &quot;    at %s (%s)&quot;
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if &quot;data&quot; in value:
+                alert_text = value[&quot;data&quot;].get(&quot;text&quot;)
+            elif &quot;alert&quot; in value:
+                alert_text = value[&quot;alert&quot;].get(&quot;text&quot;)
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+&gt;       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.MoveTargetOutOfBoundsException: Message: Move target (731, -10) is out of bounds of viewport dimensions (1680, 865)
+E       Stacktrace:
+E       RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+E       WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:202:5
+E       MoveTargetOutOfBoundsError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:521:5
+E       assertTargetInViewPort@chrome://remote/content/shared/webdriver/Actions.sys.mjs:3122:11
+E       #assertInViewPort@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:67:17
+E       receiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:187:42
+
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:232: MoveTargetOutOfBoundsException</pre></details></td></tr>
+<tr><td>test_go_to_alerts_page[chrome]</td><td class='status-passed'>passed</td><td>7.66</td><td>2025-09-30 09:27:41</td><td>2025-09-30 09:27:49</td><td>—</td></tr>
+<tr><td>test_go_to_alerts_page[firefox]</td><td class='status-broken'>broken</td><td>8.11</td><td>2025-09-30 09:21:13</td><td>2025-09-30 09:21:22</td><td><span class='loc'>test_slider_page.py:16</span></td></tr>
+<tr class='error-row'><td colspan='6'><div class='error-msg'><strong>Erro:</strong> selenium.common.exceptions.MoveTargetOutOfBoundsException: Message: Move target (731, -6) is out of bounds of viewport dimensions (1680, 865)</div><div style='margin-top:6px'><strong>Arquivo/linha:</strong> test_slider_page.py:16</div><pre style='margin:8px 0; padding:8px; background:#f7f7f7; border:1px solid #eee; overflow:auto'>   13 │ 
+   14 │     # 3
+   15 │     slider_page.open_slider_page()
+<span style='background:#fff2cc;border-left:4px solid #e0a800;padding-left:6px;'>   16 │ </span>
+   17 │     # 5
+   18 │     slider_page.set_slider_value_while(value_test)
+   19 │ </pre><div class="attachments"><a href="allure-results/62f0837a-3f20-436c-b39e-23c029d53680-attachment.txt" target="_blank">stdout</a></div><details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.firefox.webdriver.WebDriver (session=&quot;5e91da84-1bff-43b8-9351-a5f6819b3896&quot;)&gt;
+
+    def test_go_to_alerts_page(driver):
+        slider_page = SliderPage(driver)
+    
+        # 1
+        slider_page.navigate()
+    
+        # 2
+        slider_page.open_widgets_page_from_home()
+    
+        # 3
+        slider_page.open_slider_page()
+    
+        # 4 + 5
+&gt;       slider_page.set_slider_value_while(43) == 43
+
+tests/test_slider_page.py:16: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pages/slider_page.py:46: in set_slider_value_while
+    ActionChains(self.driver).move_to_element_with_offset(slider, 1, 0).click_and_hold().move_by_offset(5, 0).release().perform()
+myproject/lib/python3.9/site-packages/selenium/webdriver/common/action_chains.py:93: in perform
+    self.w3c_actions.perform()
+myproject/lib/python3.9/site-packages/selenium/webdriver/common/actions/action_builder.py:168: in perform
+    self.driver.execute(Command.W3C_ACTIONS, enc)
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:458: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x107594f40&gt;
+response = {&#x27;status&#x27;: 500, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;move target out of bounds&quot;,&quot;message&quot;:&quot;Move target (731, -6) is out of bou...sys.mjs:67:17\\nreceiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:187:42\\n&quot;}}&#x27;}
+
+    def check_response(self, response: dict[str, Any]) -&gt; None:
+        &quot;&quot;&quot;Checks that a JSON response from the WebDriver does not have an
+        error.
+    
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+    
+        :Raises: If the response contains an error message.
+        &quot;&quot;&quot;
+        status = response.get(&quot;status&quot;, None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get(&quot;message&quot;, &quot;&quot;)
+        screen: str = response.get(&quot;screen&quot;, &quot;&quot;)
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get(&quot;value&quot;, None)
+            if value_json and isinstance(value_json, str):
+                try:
+                    value = json.loads(value_json)
+                    if isinstance(value, dict):
+                        if len(value) == 1:
+                            value = value[&quot;value&quot;]
+                        status = value.get(&quot;error&quot;, None)
+                        if not status:
+                            status = value.get(&quot;status&quot;, ErrorCode.UNKNOWN_ERROR)
+                            message = value.get(&quot;value&quot;) or value.get(&quot;message&quot;)
+                            if not isinstance(message, str):
+                                value = message
+                                message = message.get(&quot;message&quot;)
+                        else:
+                            message = value.get(&quot;message&quot;, None)
+                except ValueError:
+                    pass
+    
+        exception_class: type[WebDriverException]
+        e = ErrorCode()
+        error_codes = [item for item in dir(e) if not item.startswith(&quot;__&quot;)]
+        for error_code in error_codes:
+            error_info = getattr(ErrorCode, error_code)
+            if isinstance(error_info, list) and status in error_info:
+                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)
+                break
+        else:
+            exception_class = WebDriverException
+    
+        if not value:
+            value = response[&quot;value&quot;]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == &quot;&quot; and &quot;message&quot; in value:
+            message = value[&quot;message&quot;]
+    
+        screen = None  # type: ignore[assignment]
+        if &quot;screen&quot; in value:
+            screen = value[&quot;screen&quot;]
+    
+        stacktrace = None
+        st_value = value.get(&quot;stackTrace&quot;) or value.get(&quot;stacktrace&quot;)
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split(&quot;\n&quot;)
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get(&quot;lineNumber&quot;, &quot;&quot;)
+                        file = frame.get(&quot;fileName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if line:
+                            file = f&quot;{file}:{line}&quot;
+                        meth = frame.get(&quot;methodName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if &quot;className&quot; in frame:
+                            meth = f&quot;{frame[&#x27;className&#x27;]}.{meth}&quot;
+                        msg = &quot;    at %s (%s)&quot;
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if &quot;data&quot; in value:
+                alert_text = value[&quot;data&quot;].get(&quot;text&quot;)
+            elif &quot;alert&quot; in value:
+                alert_text = value[&quot;alert&quot;].get(&quot;text&quot;)
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+&gt;       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.MoveTargetOutOfBoundsException: Message: Move target (731, -6) is out of bounds of viewport dimensions (1680, 865)
+E       Stacktrace:
+E       RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+E       WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:202:5
+E       MoveTargetOutOfBoundsError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:521:5
+E       assertTargetInViewPort@chrome://remote/content/shared/webdriver/Actions.sys.mjs:3122:11
+E       #assertInViewPort@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:67:17
+E       receiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:187:42
+
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:232: MoveTargetOutOfBoundsException</pre></details></td></tr>
+<tr><td>test_go_to_alerts_page[chrome]</td><td class='status-passed'>passed</td><td>8.82</td><td>2025-09-30 09:21:00</td><td>2025-09-30 09:21:09</td><td>—</td></tr>
+<tr><td>test_go_to_alerts_page[firefox]</td><td class='status-broken'>broken</td><td>9.12</td><td>2025-09-30 09:00:10</td><td>2025-09-30 09:00:20</td><td><span class='loc'>test_slider_page.py:16</span></td></tr>
+<tr class='error-row'><td colspan='6'><div class='error-msg'><strong>Erro:</strong> selenium.common.exceptions.MoveTargetOutOfBoundsException: Message: Move target (730, -39) is out of bounds of viewport dimensions (1680, 865)</div><div style='margin-top:6px'><strong>Arquivo/linha:</strong> test_slider_page.py:16</div><pre style='margin:8px 0; padding:8px; background:#f7f7f7; border:1px solid #eee; overflow:auto'>   13 │ 
+   14 │     # 3
+   15 │     slider_page.open_slider_page()
+<span style='background:#fff2cc;border-left:4px solid #e0a800;padding-left:6px;'>   16 │ </span>
+   17 │     # 5
+   18 │     slider_page.set_slider_value_while(value_test)
+   19 │ </pre><div class="attachments"><a href="allure-results/ac5bc2e1-5c4b-4bb5-81aa-ef07d21e2912-attachment.txt" target="_blank">stdout</a></div><details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.firefox.webdriver.WebDriver (session=&quot;97ddb1ce-1548-457b-8275-a10915c37f65&quot;)&gt;
+
+    def test_go_to_alerts_page(driver):
+        slider_page = SliderPage(driver)
+    
+        # 1
+        slider_page.navigate()
+    
+        # 2
+        slider_page.open_widgets_page_from_home()
+    
+        # 3
+        slider_page.open_slider_page()
+    
+        # 4 + 5
+&gt;       assert slider_page.set_slider_value(43) == 43
+
+tests/test_slider_page.py:16: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pages/slider_page.py:47: in set_slider_value
+    action.click_and_hold(slider).move_by_offset(value, 0).release().perform()
+myproject/lib/python3.9/site-packages/selenium/webdriver/common/action_chains.py:93: in perform
+    self.w3c_actions.perform()
+myproject/lib/python3.9/site-packages/selenium/webdriver/common/actions/action_builder.py:168: in perform
+    self.driver.execute(Command.W3C_ACTIONS, enc)
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:458: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x103985be0&gt;
+response = {&#x27;status&#x27;: 500, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;move target out of bounds&quot;,&quot;message&quot;:&quot;Move target (730, -39) is out of bo...sys.mjs:67:17\\nreceiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:187:42\\n&quot;}}&#x27;}
+
+    def check_response(self, response: dict[str, Any]) -&gt; None:
+        &quot;&quot;&quot;Checks that a JSON response from the WebDriver does not have an
+        error.
+    
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+    
+        :Raises: If the response contains an error message.
+        &quot;&quot;&quot;
+        status = response.get(&quot;status&quot;, None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get(&quot;message&quot;, &quot;&quot;)
+        screen: str = response.get(&quot;screen&quot;, &quot;&quot;)
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get(&quot;value&quot;, None)
+            if value_json and isinstance(value_json, str):
+                try:
+                    value = json.loads(value_json)
+                    if isinstance(value, dict):
+                        if len(value) == 1:
+                            value = value[&quot;value&quot;]
+                        status = value.get(&quot;error&quot;, None)
+                        if not status:
+                            status = value.get(&quot;status&quot;, ErrorCode.UNKNOWN_ERROR)
+                            message = value.get(&quot;value&quot;) or value.get(&quot;message&quot;)
+                            if not isinstance(message, str):
+                                value = message
+                                message = message.get(&quot;message&quot;)
+                        else:
+                            message = value.get(&quot;message&quot;, None)
+                except ValueError:
+                    pass
+    
+        exception_class: type[WebDriverException]
+        e = ErrorCode()
+        error_codes = [item for item in dir(e) if not item.startswith(&quot;__&quot;)]
+        for error_code in error_codes:
+            error_info = getattr(ErrorCode, error_code)
+            if isinstance(error_info, list) and status in error_info:
+                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)
+                break
+        else:
+            exception_class = WebDriverException
+    
+        if not value:
+            value = response[&quot;value&quot;]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == &quot;&quot; and &quot;message&quot; in value:
+            message = value[&quot;message&quot;]
+    
+        screen = None  # type: ignore[assignment]
+        if &quot;screen&quot; in value:
+            screen = value[&quot;screen&quot;]
+    
+        stacktrace = None
+        st_value = value.get(&quot;stackTrace&quot;) or value.get(&quot;stacktrace&quot;)
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split(&quot;\n&quot;)
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get(&quot;lineNumber&quot;, &quot;&quot;)
+                        file = frame.get(&quot;fileName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if line:
+                            file = f&quot;{file}:{line}&quot;
+                        meth = frame.get(&quot;methodName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if &quot;className&quot; in frame:
+                            meth = f&quot;{frame[&#x27;className&#x27;]}.{meth}&quot;
+                        msg = &quot;    at %s (%s)&quot;
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if &quot;data&quot; in value:
+                alert_text = value[&quot;data&quot;].get(&quot;text&quot;)
+            elif &quot;alert&quot; in value:
+                alert_text = value[&quot;alert&quot;].get(&quot;text&quot;)
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+&gt;       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.MoveTargetOutOfBoundsException: Message: Move target (730, -39) is out of bounds of viewport dimensions (1680, 865)
+E       Stacktrace:
+E       RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+E       WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:202:5
+E       MoveTargetOutOfBoundsError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:521:5
+E       assertTargetInViewPort@chrome://remote/content/shared/webdriver/Actions.sys.mjs:3122:11
+E       #assertInViewPort@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:67:17
+E       receiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:187:42
+
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:232: MoveTargetOutOfBoundsException</pre></details></td></tr>
+<tr><td>test_go_to_alerts_page[chrome]</td><td class='status-failed'>failed</td><td>10.49</td><td>2025-09-30 08:59:55</td><td>2025-09-30 09:00:06</td><td><span class='loc'>test_slider_page.py:16</span></td></tr>
+<tr class='error-row'><td colspan='6'><div class='error-msg'><strong>Erro:</strong> AssertionError: assert 58 == 43</div><div style='margin-top:6px'><strong>Arquivo/linha:</strong> test_slider_page.py:16</div><pre style='margin:8px 0; padding:8px; background:#f7f7f7; border:1px solid #eee; overflow:auto'>   13 │ 
+   14 │     # 3
+   15 │     slider_page.open_slider_page()
+<span style='background:#fff2cc;border-left:4px solid #e0a800;padding-left:6px;'>   16 │ </span>
+   17 │     # 5
+   18 │     slider_page.set_slider_value_while(value_test)
+   19 │ </pre><div class="attachments"><a href="allure-results/edd1258d-6126-4bd9-b0d8-4b29b71c6cc1-attachment.txt" target="_blank">stdout</a></div><details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;b781b253e8a2fee49a94b1c15b747852&quot;)&gt;
+
+    def test_go_to_alerts_page(driver):
+        slider_page = SliderPage(driver)
+    
+        # 1
+        slider_page.navigate()
+    
+        # 2
+        slider_page.open_widgets_page_from_home()
+    
+        # 3
+        slider_page.open_slider_page()
+    
+        # 4 + 5
+&gt;       assert slider_page.set_slider_value(43) == 43
+E       assert 58 == 43
+E        +  where 58 = set_slider_value(43)
+E        +    where set_slider_value = &lt;pages.slider_page.SliderPage object at 0x103477c40&gt;.set_slider_value
+
+tests/test_slider_page.py:16: AssertionError</pre></details></td></tr>
+<tr><td>test_go_to_alerts_page[firefox]</td><td class='status-broken'>broken</td><td>6.87</td><td>2025-09-30 08:57:43</td><td>2025-09-30 08:57:50</td><td><span class='loc'>test_slider_page.py:16</span></td></tr>
+<tr class='error-row'><td colspan='6'><div class='error-msg'><strong>Erro:</strong> selenium.common.exceptions.MoveTargetOutOfBoundsException: Message: Move target (730, -38) is out of bounds of viewport dimensions (1680, 865)</div><div style='margin-top:6px'><strong>Arquivo/linha:</strong> test_slider_page.py:16</div><pre style='margin:8px 0; padding:8px; background:#f7f7f7; border:1px solid #eee; overflow:auto'>   13 │ 
+   14 │     # 3
+   15 │     slider_page.open_slider_page()
+<span style='background:#fff2cc;border-left:4px solid #e0a800;padding-left:6px;'>   16 │ </span>
+   17 │     # 5
+   18 │     slider_page.set_slider_value_while(value_test)
+   19 │ </pre><div class="attachments"><a href="allure-results/c35a7e73-888b-4218-9d88-57e21bf1ba01-attachment.txt" target="_blank">stdout</a></div><details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.firefox.webdriver.WebDriver (session=&quot;37ae629f-f01a-4ab7-9cd6-aaa56d3f313a&quot;)&gt;
+
+    def test_go_to_alerts_page(driver):
+        slider_page = SliderPage(driver)
+    
+        # 1
+        slider_page.navigate()
+    
+        # 2
+        slider_page.open_widgets_page_from_home()
+    
+        # 3
+        slider_page.open_slider_page()
+    
+        # 4 + 5
+&gt;       assert slider_page.set_slider_value(43) == 43
+
+tests/test_slider_page.py:16: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pages/slider_page.py:47: in set_slider_value
+    action.click_and_hold(slider).move_by_offset(value - int(slider.get_attribute(&quot;value&quot;)), 0).release().perform() # 4
+myproject/lib/python3.9/site-packages/selenium/webdriver/common/action_chains.py:93: in perform
+    self.w3c_actions.perform()
+myproject/lib/python3.9/site-packages/selenium/webdriver/common/actions/action_builder.py:168: in perform
+    self.driver.execute(Command.W3C_ACTIONS, enc)
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:458: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x1099b2bb0&gt;
+response = {&#x27;status&#x27;: 500, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;move target out of bounds&quot;,&quot;message&quot;:&quot;Move target (730, -38) is out of bo...sys.mjs:67:17\\nreceiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:187:42\\n&quot;}}&#x27;}
+
+    def check_response(self, response: dict[str, Any]) -&gt; None:
+        &quot;&quot;&quot;Checks that a JSON response from the WebDriver does not have an
+        error.
+    
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+    
+        :Raises: If the response contains an error message.
+        &quot;&quot;&quot;
+        status = response.get(&quot;status&quot;, None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get(&quot;message&quot;, &quot;&quot;)
+        screen: str = response.get(&quot;screen&quot;, &quot;&quot;)
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get(&quot;value&quot;, None)
+            if value_json and isinstance(value_json, str):
+                try:
+                    value = json.loads(value_json)
+                    if isinstance(value, dict):
+                        if len(value) == 1:
+                            value = value[&quot;value&quot;]
+                        status = value.get(&quot;error&quot;, None)
+                        if not status:
+                            status = value.get(&quot;status&quot;, ErrorCode.UNKNOWN_ERROR)
+                            message = value.get(&quot;value&quot;) or value.get(&quot;message&quot;)
+                            if not isinstance(message, str):
+                                value = message
+                                message = message.get(&quot;message&quot;)
+                        else:
+                            message = value.get(&quot;message&quot;, None)
+                except ValueError:
+                    pass
+    
+        exception_class: type[WebDriverException]
+        e = ErrorCode()
+        error_codes = [item for item in dir(e) if not item.startswith(&quot;__&quot;)]
+        for error_code in error_codes:
+            error_info = getattr(ErrorCode, error_code)
+            if isinstance(error_info, list) and status in error_info:
+                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)
+                break
+        else:
+            exception_class = WebDriverException
+    
+        if not value:
+            value = response[&quot;value&quot;]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == &quot;&quot; and &quot;message&quot; in value:
+            message = value[&quot;message&quot;]
+    
+        screen = None  # type: ignore[assignment]
+        if &quot;screen&quot; in value:
+            screen = value[&quot;screen&quot;]
+    
+        stacktrace = None
+        st_value = value.get(&quot;stackTrace&quot;) or value.get(&quot;stacktrace&quot;)
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split(&quot;\n&quot;)
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get(&quot;lineNumber&quot;, &quot;&quot;)
+                        file = frame.get(&quot;fileName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if line:
+                            file = f&quot;{file}:{line}&quot;
+                        meth = frame.get(&quot;methodName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if &quot;className&quot; in frame:
+                            meth = f&quot;{frame[&#x27;className&#x27;]}.{meth}&quot;
+                        msg = &quot;    at %s (%s)&quot;
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if &quot;data&quot; in value:
+                alert_text = value[&quot;data&quot;].get(&quot;text&quot;)
+            elif &quot;alert&quot; in value:
+                alert_text = value[&quot;alert&quot;].get(&quot;text&quot;)
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+&gt;       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.MoveTargetOutOfBoundsException: Message: Move target (730, -38) is out of bounds of viewport dimensions (1680, 865)
+E       Stacktrace:
+E       RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+E       WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:202:5
+E       MoveTargetOutOfBoundsError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:521:5
+E       assertTargetInViewPort@chrome://remote/content/shared/webdriver/Actions.sys.mjs:3122:11
+E       #assertInViewPort@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:67:17
+E       receiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:187:42
+
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:232: MoveTargetOutOfBoundsException</pre></details></td></tr>
+<tr><td>test_go_to_alerts_page[chrome]</td><td class='status-failed'>failed</td><td>6.60</td><td>2025-09-30 08:57:32</td><td>2025-09-30 08:57:38</td><td><span class='loc'>test_slider_page.py:16</span></td></tr>
+<tr class='error-row'><td colspan='6'><div class='error-msg'><strong>Erro:</strong> AssertionError: assert 53 == 43</div><div style='margin-top:6px'><strong>Arquivo/linha:</strong> test_slider_page.py:16</div><pre style='margin:8px 0; padding:8px; background:#f7f7f7; border:1px solid #eee; overflow:auto'>   13 │ 
+   14 │     # 3
+   15 │     slider_page.open_slider_page()
+<span style='background:#fff2cc;border-left:4px solid #e0a800;padding-left:6px;'>   16 │ </span>
+   17 │     # 5
+   18 │     slider_page.set_slider_value_while(value_test)
+   19 │ </pre><div class="attachments"><a href="allure-results/8df3852e-1009-4b1d-b68c-f34236d725cf-attachment.txt" target="_blank">stdout</a></div><details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;8b1732154bc507f4f1801b7755055ea4&quot;)&gt;
+
+    def test_go_to_alerts_page(driver):
+        slider_page = SliderPage(driver)
+    
+        # 1
+        slider_page.navigate()
+    
+        # 2
+        slider_page.open_widgets_page_from_home()
+    
+        # 3
+        slider_page.open_slider_page()
+    
+        # 4 + 5
+&gt;       assert slider_page.set_slider_value(43) == 43
+E       assert 53 == 43
+E        +  where 53 = set_slider_value(43)
+E        +    where set_slider_value = &lt;pages.slider_page.SliderPage object at 0x10990f040&gt;.set_slider_value
+
+tests/test_slider_page.py:16: AssertionError</pre></details></td></tr>
+<tr><td>test_go_to_alerts_page[firefox]</td><td class='status-broken'>broken</td><td>0.74</td><td>2025-09-30 08:54:17</td><td>2025-09-30 08:54:18</td><td><span class='loc'>test_slider_page.py:10</span></td></tr>
+<tr class='error-row'><td colspan='6'><div class='error-msg'><strong>Erro:</strong> selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: /html/body/div[2]/div/div/div[2]/div/div[4]/div; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception</div><div style='margin-top:6px'><strong>Arquivo/linha:</strong> test_slider_page.py:10</div><pre style='margin:8px 0; padding:8px; background:#f7f7f7; border:1px solid #eee; overflow:auto'>    7 │     
+    8 │     # 1
+    9 │     slider_page.navigate()
+<span style='background:#fff2cc;border-left:4px solid #e0a800;padding-left:6px;'>   10 │ </span>
+   11 │     # 2
+   12 │     slider_page.open_widgets_page_from_home()
+   13 │ </pre><div class="attachments"><a href="allure-results/b17f846e-476f-4556-9d6d-b4330456a5c2-attachment.txt" target="_blank">stdout</a></div><details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.firefox.webdriver.WebDriver (session=&quot;e02b4c30-6390-468c-89bb-e8a7ae9cab70&quot;)&gt;
+
+    def test_go_to_alerts_page(driver):
+        slider_page = SliderPage(driver)
+    
+        # 1
+        slider_page.navigate()
+    
+        # 2
+&gt;       slider_page.open_widgets_page_from_home()
+
+tests/test_slider_page.py:10: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pages/slider_page.py:27: in open_widgets_page_from_home
+    self.driver.find_element(*self.alerts_home_button).click() # 2 por XPATH
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:926: in find_element
+    return self.execute(Command.FIND_ELEMENT, {&quot;using&quot;: by, &quot;value&quot;: value})[&quot;value&quot;]
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:458: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x109318670&gt;
+response = {&#x27;status&#x27;: 404, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;no such element&quot;,&quot;message&quot;:&quot;Unable to locate element: /html/body/div[2]/d.../content/shared/webdriver/Errors.sys.mjs:555:5\\ndom.find/&lt;/&lt;@chrome://remote/content/shared/DOM.sys.mjs:136:16\\n&quot;}}&#x27;}
+
+    def check_response(self, response: dict[str, Any]) -&gt; None:
+        &quot;&quot;&quot;Checks that a JSON response from the WebDriver does not have an
+        error.
+    
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+    
+        :Raises: If the response contains an error message.
+        &quot;&quot;&quot;
+        status = response.get(&quot;status&quot;, None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get(&quot;message&quot;, &quot;&quot;)
+        screen: str = response.get(&quot;screen&quot;, &quot;&quot;)
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get(&quot;value&quot;, None)
+            if value_json and isinstance(value_json, str):
+                try:
+                    value = json.loads(value_json)
+                    if isinstance(value, dict):
+                        if len(value) == 1:
+                            value = value[&quot;value&quot;]
+                        status = value.get(&quot;error&quot;, None)
+                        if not status:
+                            status = value.get(&quot;status&quot;, ErrorCode.UNKNOWN_ERROR)
+                            message = value.get(&quot;value&quot;) or value.get(&quot;message&quot;)
+                            if not isinstance(message, str):
+                                value = message
+                                message = message.get(&quot;message&quot;)
+                        else:
+                            message = value.get(&quot;message&quot;, None)
+                except ValueError:
+                    pass
+    
+        exception_class: type[WebDriverException]
+        e = ErrorCode()
+        error_codes = [item for item in dir(e) if not item.startswith(&quot;__&quot;)]
+        for error_code in error_codes:
+            error_info = getattr(ErrorCode, error_code)
+            if isinstance(error_info, list) and status in error_info:
+                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)
+                break
+        else:
+            exception_class = WebDriverException
+    
+        if not value:
+            value = response[&quot;value&quot;]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == &quot;&quot; and &quot;message&quot; in value:
+            message = value[&quot;message&quot;]
+    
+        screen = None  # type: ignore[assignment]
+        if &quot;screen&quot; in value:
+            screen = value[&quot;screen&quot;]
+    
+        stacktrace = None
+        st_value = value.get(&quot;stackTrace&quot;) or value.get(&quot;stacktrace&quot;)
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split(&quot;\n&quot;)
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get(&quot;lineNumber&quot;, &quot;&quot;)
+                        file = frame.get(&quot;fileName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if line:
+                            file = f&quot;{file}:{line}&quot;
+                        meth = frame.get(&quot;methodName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if &quot;className&quot; in frame:
+                            meth = f&quot;{frame[&#x27;className&#x27;]}.{meth}&quot;
+                        msg = &quot;    at %s (%s)&quot;
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if &quot;data&quot; in value:
+                alert_text = value[&quot;data&quot;].get(&quot;text&quot;)
+            elif &quot;alert&quot; in value:
+                alert_text = value[&quot;alert&quot;].get(&quot;text&quot;)
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+&gt;       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: /html/body/div[2]/div/div/div[2]/div/div[4]/div; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+E       Stacktrace:
+E       RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+E       WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:202:5
+E       NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:555:5
+E       dom.find/&lt;/&lt;@chrome://remote/content/shared/DOM.sys.mjs:136:16
+
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:232: NoSuchElementException</pre></details></td></tr>
+<tr><td>test_go_to_alerts_page[chrome]</td><td class='status-broken'>broken</td><td>5.88</td><td>2025-09-30 08:54:06</td><td>2025-09-30 08:54:12</td><td><span class='loc'>test_slider_page.py:13</span></td></tr>
+<tr class='error-row'><td colspan='6'><div class='error-msg'><strong>Erro:</strong> selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element &lt;li class=&quot;btn btn-light &quot; id=&quot;item-3&quot;&gt;...&lt;/li&gt; is not clickable at point (219, 717). Other element would receive the click: &lt;div id=&quot;fixedban&quot; style=&quot;width:100%;margin:auto;text-align:center;float:none;overflow:hidden;display:scroll;position:fixed;bottom:0;z-index:9999999&quot;&gt;...&lt;/div&gt;</div><div style='margin-top:6px'><strong>Arquivo/linha:</strong> test_slider_page.py:13</div><pre style='margin:8px 0; padding:8px; background:#f7f7f7; border:1px solid #eee; overflow:auto'>   10 │ 
+   11 │     # 2
+   12 │     slider_page.open_widgets_page_from_home()
+<span style='background:#fff2cc;border-left:4px solid #e0a800;padding-left:6px;'>   13 │ </span>
+   14 │     # 3
+   15 │     slider_page.open_slider_page()
+   16 │ </pre><div class="attachments"><a href="allure-results/e1a1a93c-9b93-4b26-a39e-89f0fe0cad08-attachment.txt" target="_blank">stdout</a></div><details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;4ffd6ae04c4199fe3cdc67b4d7978b86&quot;)&gt;
+
+    def test_go_to_alerts_page(driver):
+        slider_page = SliderPage(driver)
+    
+        # 1
+        slider_page.navigate()
+    
+        # 2
+        slider_page.open_widgets_page_from_home()
+    
+        # 3
+&gt;       slider_page.open_slider_page()
+
+tests/test_slider_page.py:13: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pages/slider_page.py:34: in open_slider_page
+    self.driver.find_element(*self.alerts_button).click() # 3 por XPATH
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:120: in click
+    self._execute(Command.CLICK_ELEMENT)
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:573: in _execute
+    return self._parent.execute(command, params)
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:458: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x10939b100&gt;
+response = {&#x27;status&#x27;: 400, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;element click intercepted&quot;,&quot;message&quot;:&quot;element click intercepted: Element ...ff808c07e59 _pthread_start + 115\\n24  libsystem_pthread.dylib             0x00007ff808c03857 thread_start + 15\\n&quot;}}&#x27;}
+
+    def check_response(self, response: dict[str, Any]) -&gt; None:
+        &quot;&quot;&quot;Checks that a JSON response from the WebDriver does not have an
+        error.
+    
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+    
+        :Raises: If the response contains an error message.
+        &quot;&quot;&quot;
+        status = response.get(&quot;status&quot;, None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get(&quot;message&quot;, &quot;&quot;)
+        screen: str = response.get(&quot;screen&quot;, &quot;&quot;)
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get(&quot;value&quot;, None)
+            if value_json and isinstance(value_json, str):
+                try:
+                    value = json.loads(value_json)
+                    if isinstance(value, dict):
+                        if len(value) == 1:
+                            value = value[&quot;value&quot;]
+                        status = value.get(&quot;error&quot;, None)
+                        if not status:
+                            status = value.get(&quot;status&quot;, ErrorCode.UNKNOWN_ERROR)
+                            message = value.get(&quot;value&quot;) or value.get(&quot;message&quot;)
+                            if not isinstance(message, str):
+                                value = message
+                                message = message.get(&quot;message&quot;)
+                        else:
+                            message = value.get(&quot;message&quot;, None)
+                except ValueError:
+                    pass
+    
+        exception_class: type[WebDriverException]
+        e = ErrorCode()
+        error_codes = [item for item in dir(e) if not item.startswith(&quot;__&quot;)]
+        for error_code in error_codes:
+            error_info = getattr(ErrorCode, error_code)
+            if isinstance(error_info, list) and status in error_info:
+                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)
+                break
+        else:
+            exception_class = WebDriverException
+    
+        if not value:
+            value = response[&quot;value&quot;]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == &quot;&quot; and &quot;message&quot; in value:
+            message = value[&quot;message&quot;]
+    
+        screen = None  # type: ignore[assignment]
+        if &quot;screen&quot; in value:
+            screen = value[&quot;screen&quot;]
+    
+        stacktrace = None
+        st_value = value.get(&quot;stackTrace&quot;) or value.get(&quot;stacktrace&quot;)
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split(&quot;\n&quot;)
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get(&quot;lineNumber&quot;, &quot;&quot;)
+                        file = frame.get(&quot;fileName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if line:
+                            file = f&quot;{file}:{line}&quot;
+                        meth = frame.get(&quot;methodName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if &quot;className&quot; in frame:
+                            meth = f&quot;{frame[&#x27;className&#x27;]}.{meth}&quot;
+                        msg = &quot;    at %s (%s)&quot;
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if &quot;data&quot; in value:
+                alert_text = value[&quot;data&quot;].get(&quot;text&quot;)
+            elif &quot;alert&quot; in value:
+                alert_text = value[&quot;alert&quot;].get(&quot;text&quot;)
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+&gt;       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element &lt;li class=&quot;btn btn-light &quot; id=&quot;item-3&quot;&gt;...&lt;/li&gt; is not clickable at point (219, 717). Other element would receive the click: &lt;div id=&quot;fixedban&quot; style=&quot;width:100%;margin:auto;text-align:center;float:none;overflow:hidden;display:scroll;position:fixed;bottom:0;z-index:9999999&quot;&gt;...&lt;/div&gt;
+E         (Session info: chrome=140.0.7339.208); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
+E       Stacktrace:
+E       0   chromedriver                        0x0000000110511028 chromedriver + 6361128
+E       1   chromedriver                        0x000000011050872a chromedriver + 6326058
+E       2   chromedriver                        0x000000010ff68c20 chromedriver + 429088
+E       3   chromedriver                        0x000000010ffc1c90 chromedriver + 793744
+E       4   chromedriver                        0x000000010ffbfaeb chromedriver + 785131
+E       5   chromedriver                        0x000000010ffbd182 chromedriver + 774530
+E       6   chromedriver                        0x000000010ffbc2b8 chromedriver + 770744
+E       7   chromedriver                        0x000000010ffaef4a chromedriver + 716618
+E       8   chromedriver                        0x000000010ffe0e02 chromedriver + 921090
+E       9   chromedriver                        0x000000010ffae8c8 chromedriver + 714952
+E       10  chromedriver                        0x000000010ffe0fbe chromedriver + 921534
+E       11  chromedriver                        0x000000011000826e chromedriver + 1081966
+E       12  chromedriver                        0x000000010ffe0bd3 chromedriver + 920531
+E       13  chromedriver                        0x000000010ffac8ff chromedriver + 706815
+E       14  chromedriver                        0x000000010ffaddc1 chromedriver + 712129
+E       15  chromedriver                        0x00000001104cefc0 chromedriver + 6090688
+E       16  chromedriver                        0x00000001104d2e55 chromedriver + 6106709
+E       17  chromedriver                        0x00000001104aa287 chromedriver + 5939847
+E       18  chromedriver                        0x00000001104d38cf chromedriver + 6109391
+E       19  chromedriver                        0x00000001104995f4 chromedriver + 5871092
+E       20  chromedriver                        0x00000001104f5a78 chromedriver + 6249080
+E       21  chromedriver                        0x00000001104f5c3c chromedriver + 6249532
+E       22  chromedriver                        0x0000000110508301 chromedriver + 6324993
+E       23  libsystem_pthread.dylib             0x00007ff808c07e59 _pthread_start + 115
+E       24  libsystem_pthread.dylib             0x00007ff808c03857 thread_start + 15
+
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:232: ElementClickInterceptedException</pre></details></td></tr>
+<tr><td>test_go_to_alerts_page[firefox]</td><td class='status-broken'>broken</td><td>0.78</td><td>2025-09-30 08:52:16</td><td>2025-09-30 08:52:17</td><td><span class='loc'>test_slider_page.py:10</span></td></tr>
+<tr class='error-row'><td colspan='6'><div class='error-msg'><strong>Erro:</strong> selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: /html/body/div[2]/div/div/div[2]/div/div[4]/div; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception</div><div style='margin-top:6px'><strong>Arquivo/linha:</strong> test_slider_page.py:10</div><pre style='margin:8px 0; padding:8px; background:#f7f7f7; border:1px solid #eee; overflow:auto'>    7 │     
+    8 │     # 1
+    9 │     slider_page.navigate()
+<span style='background:#fff2cc;border-left:4px solid #e0a800;padding-left:6px;'>   10 │ </span>
+   11 │     # 2
+   12 │     slider_page.open_widgets_page_from_home()
+   13 │ </pre><div class="attachments"><a href="allure-results/d3792844-8f56-46c5-937e-7e80511c69b6-attachment.txt" target="_blank">stdout</a></div><details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.firefox.webdriver.WebDriver (session=&quot;11ab6645-99f2-4b69-815c-b88b6bff07e8&quot;)&gt;
+
+    def test_go_to_alerts_page(driver):
+        slider_page = SliderPage(driver)
+    
+        # 1
+        slider_page.navigate()
+    
+        # 2
+&gt;       slider_page.open_widgets_page_from_home()
+
+tests/test_slider_page.py:10: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pages/slider_page.py:27: in open_widgets_page_from_home
+    self.driver.find_element(*self.alerts_home_button).click() # 2 por XPATH
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:926: in find_element
+    return self.execute(Command.FIND_ELEMENT, {&quot;using&quot;: by, &quot;value&quot;: value})[&quot;value&quot;]
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:458: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x1023180a0&gt;
+response = {&#x27;status&#x27;: 404, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;no such element&quot;,&quot;message&quot;:&quot;Unable to locate element: /html/body/div[2]/d.../content/shared/webdriver/Errors.sys.mjs:555:5\\ndom.find/&lt;/&lt;@chrome://remote/content/shared/DOM.sys.mjs:136:16\\n&quot;}}&#x27;}
+
+    def check_response(self, response: dict[str, Any]) -&gt; None:
+        &quot;&quot;&quot;Checks that a JSON response from the WebDriver does not have an
+        error.
+    
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+    
+        :Raises: If the response contains an error message.
+        &quot;&quot;&quot;
+        status = response.get(&quot;status&quot;, None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get(&quot;message&quot;, &quot;&quot;)
+        screen: str = response.get(&quot;screen&quot;, &quot;&quot;)
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get(&quot;value&quot;, None)
+            if value_json and isinstance(value_json, str):
+                try:
+                    value = json.loads(value_json)
+                    if isinstance(value, dict):
+                        if len(value) == 1:
+                            value = value[&quot;value&quot;]
+                        status = value.get(&quot;error&quot;, None)
+                        if not status:
+                            status = value.get(&quot;status&quot;, ErrorCode.UNKNOWN_ERROR)
+                            message = value.get(&quot;value&quot;) or value.get(&quot;message&quot;)
+                            if not isinstance(message, str):
+                                value = message
+                                message = message.get(&quot;message&quot;)
+                        else:
+                            message = value.get(&quot;message&quot;, None)
+                except ValueError:
+                    pass
+    
+        exception_class: type[WebDriverException]
+        e = ErrorCode()
+        error_codes = [item for item in dir(e) if not item.startswith(&quot;__&quot;)]
+        for error_code in error_codes:
+            error_info = getattr(ErrorCode, error_code)
+            if isinstance(error_info, list) and status in error_info:
+                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)
+                break
+        else:
+            exception_class = WebDriverException
+    
+        if not value:
+            value = response[&quot;value&quot;]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == &quot;&quot; and &quot;message&quot; in value:
+            message = value[&quot;message&quot;]
+    
+        screen = None  # type: ignore[assignment]
+        if &quot;screen&quot; in value:
+            screen = value[&quot;screen&quot;]
+    
+        stacktrace = None
+        st_value = value.get(&quot;stackTrace&quot;) or value.get(&quot;stacktrace&quot;)
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split(&quot;\n&quot;)
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get(&quot;lineNumber&quot;, &quot;&quot;)
+                        file = frame.get(&quot;fileName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if line:
+                            file = f&quot;{file}:{line}&quot;
+                        meth = frame.get(&quot;methodName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if &quot;className&quot; in frame:
+                            meth = f&quot;{frame[&#x27;className&#x27;]}.{meth}&quot;
+                        msg = &quot;    at %s (%s)&quot;
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if &quot;data&quot; in value:
+                alert_text = value[&quot;data&quot;].get(&quot;text&quot;)
+            elif &quot;alert&quot; in value:
+                alert_text = value[&quot;alert&quot;].get(&quot;text&quot;)
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+&gt;       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: /html/body/div[2]/div/div/div[2]/div/div[4]/div; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+E       Stacktrace:
+E       RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+E       WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:202:5
+E       NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:555:5
+E       dom.find/&lt;/&lt;@chrome://remote/content/shared/DOM.sys.mjs:136:16
+
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:232: NoSuchElementException</pre></details></td></tr>
+<tr><td>test_go_to_alerts_page[chrome]</td><td class='status-broken'>broken</td><td>6.04</td><td>2025-09-30 08:52:05</td><td>2025-09-30 08:52:11</td><td><span class='loc'>test_slider_page.py:13</span></td></tr>
+<tr class='error-row'><td colspan='6'><div class='error-msg'><strong>Erro:</strong> selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element &lt;li class=&quot;btn btn-light &quot; id=&quot;item-3&quot;&gt;...&lt;/li&gt; is not clickable at point (219, 717). Other element would receive the click: &lt;div id=&quot;fixedban&quot; style=&quot;width:100%;margin:auto;text-align:center;float:none;overflow:hidden;display:scroll;position:fixed;bottom:0;z-index:9999999&quot;&gt;...&lt;/div&gt;</div><div style='margin-top:6px'><strong>Arquivo/linha:</strong> test_slider_page.py:13</div><pre style='margin:8px 0; padding:8px; background:#f7f7f7; border:1px solid #eee; overflow:auto'>   10 │ 
+   11 │     # 2
+   12 │     slider_page.open_widgets_page_from_home()
+<span style='background:#fff2cc;border-left:4px solid #e0a800;padding-left:6px;'>   13 │ </span>
+   14 │     # 3
+   15 │     slider_page.open_slider_page()
+   16 │ </pre><div class="attachments"><a href="allure-results/9daae1a4-6296-45a9-a736-775ab04b5ebb-attachment.txt" target="_blank">stdout</a></div><details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;de27d7aa039b05c51605678cb5eca0eb&quot;)&gt;
+
+    def test_go_to_alerts_page(driver):
+        slider_page = SliderPage(driver)
+    
+        # 1
+        slider_page.navigate()
+    
+        # 2
+        slider_page.open_widgets_page_from_home()
+    
+        # 3
+&gt;       slider_page.open_slider_page()
+
+tests/test_slider_page.py:13: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pages/slider_page.py:34: in open_slider_page
+    self.driver.find_element(*self.alerts_button).click() # 3 por XPATH
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:120: in click
+    self._execute(Command.CLICK_ELEMENT)
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:573: in _execute
+    return self._parent.execute(command, params)
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:458: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x102340160&gt;
+response = {&#x27;status&#x27;: 400, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;element click intercepted&quot;,&quot;message&quot;:&quot;element click intercepted: Element ...ff808c07e59 _pthread_start + 115\\n24  libsystem_pthread.dylib             0x00007ff808c03857 thread_start + 15\\n&quot;}}&#x27;}
+
+    def check_response(self, response: dict[str, Any]) -&gt; None:
+        &quot;&quot;&quot;Checks that a JSON response from the WebDriver does not have an
+        error.
+    
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+    
+        :Raises: If the response contains an error message.
+        &quot;&quot;&quot;
+        status = response.get(&quot;status&quot;, None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get(&quot;message&quot;, &quot;&quot;)
+        screen: str = response.get(&quot;screen&quot;, &quot;&quot;)
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get(&quot;value&quot;, None)
+            if value_json and isinstance(value_json, str):
+                try:
+                    value = json.loads(value_json)
+                    if isinstance(value, dict):
+                        if len(value) == 1:
+                            value = value[&quot;value&quot;]
+                        status = value.get(&quot;error&quot;, None)
+                        if not status:
+                            status = value.get(&quot;status&quot;, ErrorCode.UNKNOWN_ERROR)
+                            message = value.get(&quot;value&quot;) or value.get(&quot;message&quot;)
+                            if not isinstance(message, str):
+                                value = message
+                                message = message.get(&quot;message&quot;)
+                        else:
+                            message = value.get(&quot;message&quot;, None)
+                except ValueError:
+                    pass
+    
+        exception_class: type[WebDriverException]
+        e = ErrorCode()
+        error_codes = [item for item in dir(e) if not item.startswith(&quot;__&quot;)]
+        for error_code in error_codes:
+            error_info = getattr(ErrorCode, error_code)
+            if isinstance(error_info, list) and status in error_info:
+                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)
+                break
+        else:
+            exception_class = WebDriverException
+    
+        if not value:
+            value = response[&quot;value&quot;]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == &quot;&quot; and &quot;message&quot; in value:
+            message = value[&quot;message&quot;]
+    
+        screen = None  # type: ignore[assignment]
+        if &quot;screen&quot; in value:
+            screen = value[&quot;screen&quot;]
+    
+        stacktrace = None
+        st_value = value.get(&quot;stackTrace&quot;) or value.get(&quot;stacktrace&quot;)
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split(&quot;\n&quot;)
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get(&quot;lineNumber&quot;, &quot;&quot;)
+                        file = frame.get(&quot;fileName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if line:
+                            file = f&quot;{file}:{line}&quot;
+                        meth = frame.get(&quot;methodName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if &quot;className&quot; in frame:
+                            meth = f&quot;{frame[&#x27;className&#x27;]}.{meth}&quot;
+                        msg = &quot;    at %s (%s)&quot;
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if &quot;data&quot; in value:
+                alert_text = value[&quot;data&quot;].get(&quot;text&quot;)
+            elif &quot;alert&quot; in value:
+                alert_text = value[&quot;alert&quot;].get(&quot;text&quot;)
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+&gt;       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element &lt;li class=&quot;btn btn-light &quot; id=&quot;item-3&quot;&gt;...&lt;/li&gt; is not clickable at point (219, 717). Other element would receive the click: &lt;div id=&quot;fixedban&quot; style=&quot;width:100%;margin:auto;text-align:center;float:none;overflow:hidden;display:scroll;position:fixed;bottom:0;z-index:9999999&quot;&gt;...&lt;/div&gt;
+E         (Session info: chrome=140.0.7339.208); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
+E       Stacktrace:
+E       0   chromedriver                        0x000000010649d028 chromedriver + 6361128
+E       1   chromedriver                        0x000000010649472a chromedriver + 6326058
+E       2   chromedriver                        0x0000000105ef4c20 chromedriver + 429088
+E       3   chromedriver                        0x0000000105f4dc90 chromedriver + 793744
+E       4   chromedriver                        0x0000000105f4baeb chromedriver + 785131
+E       5   chromedriver                        0x0000000105f49182 chromedriver + 774530
+E       6   chromedriver                        0x0000000105f482b8 chromedriver + 770744
+E       7   chromedriver                        0x0000000105f3af4a chromedriver + 716618
+E       8   chromedriver                        0x0000000105f6ce02 chromedriver + 921090
+E       9   chromedriver                        0x0000000105f3a8c8 chromedriver + 714952
+E       10  chromedriver                        0x0000000105f6cfbe chromedriver + 921534
+E       11  chromedriver                        0x0000000105f9426e chromedriver + 1081966
+E       12  chromedriver                        0x0000000105f6cbd3 chromedriver + 920531
+E       13  chromedriver                        0x0000000105f388ff chromedriver + 706815
+E       14  chromedriver                        0x0000000105f39dc1 chromedriver + 712129
+E       15  chromedriver                        0x000000010645afc0 chromedriver + 6090688
+E       16  chromedriver                        0x000000010645ee55 chromedriver + 6106709
+E       17  chromedriver                        0x0000000106436287 chromedriver + 5939847
+E       18  chromedriver                        0x000000010645f8cf chromedriver + 6109391
+E       19  chromedriver                        0x00000001064255f4 chromedriver + 5871092
+E       20  chromedriver                        0x0000000106481a78 chromedriver + 6249080
+E       21  chromedriver                        0x0000000106481c3c chromedriver + 6249532
+E       22  chromedriver                        0x0000000106494301 chromedriver + 6324993
+E       23  libsystem_pthread.dylib             0x00007ff808c07e59 _pthread_start + 115
+E       24  libsystem_pthread.dylib             0x00007ff808c03857 thread_start + 15
+
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:232: ElementClickInterceptedException</pre></details></td></tr>
+<tr><td>test_go_to_alerts_page[firefox]</td><td class='status-broken'>broken</td><td>0.68</td><td>2025-09-30 08:49:46</td><td>2025-09-30 08:49:46</td><td><span class='loc'>test_slider_page.py:10</span></td></tr>
+<tr class='error-row'><td colspan='6'><div class='error-msg'><strong>Erro:</strong> selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: /html/body/div[2]/div/div/div[2]/div/div[4]/div; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception</div><div style='margin-top:6px'><strong>Arquivo/linha:</strong> test_slider_page.py:10</div><pre style='margin:8px 0; padding:8px; background:#f7f7f7; border:1px solid #eee; overflow:auto'>    7 │     
+    8 │     # 1
+    9 │     slider_page.navigate()
+<span style='background:#fff2cc;border-left:4px solid #e0a800;padding-left:6px;'>   10 │ </span>
+   11 │     # 2
+   12 │     slider_page.open_widgets_page_from_home()
+   13 │ </pre><div class="attachments"><a href="allure-results/95b75535-e330-4ea2-81fa-5e1923f0bc11-attachment.txt" target="_blank">stdout</a></div><details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.firefox.webdriver.WebDriver (session=&quot;c3974324-dc24-461f-ab79-c9d2646f3446&quot;)&gt;
+
+    def test_go_to_alerts_page(driver):
+        slider_page = SliderPage(driver)
+    
+        # 1
+        slider_page.navigate()
+    
+        # 2
+&gt;       slider_page.open_widgets_page_from_home()
+
+tests/test_slider_page.py:10: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pages/slider_page.py:27: in open_widgets_page_from_home
+    self.driver.find_element(*self.alerts_home_button).click() # 2 por XPATH
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:926: in find_element
+    return self.execute(Command.FIND_ELEMENT, {&quot;using&quot;: by, &quot;value&quot;: value})[&quot;value&quot;]
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:458: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x103f61c10&gt;
+response = {&#x27;status&#x27;: 404, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;no such element&quot;,&quot;message&quot;:&quot;Unable to locate element: /html/body/div[2]/d.../content/shared/webdriver/Errors.sys.mjs:555:5\\ndom.find/&lt;/&lt;@chrome://remote/content/shared/DOM.sys.mjs:136:16\\n&quot;}}&#x27;}
+
+    def check_response(self, response: dict[str, Any]) -&gt; None:
+        &quot;&quot;&quot;Checks that a JSON response from the WebDriver does not have an
+        error.
+    
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+    
+        :Raises: If the response contains an error message.
+        &quot;&quot;&quot;
+        status = response.get(&quot;status&quot;, None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get(&quot;message&quot;, &quot;&quot;)
+        screen: str = response.get(&quot;screen&quot;, &quot;&quot;)
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get(&quot;value&quot;, None)
+            if value_json and isinstance(value_json, str):
+                try:
+                    value = json.loads(value_json)
+                    if isinstance(value, dict):
+                        if len(value) == 1:
+                            value = value[&quot;value&quot;]
+                        status = value.get(&quot;error&quot;, None)
+                        if not status:
+                            status = value.get(&quot;status&quot;, ErrorCode.UNKNOWN_ERROR)
+                            message = value.get(&quot;value&quot;) or value.get(&quot;message&quot;)
+                            if not isinstance(message, str):
+                                value = message
+                                message = message.get(&quot;message&quot;)
+                        else:
+                            message = value.get(&quot;message&quot;, None)
+                except ValueError:
+                    pass
+    
+        exception_class: type[WebDriverException]
+        e = ErrorCode()
+        error_codes = [item for item in dir(e) if not item.startswith(&quot;__&quot;)]
+        for error_code in error_codes:
+            error_info = getattr(ErrorCode, error_code)
+            if isinstance(error_info, list) and status in error_info:
+                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)
+                break
+        else:
+            exception_class = WebDriverException
+    
+        if not value:
+            value = response[&quot;value&quot;]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == &quot;&quot; and &quot;message&quot; in value:
+            message = value[&quot;message&quot;]
+    
+        screen = None  # type: ignore[assignment]
+        if &quot;screen&quot; in value:
+            screen = value[&quot;screen&quot;]
+    
+        stacktrace = None
+        st_value = value.get(&quot;stackTrace&quot;) or value.get(&quot;stacktrace&quot;)
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split(&quot;\n&quot;)
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get(&quot;lineNumber&quot;, &quot;&quot;)
+                        file = frame.get(&quot;fileName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if line:
+                            file = f&quot;{file}:{line}&quot;
+                        meth = frame.get(&quot;methodName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if &quot;className&quot; in frame:
+                            meth = f&quot;{frame[&#x27;className&#x27;]}.{meth}&quot;
+                        msg = &quot;    at %s (%s)&quot;
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if &quot;data&quot; in value:
+                alert_text = value[&quot;data&quot;].get(&quot;text&quot;)
+            elif &quot;alert&quot; in value:
+                alert_text = value[&quot;alert&quot;].get(&quot;text&quot;)
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+&gt;       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: /html/body/div[2]/div/div/div[2]/div/div[4]/div; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+E       Stacktrace:
+E       RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+E       WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:202:5
+E       NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:555:5
+E       dom.find/&lt;/&lt;@chrome://remote/content/shared/DOM.sys.mjs:136:16
+
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:232: NoSuchElementException</pre></details></td></tr>
+<tr><td>test_go_to_alerts_page[chrome]</td><td class='status-broken'>broken</td><td>0.77</td><td>2025-09-30 08:49:41</td><td>2025-09-30 08:49:41</td><td><span class='loc'>test_slider_page.py:10</span></td></tr>
+<tr class='error-row'><td colspan='6'><div class='error-msg'><strong>Erro:</strong> selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;/html/body/div[2]/div/div/div[2]/div/div[4]/div&quot;}</div><div style='margin-top:6px'><strong>Arquivo/linha:</strong> test_slider_page.py:10</div><pre style='margin:8px 0; padding:8px; background:#f7f7f7; border:1px solid #eee; overflow:auto'>    7 │     
+    8 │     # 1
+    9 │     slider_page.navigate()
+<span style='background:#fff2cc;border-left:4px solid #e0a800;padding-left:6px;'>   10 │ </span>
+   11 │     # 2
+   12 │     slider_page.open_widgets_page_from_home()
+   13 │ </pre><div class="attachments"><a href="allure-results/66ced332-94a9-4956-a723-f61c8d2ae708-attachment.txt" target="_blank">stdout</a></div><details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;ac967949d9376e698065de27d107859d&quot;)&gt;
+
+    def test_go_to_alerts_page(driver):
+        slider_page = SliderPage(driver)
+    
+        # 1
+        slider_page.navigate()
+    
+        # 2
+&gt;       slider_page.open_widgets_page_from_home()
+
+tests/test_slider_page.py:10: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pages/slider_page.py:27: in open_widgets_page_from_home
+    self.driver.find_element(*self.alerts_home_button).click() # 2 por XPATH
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:926: in find_element
+    return self.execute(Command.FIND_ELEMENT, {&quot;using&quot;: by, &quot;value&quot;: value})[&quot;value&quot;]
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:458: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x103ea61f0&gt;
+response = {&#x27;status&#x27;: 404, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;no such element&quot;,&quot;message&quot;:&quot;no such element: Unable to locate element: {\...ff808c07e59 _pthread_start + 115\\n20  libsystem_pthread.dylib             0x00007ff808c03857 thread_start + 15\\n&quot;}}&#x27;}
+
+    def check_response(self, response: dict[str, Any]) -&gt; None:
+        &quot;&quot;&quot;Checks that a JSON response from the WebDriver does not have an
+        error.
+    
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+    
+        :Raises: If the response contains an error message.
+        &quot;&quot;&quot;
+        status = response.get(&quot;status&quot;, None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get(&quot;message&quot;, &quot;&quot;)
+        screen: str = response.get(&quot;screen&quot;, &quot;&quot;)
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get(&quot;value&quot;, None)
+            if value_json and isinstance(value_json, str):
+                try:
+                    value = json.loads(value_json)
+                    if isinstance(value, dict):
+                        if len(value) == 1:
+                            value = value[&quot;value&quot;]
+                        status = value.get(&quot;error&quot;, None)
+                        if not status:
+                            status = value.get(&quot;status&quot;, ErrorCode.UNKNOWN_ERROR)
+                            message = value.get(&quot;value&quot;) or value.get(&quot;message&quot;)
+                            if not isinstance(message, str):
+                                value = message
+                                message = message.get(&quot;message&quot;)
+                        else:
+                            message = value.get(&quot;message&quot;, None)
+                except ValueError:
+                    pass
+    
+        exception_class: type[WebDriverException]
+        e = ErrorCode()
+        error_codes = [item for item in dir(e) if not item.startswith(&quot;__&quot;)]
+        for error_code in error_codes:
+            error_info = getattr(ErrorCode, error_code)
+            if isinstance(error_info, list) and status in error_info:
+                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)
+                break
+        else:
+            exception_class = WebDriverException
+    
+        if not value:
+            value = response[&quot;value&quot;]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == &quot;&quot; and &quot;message&quot; in value:
+            message = value[&quot;message&quot;]
+    
+        screen = None  # type: ignore[assignment]
+        if &quot;screen&quot; in value:
+            screen = value[&quot;screen&quot;]
+    
+        stacktrace = None
+        st_value = value.get(&quot;stackTrace&quot;) or value.get(&quot;stacktrace&quot;)
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split(&quot;\n&quot;)
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get(&quot;lineNumber&quot;, &quot;&quot;)
+                        file = frame.get(&quot;fileName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if line:
+                            file = f&quot;{file}:{line}&quot;
+                        meth = frame.get(&quot;methodName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if &quot;className&quot; in frame:
+                            meth = f&quot;{frame[&#x27;className&#x27;]}.{meth}&quot;
+                        msg = &quot;    at %s (%s)&quot;
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if &quot;data&quot; in value:
+                alert_text = value[&quot;data&quot;].get(&quot;text&quot;)
+            elif &quot;alert&quot; in value:
+                alert_text = value[&quot;alert&quot;].get(&quot;text&quot;)
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+&gt;       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;/html/body/div[2]/div/div/div[2]/div/div[4]/div&quot;}
+E         (Session info: chrome=140.0.7339.208); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+E       Stacktrace:
+E       0   chromedriver                        0x000000011039b028 chromedriver + 6361128
+E       1   chromedriver                        0x000000011039272a chromedriver + 6326058
+E       2   chromedriver                        0x000000010fdf2c20 chromedriver + 429088
+E       3   chromedriver                        0x000000010fe44d1b chromedriver + 765211
+E       4   chromedriver                        0x000000010fe44fe1 chromedriver + 765921
+E       5   chromedriver                        0x000000010fe94f44 chromedriver + 1093444
+E       6   chromedriver                        0x000000010fe6ae2d chromedriver + 921133
+E       7   chromedriver                        0x000000010fe9226e chromedriver + 1081966
+E       8   chromedriver                        0x000000010fe6abd3 chromedriver + 920531
+E       9   chromedriver                        0x000000010fe368ff chromedriver + 706815
+E       10  chromedriver                        0x000000010fe37dc1 chromedriver + 712129
+E       11  chromedriver                        0x0000000110358fc0 chromedriver + 6090688
+E       12  chromedriver                        0x000000011035ce55 chromedriver + 6106709
+E       13  chromedriver                        0x0000000110334287 chromedriver + 5939847
+E       14  chromedriver                        0x000000011035d8cf chromedriver + 6109391
+E       15  chromedriver                        0x00000001103235f4 chromedriver + 5871092
+E       16  chromedriver                        0x000000011037fa78 chromedriver + 6249080
+E       17  chromedriver                        0x000000011037fc3c chromedriver + 6249532
+E       18  chromedriver                        0x0000000110392301 chromedriver + 6324993
+E       19  libsystem_pthread.dylib             0x00007ff808c07e59 _pthread_start + 115
+E       20  libsystem_pthread.dylib             0x00007ff808c03857 thread_start + 15
+
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:232: NoSuchElementException</pre></details></td></tr>
+<tr><td>test_go_to_alerts_page[firefox]</td><td class='status-broken'>broken</td><td>0.75</td><td>2025-09-30 08:49:10</td><td>2025-09-30 08:49:11</td><td><span class='loc'>test_slider_page.py:10</span></td></tr>
+<tr class='error-row'><td colspan='6'><div class='error-msg'><strong>Erro:</strong> selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: /html/body/div[2]/div/div/div[2]/div/div[4]/div; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception</div><div style='margin-top:6px'><strong>Arquivo/linha:</strong> test_slider_page.py:10</div><pre style='margin:8px 0; padding:8px; background:#f7f7f7; border:1px solid #eee; overflow:auto'>    7 │     
+    8 │     # 1
+    9 │     slider_page.navigate()
+<span style='background:#fff2cc;border-left:4px solid #e0a800;padding-left:6px;'>   10 │ </span>
+   11 │     # 2
+   12 │     slider_page.open_widgets_page_from_home()
+   13 │ </pre><div class="attachments"><a href="allure-results/23d3ee00-9c27-4cfa-894c-bf00637c55b0-attachment.txt" target="_blank">stdout</a></div><details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.firefox.webdriver.WebDriver (session=&quot;e1ee31cd-e9b0-4dde-97e5-400864d1ce13&quot;)&gt;
+
+    def test_go_to_alerts_page(driver):
+        slider_page = SliderPage(driver)
+    
+        # 1
+        slider_page.navigate()
+    
+        # 2
+&gt;       slider_page.open_widgets_page_from_home()
+
+tests/test_slider_page.py:10: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pages/slider_page.py:27: in open_widgets_page_from_home
+    self.driver.find_element(*self.alerts_home_button).click() # 2 por XPATH
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:926: in find_element
+    return self.execute(Command.FIND_ELEMENT, {&quot;using&quot;: by, &quot;value&quot;: value})[&quot;value&quot;]
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:458: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x108bc3b20&gt;
+response = {&#x27;status&#x27;: 404, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;no such element&quot;,&quot;message&quot;:&quot;Unable to locate element: /html/body/div[2]/d.../content/shared/webdriver/Errors.sys.mjs:555:5\\ndom.find/&lt;/&lt;@chrome://remote/content/shared/DOM.sys.mjs:136:16\\n&quot;}}&#x27;}
+
+    def check_response(self, response: dict[str, Any]) -&gt; None:
+        &quot;&quot;&quot;Checks that a JSON response from the WebDriver does not have an
+        error.
+    
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+    
+        :Raises: If the response contains an error message.
+        &quot;&quot;&quot;
+        status = response.get(&quot;status&quot;, None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get(&quot;message&quot;, &quot;&quot;)
+        screen: str = response.get(&quot;screen&quot;, &quot;&quot;)
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get(&quot;value&quot;, None)
+            if value_json and isinstance(value_json, str):
+                try:
+                    value = json.loads(value_json)
+                    if isinstance(value, dict):
+                        if len(value) == 1:
+                            value = value[&quot;value&quot;]
+                        status = value.get(&quot;error&quot;, None)
+                        if not status:
+                            status = value.get(&quot;status&quot;, ErrorCode.UNKNOWN_ERROR)
+                            message = value.get(&quot;value&quot;) or value.get(&quot;message&quot;)
+                            if not isinstance(message, str):
+                                value = message
+                                message = message.get(&quot;message&quot;)
+                        else:
+                            message = value.get(&quot;message&quot;, None)
+                except ValueError:
+                    pass
+    
+        exception_class: type[WebDriverException]
+        e = ErrorCode()
+        error_codes = [item for item in dir(e) if not item.startswith(&quot;__&quot;)]
+        for error_code in error_codes:
+            error_info = getattr(ErrorCode, error_code)
+            if isinstance(error_info, list) and status in error_info:
+                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)
+                break
+        else:
+            exception_class = WebDriverException
+    
+        if not value:
+            value = response[&quot;value&quot;]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == &quot;&quot; and &quot;message&quot; in value:
+            message = value[&quot;message&quot;]
+    
+        screen = None  # type: ignore[assignment]
+        if &quot;screen&quot; in value:
+            screen = value[&quot;screen&quot;]
+    
+        stacktrace = None
+        st_value = value.get(&quot;stackTrace&quot;) or value.get(&quot;stacktrace&quot;)
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split(&quot;\n&quot;)
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get(&quot;lineNumber&quot;, &quot;&quot;)
+                        file = frame.get(&quot;fileName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if line:
+                            file = f&quot;{file}:{line}&quot;
+                        meth = frame.get(&quot;methodName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if &quot;className&quot; in frame:
+                            meth = f&quot;{frame[&#x27;className&#x27;]}.{meth}&quot;
+                        msg = &quot;    at %s (%s)&quot;
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if &quot;data&quot; in value:
+                alert_text = value[&quot;data&quot;].get(&quot;text&quot;)
+            elif &quot;alert&quot; in value:
+                alert_text = value[&quot;alert&quot;].get(&quot;text&quot;)
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+&gt;       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: /html/body/div[2]/div/div/div[2]/div/div[4]/div; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+E       Stacktrace:
+E       RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+E       WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:202:5
+E       NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:555:5
+E       dom.find/&lt;/&lt;@chrome://remote/content/shared/DOM.sys.mjs:136:16
+
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:232: NoSuchElementException</pre></details></td></tr>
+<tr><td>test_go_to_alerts_page[chrome]</td><td class='status-failed'>failed</td><td>6.44</td><td>2025-09-30 08:48:59</td><td>2025-09-30 08:49:06</td><td><span class='loc'>test_slider_page.py:16</span></td></tr>
+<tr class='error-row'><td colspan='6'><div class='error-msg'><strong>Erro:</strong> AssertionError: assert 54 == 50</div><div style='margin-top:6px'><strong>Arquivo/linha:</strong> test_slider_page.py:16</div><pre style='margin:8px 0; padding:8px; background:#f7f7f7; border:1px solid #eee; overflow:auto'>   13 │ 
+   14 │     # 3
+   15 │     slider_page.open_slider_page()
+<span style='background:#fff2cc;border-left:4px solid #e0a800;padding-left:6px;'>   16 │ </span>
+   17 │     # 5
+   18 │     slider_page.set_slider_value_while(value_test)
+   19 │ </pre><div class="attachments"><a href="allure-results/3fb4b60e-5d0f-4558-aab0-eabbbe744cec-attachment.txt" target="_blank">stdout</a></div><details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;99b7217e28698273aa96a566b2df1a98&quot;)&gt;
+
+    def test_go_to_alerts_page(driver):
+        slider_page = SliderPage(driver)
+    
+        # 1
+        slider_page.navigate()
+    
+        # 2
+        slider_page.open_widgets_page_from_home()
+    
+        # 3
+        slider_page.open_slider_page()
+    
+        # 4 + 5
+&gt;       assert slider_page.set_slider_value(50) == 50
+E       assert 54 == 50
+E        +  where 54 = set_slider_value(50)
+E        +    where set_slider_value = &lt;pages.slider_page.SliderPage object at 0x108b20070&gt;.set_slider_value
+
+tests/test_slider_page.py:16: AssertionError</pre></details></td></tr>
+<tr><td>test_go_to_alerts_page[firefox]</td><td class='status-broken'>broken</td><td>0.74</td><td>2025-09-30 08:48:41</td><td>2025-09-30 08:48:42</td><td><span class='loc'>test_slider_page.py:10</span></td></tr>
+<tr class='error-row'><td colspan='6'><div class='error-msg'><strong>Erro:</strong> selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: /html/body/div[2]/div/div/div[2]/div/div[4]/div; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception</div><div style='margin-top:6px'><strong>Arquivo/linha:</strong> test_slider_page.py:10</div><pre style='margin:8px 0; padding:8px; background:#f7f7f7; border:1px solid #eee; overflow:auto'>    7 │     
+    8 │     # 1
+    9 │     slider_page.navigate()
+<span style='background:#fff2cc;border-left:4px solid #e0a800;padding-left:6px;'>   10 │ </span>
+   11 │     # 2
+   12 │     slider_page.open_widgets_page_from_home()
+   13 │ </pre><div class="attachments"><a href="allure-results/83340f1b-c682-4c31-9f43-2ecd829cb504-attachment.txt" target="_blank">stdout</a></div><details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.firefox.webdriver.WebDriver (session=&quot;154b33f3-d8ff-4a86-9216-b76feb65f494&quot;)&gt;
+
+    def test_go_to_alerts_page(driver):
+        slider_page = SliderPage(driver)
+    
+        # 1
+        slider_page.navigate()
+    
+        # 2
+&gt;       slider_page.open_widgets_page_from_home()
+
+tests/test_slider_page.py:10: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pages/slider_page.py:27: in open_widgets_page_from_home
+    self.driver.find_element(*self.alerts_home_button).click() # 2 por XPATH
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:926: in find_element
+    return self.execute(Command.FIND_ELEMENT, {&quot;using&quot;: by, &quot;value&quot;: value})[&quot;value&quot;]
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:458: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x10b4be7f0&gt;
+response = {&#x27;status&#x27;: 404, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;no such element&quot;,&quot;message&quot;:&quot;Unable to locate element: /html/body/div[2]/d.../content/shared/webdriver/Errors.sys.mjs:555:5\\ndom.find/&lt;/&lt;@chrome://remote/content/shared/DOM.sys.mjs:136:16\\n&quot;}}&#x27;}
+
+    def check_response(self, response: dict[str, Any]) -&gt; None:
+        &quot;&quot;&quot;Checks that a JSON response from the WebDriver does not have an
+        error.
+    
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+    
+        :Raises: If the response contains an error message.
+        &quot;&quot;&quot;
+        status = response.get(&quot;status&quot;, None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get(&quot;message&quot;, &quot;&quot;)
+        screen: str = response.get(&quot;screen&quot;, &quot;&quot;)
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get(&quot;value&quot;, None)
+            if value_json and isinstance(value_json, str):
+                try:
+                    value = json.loads(value_json)
+                    if isinstance(value, dict):
+                        if len(value) == 1:
+                            value = value[&quot;value&quot;]
+                        status = value.get(&quot;error&quot;, None)
+                        if not status:
+                            status = value.get(&quot;status&quot;, ErrorCode.UNKNOWN_ERROR)
+                            message = value.get(&quot;value&quot;) or value.get(&quot;message&quot;)
+                            if not isinstance(message, str):
+                                value = message
+                                message = message.get(&quot;message&quot;)
+                        else:
+                            message = value.get(&quot;message&quot;, None)
+                except ValueError:
+                    pass
+    
+        exception_class: type[WebDriverException]
+        e = ErrorCode()
+        error_codes = [item for item in dir(e) if not item.startswith(&quot;__&quot;)]
+        for error_code in error_codes:
+            error_info = getattr(ErrorCode, error_code)
+            if isinstance(error_info, list) and status in error_info:
+                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)
+                break
+        else:
+            exception_class = WebDriverException
+    
+        if not value:
+            value = response[&quot;value&quot;]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == &quot;&quot; and &quot;message&quot; in value:
+            message = value[&quot;message&quot;]
+    
+        screen = None  # type: ignore[assignment]
+        if &quot;screen&quot; in value:
+            screen = value[&quot;screen&quot;]
+    
+        stacktrace = None
+        st_value = value.get(&quot;stackTrace&quot;) or value.get(&quot;stacktrace&quot;)
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split(&quot;\n&quot;)
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get(&quot;lineNumber&quot;, &quot;&quot;)
+                        file = frame.get(&quot;fileName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if line:
+                            file = f&quot;{file}:{line}&quot;
+                        meth = frame.get(&quot;methodName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if &quot;className&quot; in frame:
+                            meth = f&quot;{frame[&#x27;className&#x27;]}.{meth}&quot;
+                        msg = &quot;    at %s (%s)&quot;
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if &quot;data&quot; in value:
+                alert_text = value[&quot;data&quot;].get(&quot;text&quot;)
+            elif &quot;alert&quot; in value:
+                alert_text = value[&quot;alert&quot;].get(&quot;text&quot;)
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+&gt;       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: /html/body/div[2]/div/div/div[2]/div/div[4]/div; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+E       Stacktrace:
+E       RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+E       WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:202:5
+E       NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:555:5
+E       dom.find/&lt;/&lt;@chrome://remote/content/shared/DOM.sys.mjs:136:16
+
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:232: NoSuchElementException</pre></details></td></tr>
+<tr><td>test_go_to_alerts_page[chrome]</td><td class='status-broken'>broken</td><td>0.78</td><td>2025-09-30 08:48:36</td><td>2025-09-30 08:48:37</td><td><span class='loc'>test_slider_page.py:10</span></td></tr>
+<tr class='error-row'><td colspan='6'><div class='error-msg'><strong>Erro:</strong> selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;/html/body/div[2]/div/div/div[2]/div/div[4]/div&quot;}</div><div style='margin-top:6px'><strong>Arquivo/linha:</strong> test_slider_page.py:10</div><pre style='margin:8px 0; padding:8px; background:#f7f7f7; border:1px solid #eee; overflow:auto'>    7 │     
+    8 │     # 1
+    9 │     slider_page.navigate()
+<span style='background:#fff2cc;border-left:4px solid #e0a800;padding-left:6px;'>   10 │ </span>
+   11 │     # 2
+   12 │     slider_page.open_widgets_page_from_home()
+   13 │ </pre><div class="attachments"><a href="allure-results/6f47090a-dce9-4d1e-a7f9-045eb9cdf97c-attachment.txt" target="_blank">stdout</a></div><details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;882326210bfc320c5fae6a0be2df6e90&quot;)&gt;
+
+    def test_go_to_alerts_page(driver):
+        slider_page = SliderPage(driver)
+    
+        # 1
+        slider_page.navigate()
+    
+        # 2
+&gt;       slider_page.open_widgets_page_from_home()
+
+tests/test_slider_page.py:10: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pages/slider_page.py:27: in open_widgets_page_from_home
+    self.driver.find_element(*self.alerts_home_button).click() # 2 por XPATH
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:926: in find_element
+    return self.execute(Command.FIND_ELEMENT, {&quot;using&quot;: by, &quot;value&quot;: value})[&quot;value&quot;]
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:458: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x10b332310&gt;
+response = {&#x27;status&#x27;: 404, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;no such element&quot;,&quot;message&quot;:&quot;no such element: Unable to locate element: {\...ff808c07e59 _pthread_start + 115\\n20  libsystem_pthread.dylib             0x00007ff808c03857 thread_start + 15\\n&quot;}}&#x27;}
+
+    def check_response(self, response: dict[str, Any]) -&gt; None:
+        &quot;&quot;&quot;Checks that a JSON response from the WebDriver does not have an
+        error.
+    
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+    
+        :Raises: If the response contains an error message.
+        &quot;&quot;&quot;
+        status = response.get(&quot;status&quot;, None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get(&quot;message&quot;, &quot;&quot;)
+        screen: str = response.get(&quot;screen&quot;, &quot;&quot;)
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get(&quot;value&quot;, None)
+            if value_json and isinstance(value_json, str):
+                try:
+                    value = json.loads(value_json)
+                    if isinstance(value, dict):
+                        if len(value) == 1:
+                            value = value[&quot;value&quot;]
+                        status = value.get(&quot;error&quot;, None)
+                        if not status:
+                            status = value.get(&quot;status&quot;, ErrorCode.UNKNOWN_ERROR)
+                            message = value.get(&quot;value&quot;) or value.get(&quot;message&quot;)
+                            if not isinstance(message, str):
+                                value = message
+                                message = message.get(&quot;message&quot;)
+                        else:
+                            message = value.get(&quot;message&quot;, None)
+                except ValueError:
+                    pass
+    
+        exception_class: type[WebDriverException]
+        e = ErrorCode()
+        error_codes = [item for item in dir(e) if not item.startswith(&quot;__&quot;)]
+        for error_code in error_codes:
+            error_info = getattr(ErrorCode, error_code)
+            if isinstance(error_info, list) and status in error_info:
+                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)
+                break
+        else:
+            exception_class = WebDriverException
+    
+        if not value:
+            value = response[&quot;value&quot;]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == &quot;&quot; and &quot;message&quot; in value:
+            message = value[&quot;message&quot;]
+    
+        screen = None  # type: ignore[assignment]
+        if &quot;screen&quot; in value:
+            screen = value[&quot;screen&quot;]
+    
+        stacktrace = None
+        st_value = value.get(&quot;stackTrace&quot;) or value.get(&quot;stacktrace&quot;)
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split(&quot;\n&quot;)
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get(&quot;lineNumber&quot;, &quot;&quot;)
+                        file = frame.get(&quot;fileName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if line:
+                            file = f&quot;{file}:{line}&quot;
+                        meth = frame.get(&quot;methodName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if &quot;className&quot; in frame:
+                            meth = f&quot;{frame[&#x27;className&#x27;]}.{meth}&quot;
+                        msg = &quot;    at %s (%s)&quot;
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if &quot;data&quot; in value:
+                alert_text = value[&quot;data&quot;].get(&quot;text&quot;)
+            elif &quot;alert&quot; in value:
+                alert_text = value[&quot;alert&quot;].get(&quot;text&quot;)
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+&gt;       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;/html/body/div[2]/div/div/div[2]/div/div[4]/div&quot;}
+E         (Session info: chrome=140.0.7339.208); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+E       Stacktrace:
+E       0   chromedriver                        0x00000001030c4028 chromedriver + 6361128
+E       1   chromedriver                        0x00000001030bb72a chromedriver + 6326058
+E       2   chromedriver                        0x0000000102b1bc20 chromedriver + 429088
+E       3   chromedriver                        0x0000000102b6dd1b chromedriver + 765211
+E       4   chromedriver                        0x0000000102b6dfe1 chromedriver + 765921
+E       5   chromedriver                        0x0000000102bbdf44 chromedriver + 1093444
+E       6   chromedriver                        0x0000000102b93e2d chromedriver + 921133
+E       7   chromedriver                        0x0000000102bbb26e chromedriver + 1081966
+E       8   chromedriver                        0x0000000102b93bd3 chromedriver + 920531
+E       9   chromedriver                        0x0000000102b5f8ff chromedriver + 706815
+E       10  chromedriver                        0x0000000102b60dc1 chromedriver + 712129
+E       11  chromedriver                        0x0000000103081fc0 chromedriver + 6090688
+E       12  chromedriver                        0x0000000103085e55 chromedriver + 6106709
+E       13  chromedriver                        0x000000010305d287 chromedriver + 5939847
+E       14  chromedriver                        0x00000001030868cf chromedriver + 6109391
+E       15  chromedriver                        0x000000010304c5f4 chromedriver + 5871092
+E       16  chromedriver                        0x00000001030a8a78 chromedriver + 6249080
+E       17  chromedriver                        0x00000001030a8c3c chromedriver + 6249532
+E       18  chromedriver                        0x00000001030bb301 chromedriver + 6324993
+E       19  libsystem_pthread.dylib             0x00007ff808c07e59 _pthread_start + 115
+E       20  libsystem_pthread.dylib             0x00007ff808c03857 thread_start + 15
+
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:232: NoSuchElementException</pre></details></td></tr>
+<tr><td>test_go_to_alerts_page[firefox]</td><td class='status-broken'>broken</td><td>0.79</td><td>2025-09-30 08:46:44</td><td>2025-09-30 08:46:45</td><td><span class='loc'>test_slider_page.py:10</span></td></tr>
+<tr class='error-row'><td colspan='6'><div class='error-msg'><strong>Erro:</strong> selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: /html/body/div[2]/div/div/div[2]/div/div[4]/div/div[1]; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception</div><div style='margin-top:6px'><strong>Arquivo/linha:</strong> test_slider_page.py:10</div><pre style='margin:8px 0; padding:8px; background:#f7f7f7; border:1px solid #eee; overflow:auto'>    7 │     
+    8 │     # 1
+    9 │     slider_page.navigate()
+<span style='background:#fff2cc;border-left:4px solid #e0a800;padding-left:6px;'>   10 │ </span>
+   11 │     # 2
+   12 │     slider_page.open_widgets_page_from_home()
+   13 │ </pre><div class="attachments"><a href="allure-results/263666bb-796e-4d23-9fd3-65915ddc79d0-attachment.txt" target="_blank">stdout</a></div><details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.firefox.webdriver.WebDriver (session=&quot;4fb4926d-15aa-4f89-9f40-f3fb92316bbc&quot;)&gt;
+
+    def test_go_to_alerts_page(driver):
+        slider_page = SliderPage(driver)
+    
+        # 1
+        slider_page.navigate()
+    
+        # 2
+&gt;       slider_page.open_widgets_page_from_home()
+
+tests/test_slider_page.py:10: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pages/slider_page.py:27: in open_widgets_page_from_home
+    self.driver.find_element(*self.alerts_home_button).click() # 2 por XPATH
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:926: in find_element
+    return self.execute(Command.FIND_ELEMENT, {&quot;using&quot;: by, &quot;value&quot;: value})[&quot;value&quot;]
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:458: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x10e5e4b50&gt;
+response = {&#x27;status&#x27;: 404, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;no such element&quot;,&quot;message&quot;:&quot;Unable to locate element: /html/body/div[2]/d.../content/shared/webdriver/Errors.sys.mjs:555:5\\ndom.find/&lt;/&lt;@chrome://remote/content/shared/DOM.sys.mjs:136:16\\n&quot;}}&#x27;}
+
+    def check_response(self, response: dict[str, Any]) -&gt; None:
+        &quot;&quot;&quot;Checks that a JSON response from the WebDriver does not have an
+        error.
+    
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+    
+        :Raises: If the response contains an error message.
+        &quot;&quot;&quot;
+        status = response.get(&quot;status&quot;, None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get(&quot;message&quot;, &quot;&quot;)
+        screen: str = response.get(&quot;screen&quot;, &quot;&quot;)
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get(&quot;value&quot;, None)
+            if value_json and isinstance(value_json, str):
+                try:
+                    value = json.loads(value_json)
+                    if isinstance(value, dict):
+                        if len(value) == 1:
+                            value = value[&quot;value&quot;]
+                        status = value.get(&quot;error&quot;, None)
+                        if not status:
+                            status = value.get(&quot;status&quot;, ErrorCode.UNKNOWN_ERROR)
+                            message = value.get(&quot;value&quot;) or value.get(&quot;message&quot;)
+                            if not isinstance(message, str):
+                                value = message
+                                message = message.get(&quot;message&quot;)
+                        else:
+                            message = value.get(&quot;message&quot;, None)
+                except ValueError:
+                    pass
+    
+        exception_class: type[WebDriverException]
+        e = ErrorCode()
+        error_codes = [item for item in dir(e) if not item.startswith(&quot;__&quot;)]
+        for error_code in error_codes:
+            error_info = getattr(ErrorCode, error_code)
+            if isinstance(error_info, list) and status in error_info:
+                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)
+                break
+        else:
+            exception_class = WebDriverException
+    
+        if not value:
+            value = response[&quot;value&quot;]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == &quot;&quot; and &quot;message&quot; in value:
+            message = value[&quot;message&quot;]
+    
+        screen = None  # type: ignore[assignment]
+        if &quot;screen&quot; in value:
+            screen = value[&quot;screen&quot;]
+    
+        stacktrace = None
+        st_value = value.get(&quot;stackTrace&quot;) or value.get(&quot;stacktrace&quot;)
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split(&quot;\n&quot;)
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get(&quot;lineNumber&quot;, &quot;&quot;)
+                        file = frame.get(&quot;fileName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if line:
+                            file = f&quot;{file}:{line}&quot;
+                        meth = frame.get(&quot;methodName&quot;, &quot;&lt;anonymous&gt;&quot;)
+                        if &quot;className&quot; in frame:
+                            meth = f&quot;{frame[&#x27;className&#x27;]}.{meth}&quot;
+                        msg = &quot;    at %s (%s)&quot;
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if &quot;data&quot; in value:
+                alert_text = value[&quot;data&quot;].get(&quot;text&quot;)
+            elif &quot;alert&quot; in value:
+                alert_text = value[&quot;alert&quot;].get(&quot;text&quot;)
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+&gt;       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: /html/body/div[2]/div/div/div[2]/div/div[4]/div/div[1]; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+E       Stacktrace:
+E       RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+E       WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:202:5
+E       NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:555:5
+E       dom.find/&lt;/&lt;@chrome://remote/content/shared/DOM.sys.mjs:136:16
+
+myproject/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:232: NoSuchElementException</pre></details></td></tr>
+<tr><td>test_go_to_alerts_page[chrome]</td><td class='status-failed'>failed</td><td>6.45</td><td>2025-09-30 08:46:32</td><td>2025-09-30 08:46:38</td><td><span class='loc'>test_slider_page.py:16</span></td></tr>
+<tr class='error-row'><td colspan='6'><div class='error-msg'><strong>Erro:</strong> AssertionError: assert 58 == 73</div><div style='margin-top:6px'><strong>Arquivo/linha:</strong> test_slider_page.py:16</div><pre style='margin:8px 0; padding:8px; background:#f7f7f7; border:1px solid #eee; overflow:auto'>   13 │ 
+   14 │     # 3
+   15 │     slider_page.open_slider_page()
+<span style='background:#fff2cc;border-left:4px solid #e0a800;padding-left:6px;'>   16 │ </span>
+   17 │     # 5
+   18 │     slider_page.set_slider_value_while(value_test)
+   19 │ </pre><div class="attachments"><a href="allure-results/476a1c9e-a11c-44fb-b3cc-7701453e8658-attachment.txt" target="_blank">stdout</a></div><details><summary>Stack trace</summary><pre class='error-msg'>driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;20a597aa29bce2d28f1a583518f6c928&quot;)&gt;
+
+    def test_go_to_alerts_page(driver):
+        slider_page = SliderPage(driver)
+    
+        # 1
+        slider_page.navigate()
+    
+        # 2
+        slider_page.open_widgets_page_from_home()
+    
+        # 3
+        slider_page.open_slider_page()
+    
+        # 4 + 5
+&gt;       assert slider_page.set_slider_value(73) == 73
+E       assert 58 == 73
+E        +  where 58 = set_slider_value(73)
+E        +    where set_slider_value = &lt;pages.slider_page.SliderPage object at 0x10e542070&gt;.set_slider_value
+
+tests/test_slider_page.py:16: AssertionError</pre></details></td></tr>
 <tr><td>test_go_to_alerts_page[firefox]</td><td class='status-passed'>passed</td><td>62.39</td><td>2025-09-29 11:32:58</td><td>2025-09-29 11:34:01</td><td>—</td></tr>
 <tr><td>test_go_to_alerts_page[chrome]</td><td class='status-passed'>passed</td><td>76.16</td><td>2025-09-29 11:31:37</td><td>2025-09-29 11:32:54</td><td>—</td></tr>
 <tr><td>test_go_to_alerts_page[firefox]</td><td class='status-passed'>passed</td><td>50.36</td><td>2025-09-29 11:30:27</td><td>2025-09-29 11:31:17</td><td>—</td></tr>

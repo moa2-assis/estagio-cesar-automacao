@@ -1,4 +1,6 @@
-from pages.alerts_page import SliderPage
+from pages.slider_page import SliderPage
+
+value_test = 91
 
 def test_go_to_alerts_page(driver):  
     slider_page = SliderPage(driver)
@@ -12,5 +14,7 @@ def test_go_to_alerts_page(driver):
     # 3
     slider_page.open_slider_page()
 
-    # 4 + 5
-    assert slider_page.set_slider_value(73) == 73
+    # 5
+    slider_page.set_slider_value_while(value_test)
+
+    assert slider_page.get_slider_value() == value_test

@@ -1810,3 +1810,81 @@
 
 [START] Test 'tests/test_alerts_page.py::test_go_to_alerts_page[firefox]' - 11:32:54
 [END] Test 'tests/test_alerts_page.py::test_go_to_alerts_page[firefox]' finished in 68.15 seconds.
+
+[START] Test 'tests/test_slider_page.py::test_go_to_alerts_page[chrome]' - 08:46:28
+[END] Test 'tests/test_slider_page.py::test_go_to_alerts_page[chrome]' finished in 10.88 seconds.
+
+[START] Test 'tests/test_slider_page.py::test_go_to_alerts_page[firefox]' - 08:46:39
+[END] Test 'tests/test_slider_page.py::test_go_to_alerts_page[firefox]' finished in 6.93 seconds.
+
+[START] Test 'tests/test_slider_page.py::test_go_to_alerts_page[chrome]' - 08:48:34
+[END] Test 'tests/test_slider_page.py::test_go_to_alerts_page[chrome]' finished in 3.13 seconds.
+
+[START] Test 'tests/test_slider_page.py::test_go_to_alerts_page[firefox]' - 08:48:37
+[END] Test 'tests/test_slider_page.py::test_go_to_alerts_page[firefox]' finished in 5.98 seconds.
+
+[START] Test 'tests/test_slider_page.py::test_go_to_alerts_page[chrome]' - 08:48:57
+[END] Test 'tests/test_slider_page.py::test_go_to_alerts_page[chrome]' finished in 9.00 seconds.
+
+[START] Test 'tests/test_slider_page.py::test_go_to_alerts_page[firefox]' - 08:49:06
+[END] Test 'tests/test_slider_page.py::test_go_to_alerts_page[firefox]' finished in 5.92 seconds.
+
+[START] Test 'tests/test_slider_page.py::test_go_to_alerts_page[chrome]' - 08:49:39
+[END] Test 'tests/test_slider_page.py::test_go_to_alerts_page[chrome]' finished in 3.01 seconds.
+
+[START] Test 'tests/test_slider_page.py::test_go_to_alerts_page[firefox]' - 08:49:42
+[END] Test 'tests/test_slider_page.py::test_go_to_alerts_page[firefox]' finished in 5.39 seconds.
+
+[START] Test 'tests/test_slider_page.py::test_go_to_alerts_page[chrome]' - 08:52:02
+[END] Test 'tests/test_slider_page.py::test_go_to_alerts_page[chrome]' finished in 9.53 seconds.
+
+[START] Test 'tests/test_slider_page.py::test_go_to_alerts_page[firefox]' - 08:52:12
+[END] Test 'tests/test_slider_page.py::test_go_to_alerts_page[firefox]' finished in 6.32 seconds.
+
+[START] Test 'tests/test_slider_page.py::test_go_to_alerts_page[chrome]' - 08:54:03
+[END] Test 'tests/test_slider_page.py::test_go_to_alerts_page[chrome]' finished in 9.66 seconds.
+
+[START] Test 'tests/test_slider_page.py::test_go_to_alerts_page[firefox]' - 08:54:13
+[END] Test 'tests/test_slider_page.py::test_go_to_alerts_page[firefox]' finished in 5.87 seconds.
+
+[START] Test 'tests/test_slider_page.py::test_go_to_alerts_page[chrome]' - 08:57:30
+[END] Test 'tests/test_slider_page.py::test_go_to_alerts_page[chrome]' finished in 9.25 seconds.
+
+[START] Test 'tests/test_slider_page.py::test_go_to_alerts_page[firefox]' - 08:57:39
+[END] Test 'tests/test_slider_page.py::test_go_to_alerts_page[firefox]' finished in 11.98 seconds.
+
+[START] Test 'tests/test_slider_page.py::test_go_to_alerts_page[chrome]' - 08:59:53
+[END] Test 'tests/test_slider_page.py::test_go_to_alerts_page[chrome]' finished in 13.85 seconds.
+
+[START] Test 'tests/test_slider_page.py::test_go_to_alerts_page[firefox]' - 09:00:07
+[END] Test 'tests/test_slider_page.py::test_go_to_alerts_page[firefox]' finished in 14.02 seconds.
+
+[START] Test 'tests/test_slider_page.py::test_go_to_alerts_page[chrome]' - 09:20:57
+[END] Test 'tests/test_slider_page.py::test_go_to_alerts_page[chrome]' finished in 11.98 seconds.
+
+[START] Test 'tests/test_slider_page.py::test_go_to_alerts_page[firefox]' - 09:21:09
+[END] Test 'tests/test_slider_page.py::test_go_to_alerts_page[firefox]' finished in 13.73 seconds.
+
+[START] Test 'tests/test_slider_page.py::test_go_to_alerts_page[chrome]' - 09:27:38
+[END] Test 'tests/test_slider_page.py::test_go_to_alerts_page[chrome]' finished in 10.72 seconds.
+
+[START] Test 'tests/test_slider_page.py::test_go_to_alerts_page[firefox]' - 09:27:49
+[END] Test 'tests/test_slider_page.py::test_go_to_alerts_page[firefox]' finished in 13.35 seconds.
+
+[START] Test 'tests/test_slider_page.py::test_go_to_alerts_page[chrome]' - 09:31:31
+[END] Test 'tests/test_slider_page.py::test_go_to_alerts_page[chrome]' finished in 12.47 seconds.
+
+[START] Test 'tests/test_slider_page.py::test_go_to_alerts_page[firefox]' - 09:31:43
+[END] Test 'tests/test_slider_page.py::test_go_to_alerts_page[firefox]' finished in 13.13 seconds.
+
+[START] Test 'tests/test_slider_page.py::test_go_to_alerts_page[chrome]' - 09:47:42
+[END] Test 'tests/test_slider_page.py::test_go_to_alerts_page[chrome]' finished in 13.13 seconds.
+
+[START] Test 'tests/test_slider_page.py::test_go_to_alerts_page[firefox]' - 09:47:55
+[END] Test 'tests/test_slider_page.py::test_go_to_alerts_page[firefox]' finished in 14.02 seconds.
+
+[START] Test 'tests/test_slider_page.py::test_go_to_alerts_page[chrome]' - 09:50:30
+[END] Test 'tests/test_slider_page.py::test_go_to_alerts_page[chrome]' finished in 13.41 seconds.
+
+[START] Test 'tests/test_slider_page.py::test_go_to_alerts_page[firefox]' - 09:50:44
+[END] Test 'tests/test_slider_page.py::test_go_to_alerts_page[firefox]' finished in 13.08 seconds.

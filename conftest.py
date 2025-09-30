@@ -12,32 +12,57 @@ import webbrowser
 from html import escape
 from datetime import datetime
 import csv
+from selenium.webdriver.chrome.options import Options as ChromeOptions
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
 
 """Conftest para executar o setup de testes com Selenium WebDriver."""
 
 report_data = []
 
-# def pytest_addoption(parser):
-#     """Dá a opção de escolher browser via linha de comando."""
-#     parser.addoption("--browser", action="store", default="chrome", help="browser to execute tests (chrome or firefox)")
+####### DOCKER + SELENIUM GRID + MULTI-BROWSER #######
+def pytest_addoption(parser):
+    """Dá a opção de escolher browser via linha de comando."""
+    parser.addoption("--browser", action="store", default="chrome", help="browser to execute tests (chrome or firefox)")
 
+def pytest_generate_tests(metafunc):
+    if "browser" in metafunc.fixturenames:
+        browser = metafunc.config.getoption("browser").split(",")
+        metafunc.parametrize("browser", browser)
+
+## docker, trocar pelo abaixo quando não for usá-lo
 # @pytest.fixture
 @pytest.fixture(params=["chrome", "firefox"], scope="function")
-def driver(request):
-    """Fixture que define o WebDriver utilizado baseado na linha de comando."""
-    # browser = request.config.getoption("--browser").lower()
-    browser = request.param
+def driver(browser):
     if browser == "chrome":
-        driver_instance = webdriver.Chrome()
+        options = ChromeOptions()
     elif browser == "firefox":
-        driver_instance = webdriver.Firefox()
+        options = FirefoxOptions()
     else:
-        raise ValueError(f"Browser '{browser}' is not supported.")
+        raise ValueError(f"Browser not supported: {browser}")
+
+    driver = webdriver.Remote(
+        command_executor="http://localhost:4444/wd/hub",
+        options=options,
+    )
+
+    yield driver
+    driver.quit()
+# Esse é o antigo, sem o docker
+# def driver(request):
+#     """Fixture que define o WebDriver utilizado baseado na linha de comando."""
+#     # browser = request.config.getoption("--browser").lower()
+#     browser = request.param
+#     if browser == "chrome":
+#         driver_instance = webdriver.Chrome()
+#     elif browser == "firefox":
+#         driver_instance = webdriver.Firefox()
+#     else:
+#         raise ValueError(f"Browser '{browser}' is not supported.")
     
-    driver_instance.maximize_window()
-    request.node.browser = browser
-    yield driver_instance
-    driver_instance.quit()
+#     driver_instance.maximize_window()
+#     request.node.browser = browser
+#     yield driver_instance
+#     driver_instance.quit()
 
 LOG_FILE = Path("test_durations.log")
 
@@ -103,6 +128,10 @@ def pytest_runtest_makereport(item, call):
 
 def pytest_sessionfinish(session, exitstatus):
     """Gera e abre o dashboard antigo (script externo) e cria o CSV final."""
+     # >>> ADICIONE ESSA LINHA <<<
+    if _is_worker(session.config):
+        return  # não gera/abre nada dentro dos workers
+
     root = Path.cwd()
 
     # 1) Dashboard antigo (script externo)
@@ -152,6 +181,10 @@ def _open_if_exists(path: Path, label: str):
             print(f"[dashboard] gerado em: {path} (abra manualmente). Motivo: {e}")
     else:
         print(f"[dashboard] não encontrado: {label} -> {path}")
+
+def _is_worker(config) -> bool:
+    # True dentro de um worker do xdist (gw0, gw1, ...)
+    return hasattr(config, "workerinput") or bool(os.environ.get("PYTEST_XDIST_WORKER"))
 
 @pytest.fixture(scope="class")
 def class_resource():

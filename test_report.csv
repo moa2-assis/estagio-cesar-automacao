@@ -1,3 +1,3 @@
 browser,test_case_name,status,duration_s
-Chrome,test_go_to_alerts_page[chrome],Passed,10.3280
-Firefox,test_go_to_alerts_page[firefox],Failed,7.4786
+N/a,test_hover_tool_tip_text_field[chrome-chrome],Passed,5.9800
+N/a,test_hover_tool_tip_text_field[firefox-chrome],Passed,6.3303
